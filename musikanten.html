@@ -53,10 +53,16 @@
 
 <section style="background:var(--white);">
 
+  <!-- KAPELLMEISTERIN -->
   <div class="kapellmeisterin-section">
     <div class="kapellmeisterin-inner">
       <div class="kapellmeisterin-img-wrap">
-        <div class="musikant-img-placeholder" style="width:160px;height:160px;font-size:3rem;border-radius:50%;">&#9836;</div>
+        <img src="images/register/kapellmeisterin.jpg"
+             alt="Katrin Berchtold"
+             class="kapellmeisterin-foto"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="musikant-img-placeholder" style="width:160px;height:160px;font-size:3rem;border-radius:50%;display:none;">&#9836;</div>
       </div>
       <div class="kapellmeisterin-text">
         <div class="section-label">Kapellmeisterin</div>
@@ -78,292 +84,232 @@
   <div class="section-label" style="margin-bottom:8px;">Unsere Register</div>
   <h2 class="section-title" style="margin-bottom:48px;">Die Musikantinnen &amp; Musikanten</h2>
 
-  <div class="register-section">
-    <div class="register-title">&#127908; Flöten <span class="register-count">(3)</span></div>
+  
+  <div class="register-section" id="floeten">
+    <div class="register-title">Flöten <span class="register-count">(3)</span></div>
     <p class="register-text">Die höchsten Töne in der Musik kommen neben der Triangel bei uns aus der ersten Reihe: unsere Flöten!</p>
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Leonie Beranek</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Claudia Bereuter</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Katrin Huber</div>
-        
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/floeten.jpg"
+        alt="Register Flöten"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
       </div>
     </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Leonie Beranek</span>, <span class="mitglied-name mitglied-absent">Claudia Bereuter*</span>, <span class="mitglied-name">Katrin Huber</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+    </div>
   </div>
-  <div class="register-section">
-    <div class="register-title">&#127908; Holz <span class="register-count">(10)</span></div>
+  <div class="register-section" id="holz">
+    <div class="register-title">Holz <span class="register-count">(10)</span></div>
     <p class="register-text">Bei den Holzspielern kommt so mancher Musikant ins Staunen und fragt sich: wie kann man soviel Noten in so kurzer Zeit spielen?! Das macht ihr super! Weiter so!!</p>
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Thomas Berchtold</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Toni Berchtold</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Chun-Yi Chang</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Dagmar Hilbrand</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Sarah Leible-Frick</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Julia Merkle</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Jonas Müller</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Simone Rundel</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Maya Schwärzler</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Alfred Ultes</div>
-        
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/holz.jpg"
+        alt="Register Holz"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
       </div>
     </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Thomas Berchtold</span>, <span class="mitglied-name">Toni Berchtold</span>, <span class="mitglied-name mitglied-absent">Chun-Yi Chang*</span>, <span class="mitglied-name">Dagmar Hilbrand</span>, <span class="mitglied-name mitglied-absent">Sarah Leible-Frick*</span>, <span class="mitglied-name">Julia Merkle</span>, <span class="mitglied-name mitglied-absent">Jonas Müller*</span>, <span class="mitglied-name">Simone Rundel</span>, <span class="mitglied-name">Maya Schwärzler</span>, <span class="mitglied-name">Alfred Ultes</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+    </div>
   </div>
-  <div class="register-section">
-    <div class="register-title">&#127927; Saxophon <span class="register-count">(4)</span></div>
+  <div class="register-section" id="saxophon">
+    <div class="register-title">Saxophon <span class="register-count">(4)</span></div>
     <p class="register-text">Unsere Damen am Saxophon – bilden die Verbindung zwischen dem Holz und den hohen Blechbläsern.</p>
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Elvira Schairer</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Lisa Schneider</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Saphira Pistol</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Patricia Schwärzler</div>
-        
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/saxophon.jpg"
+        alt="Register Saxophon"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
       </div>
     </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Elvira Schairer</span>, <span class="mitglied-name mitglied-absent">Lisa Schneider*</span>, <span class="mitglied-name mitglied-absent">Saphira Pistol*</span>, <span class="mitglied-name">Patricia Schwärzler</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+    </div>
   </div>
-  <div class="register-section">
-    <div class="register-title">&#127930; Hohes Blech <span class="register-count">(8)</span></div>
+  <div class="register-section" id="hohes-blech">
+    <div class="register-title">Hohes Blech <span class="register-count">(8)</span></div>
     <p class="register-text">Mal strahlende Fanfaren in den Trompeten, mal klingende Melodien in den Flügelhörnern – so vereint sich unser hohes Blech zu wunderschönen Klängen.</p>
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Karle Bischof</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Roman Edlinger</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Marco Fontain</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Sara Fontain</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Cornelia Gurschler</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Michi Heim</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Josef Ritsch</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Fabian Felberbauer</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/hohes-blech.jpg"
+        alt="Register Hohes Blech"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
       </div>
     </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Karle Bischof</span>, <span class="mitglied-name">Roman Edlinger</span>, <span class="mitglied-name mitglied-absent">Marco Fontain*</span>, <span class="mitglied-name mitglied-absent">Sara Fontain*</span>, <span class="mitglied-name">Cornelia Gurschler</span>, <span class="mitglied-name">Michi Heim</span>, <span class="mitglied-name">Josef Ritsch</span>, <span class="mitglied-name mitglied-absent">Fabian Felberbauer*</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+    </div>
   </div>
-  <div class="register-section">
-    <div class="register-title">&#127908; Tenorhorn &amp; Bariton <span class="register-count">(4)</span></div>
+  <div class="register-section" id="tenorhorn">
+    <div class="register-title">Tenorhorn &amp; Bariton <span class="register-count">(4)</span></div>
     <p class="register-text">Wenn es um wohlklingende Melodien geht, sind unsere Tenorhörner und Baritone immer da! Egal zu welcher Uhrzeit: der Ansatz passt!</p>
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Günter Berchtold</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Wolfgang Köberle</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Florian Ritsch</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Manuel Tiefenbacher</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/tenorhorn.jpg"
+        alt="Register Tenorhorn &amp; Bariton"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
       </div>
     </div>
-  </div>
-  <div class="register-section">
-    <div class="register-title">&#127908; Posaune <span class="register-count">(3)</span></div>
-
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Martin Leible-Frick</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Kilian Lang</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Aimee Bischof</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Günter Berchtold</span>, <span class="mitglied-name">Wolfgang Köberle</span>, <span class="mitglied-name">Florian Ritsch</span>, <span class="mitglied-name mitglied-absent">Manuel Tiefenbacher*</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
     </div>
   </div>
-  <div class="register-section">
-    <div class="register-title">&#127908; Waldhorn <span class="register-count">(2)</span></div>
+  <div class="register-section" id="posaune">
+    <div class="register-title">Posaune <span class="register-count">(3)</span></div>
+    
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/posaune.jpg"
+        alt="Register Posaune"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
+      </div>
+    </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Martin Leible-Frick</span>, <span class="mitglied-name">Kilian Lang</span>, <span class="mitglied-name mitglied-absent">Aimee Bischof*</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+    </div>
+  </div>
+  <div class="register-section" id="waldhorn">
+    <div class="register-title">Waldhorn <span class="register-count">(2)</span></div>
     <p class="register-text">Was hören wir denn da? Die beiden können weit mehr als nur Nachschlag – denn gerade beim Jahreskonzert glänzt unser Hornregister als „Seele des Orchesters“.</p>
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Maria Beier</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Manfred Kessler</div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="register-section">
-    <div class="register-title">&#127908; Tuba <span class="register-count">(2)</span></div>
-
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Felix Ebert</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Franz Matt</div>
-        
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/waldhorn.jpg"
+        alt="Register Waldhorn"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
       </div>
     </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Maria Beier</span>, <span class="mitglied-name">Manfred Kessler</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+    </div>
   </div>
-  <div class="register-section">
-    <div class="register-title">&#129345; Schlagzeug <span class="register-count">(7)</span></div>
+  <div class="register-section" id="tuba">
+    <div class="register-title">Tuba <span class="register-count">(2)</span></div>
+    
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/tuba.jpg"
+        alt="Register Tuba"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
+      </div>
+    </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Felix Ebert</span>, <span class="mitglied-name">Franz Matt</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+    </div>
+  </div>
+  <div class="register-section" id="schlagzeug">
+    <div class="register-title">Schlagzeug <span class="register-count">(7)</span></div>
     <p class="register-text">Kleine Trommel, große Trommel, Tschinellen, Becken, Röhrenglocken, Glockenspiel … In keinem anderen Register muss man so viele Instrumente beherrschen! Dass da Verwirrung mit den Noten aufkommen kann, ist ganz normal!</p>
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Stefan Bereuter</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Dominik Bromm</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Chun-Wen Chang</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Andreas Fauland</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Manfred Felder</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Kilian Haid</div>
-        
-      </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Quentin Moosmann</div>
-        <div class="musikant-note">nicht auf dem Foto</div>
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/schlagzeug.jpg"
+        alt="Register Schlagzeug"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
       </div>
     </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Stefan Bereuter</span>, <span class="mitglied-name">Dominik Bromm</span>, <span class="mitglied-name mitglied-absent">Chun-Wen Chang*</span>, <span class="mitglied-name">Andreas Fauland</span>, <span class="mitglied-name">Manfred Felder</span>, <span class="mitglied-name">Kilian Haid</span>, <span class="mitglied-name mitglied-absent">Quentin Moosmann*</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+    </div>
   </div>
-  <div class="register-section">
-    <div class="register-title">&#128681; Fähnriche <span class="register-count">(2)</span></div>
-
-    <div class="musikanten-grid">
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Stefan Bereuter</div>
-        
+  <div class="register-section" id="faehnriche">
+    <div class="register-title">Fähnriche <span class="register-count">(2)</span></div>
+    
+    <div class="register-foto-wrap">
+      <img
+        src="images/register/faehnriche.jpg"
+        alt="Register Fähnriche"
+        class="register-foto"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
+      />
+      <div class="register-foto-placeholder" style="display:none;">
+        <span>&#9836;</span>
+        <p>Foto folgt</p>
       </div>
-      <div class="musikant-card">
-        <div class="musikant-img-placeholder">&#9836;</div>
-        <div class="musikant-name">Stephan Schuler</div>
-        
-      </div>
+    </div>
+    <div class="register-namen">
+      <span class="register-namen-label">Mitglieder:</span>
+      <span class="mitglied-name">Stefan Bereuter</span>, <span class="mitglied-name">Stephan Schuler</span>
+      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
     </div>
   </div>
 
+  <p style="margin-top:40px;font-size:0.8rem;color:var(--text-mid);font-style:italic;">
+    Fotos für die einzelnen Register werden in Kürze ergänzt.
+    Bilder bitte als <code>images/register/REGISTERNAME.jpg</code> ins Repo legen.
+  </p>
 </section>
 
 <footer>

@@ -729,3 +729,151 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
   .kapellmeisterin-inner { flex-direction: column; align-items: center; text-align: center; }
   .kapellmeisterin-section { padding: 24px 20px; }
 }
+
+/* ══════════════════════════════
+   REGISTER – Gruppenfoto
+══════════════════════════════ */
+.register-foto-wrap {
+  position: relative; margin: 20px 0 16px;
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--cream);
+  max-width: 780px;
+}
+.register-foto {
+  width: 100%; max-height: 380px;
+  object-fit: cover; object-position: center top;
+  display: block; border-radius: var(--radius);
+}
+.register-foto-wrap.register-foto-missing .register-foto-placeholder {
+  display: flex !important;
+}
+.register-foto-placeholder {
+  width: 100%; height: 200px;
+  display: none; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: var(--text-mid); font-size: 3rem; gap: 8px;
+  background: linear-gradient(135deg, var(--cream), #e8ede9);
+  border-radius: var(--radius); border: 2px dashed rgba(45,96,64,0.2);
+}
+.register-foto-placeholder p {
+  font-size: 0.8rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-mid);
+}
+.register-namen {
+  font-size: 0.88rem; color: var(--text-mid);
+  line-height: 1.8; max-width: 780px;
+}
+.register-namen-label {
+  font-weight: 700; color: var(--green-dark);
+  margin-right: 6px;
+}
+.mitglied-name { margin-right: 2px; color: var(--green-dark); font-weight: 600; }
+.mitglied-absent { color: var(--text-mid); font-weight: 400; font-style: italic; }
+.register-namen-hinweis {
+  font-size: 0.75rem; color: var(--text-mid);
+  font-style: italic; display: block; margin-top: 4px;
+}
+
+/* ══════════════════════════════
+   KAPELLMEISTERIN – Foto
+══════════════════════════════ */
+.kapellmeisterin-foto {
+  width: 160px; height: 160px;
+  border-radius: 50%; object-fit: cover;
+  border: 3px solid rgba(45,96,64,0.2);
+  display: block;
+}
+
+/* ══════════════════════════════
+   KONZERTE PAGE
+══════════════════════════════ */
+.konzert-jahr-section { margin-bottom: 56px; }
+.konzert-jahr-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; color: var(--green-dark);
+  margin-bottom: 24px; padding-bottom: 10px;
+  border-bottom: 2px solid rgba(45,96,64,0.15);
+}
+.konzert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+.konzert-card {
+  display: block; text-decoration: none;
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--cream);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.konzert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+.konzert-flyer-wrap {
+  position: relative; aspect-ratio: 3/4;
+  overflow: hidden; background: var(--green-dark);
+}
+.konzert-flyer {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.3s;
+}
+.konzert-card:hover .konzert-flyer { transform: scale(1.04); }
+.konzert-flyer-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+}
+.konzert-card-overlay {
+  position: absolute; inset: 0;
+  background: rgba(20,50,30,0.55);
+  display: flex; align-items: flex-end;
+  padding: 16px; opacity: 0;
+  transition: opacity 0.2s;
+}
+.konzert-card:hover .konzert-card-overlay { opacity: 1; }
+.konzert-card-overlay span {
+  color: var(--white); font-size: 0.8rem;
+  font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.konzert-card-body { padding: 14px 16px 18px; }
+.konzert-datum {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 4px;
+}
+.konzert-titel {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; color: var(--green-dark); line-height: 1.3;
+}
+
+/* ══════════════════════════════
+   IMPRESSUM
+══════════════════════════════ */
+.impressum-block {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(45,96,64,0.1);
+}
+.impressum-block:last-of-type { border-bottom: none; }
+.impressum-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; color: var(--green-dark); margin-bottom: 14px;
+}
+.impressum-block h3 {
+  font-size: 0.9rem; font-weight: 700;
+  color: var(--green-dark); margin: 18px 0 8px;
+}
+.impressum-block p {
+  font-size: 0.88rem; color: var(--text-mid);
+  line-height: 1.8; margin-bottom: 10px;
+}
+.impressum-block a { color: var(--green-mid); }
+.impressum-block a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .konzert-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .register-foto { max-height: 240px; }
+}
