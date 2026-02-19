@@ -1,0 +1,64 @@
+name: Termine & Aktuelles synchronisieren
+
+on:
+  # Automatisch täglich um 06:00 UTC
+  schedule:
+    - cron: '0 6 * * *'
+
+  # Manuell aus dem GitHub-Interface
+  workflow_dispatch:
+
+  # Bei jedem Push auf main – besonders wenn die Excel-Datei geändert wurde
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/termine.xlsx'   # Excel-Datei wurde aktualisiert
+      - 'Aktuelles/**'        # Neuer Aktuelles-Beitrag
+      - 'Termine/**'          # Manuell angelegter Termin
+      - 'sync_termine_from_xlsx.py'
+      - 'build_aktuelles.py'
+
+jobs:
+  sync:
+    name: Sync & Build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # Damit der Workflow ins Repo pushen kann
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install openpyxl
+
+      - name: Termine aus Excel synchronisieren
+        run: python3 sync_termine_from_xlsx.py --file data/termine.xlsx
+
+      - name: Aktuelles indexieren
+        run: python3 build_aktuelles.py
+
+      - name: Geänderte Dateien committen
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            Termine/index.json \
+            "Termine/**/meta.json" \
+            Aktuelles/index.json
+
+          if git diff --staged --quiet; then
+            echo "Keine Änderungen – nichts zu committen."
+          else
+            git commit -m "chore: Termine & Aktuelles aktualisiert [skip ci]"
+            git push
+          fi

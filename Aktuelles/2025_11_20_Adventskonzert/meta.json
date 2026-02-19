@@ -1,0 +1,11 @@
+{
+  "titel":       "Adventskonzert 2025 – Ein unvergesslicher Abend",
+  "datum":       "2025-11-30",    
+  "kategorie":   "konzert",          
+  "autor":       "Trachtenkapelle Riezlern",
+  "beschreibung": "Hier steht ein Fließtext …",    
+  "titelbild":   "Adventskonzert_2025.png",    
+  "bilder":      ["Adventskonzert_2025.png"],       
+  "featured":    true,                
+  "tags":        ["konzert", "advent"]
+}

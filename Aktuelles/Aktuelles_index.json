@@ -1,0 +1,26 @@
+[
+  {
+    "ordner": "2025_11_30_Adventskonzert",
+    "datum": "2025-11-30",
+    "titel": "Adventskonzert 2025 – Ein unvergesslicher Abend",
+    "kategorie": "konzert",
+    "titelbild": "titelbild.jpg",
+    "featured": true
+  },
+  {
+    "ordner": "2025_07_20_Sommerkonzerte",
+    "datum": "2025-07-20",
+    "titel": "Rückblick: Sommerkonzerte 2025",
+    "kategorie": "konzert",
+    "titelbild": "titelbild.jpg",
+    "featured": false
+  },
+  {
+    "ordner": "2025_03_10_Fruehjahrskonzert",
+    "datum": "2025-03-10",
+    "titel": "Frühjahrskonzert 2025 – Musik und Gemeinschaft",
+    "kategorie": "konzert",
+    "titelbild": "titelbild.jpg",
+    "featured": false
+  }
+]
