@@ -10,6 +10,16 @@
     "titel": "Jahreskonzert 2026"
   },
   {
+    "ordner": "2026_04_25_TK_Jahreskonzert",
+    "datum": "2026-04-25",
+    "titel": "TK - Jahreskonzert"
+  },
+  {
+    "ordner": "2026_06_14_TK_Firmung",
+    "datum": "2026-06-14",
+    "titel": "TK - Firmung"
+  },
+  {
     "ordner": "2026_06_18_KonzertRiHiMi",
     "datum": "2026-06-18",
     "titel": "Gemeinschaftskonzert der drei Talkapellen"
@@ -18,5 +28,60 @@
     "ordner": "2026_06_27_210_Geburtstag",
     "datum": "2026-06-27",
     "titel": "210. Geburtstag der Trachtenkapelle Riezlern"
+  },
+  {
+    "ordner": "2026_06_27_TK_210_Jahre_TK_Riezlern",
+    "datum": "2026-06-27",
+    "titel": "TK - 210 Jahre TK Riezlern"
+  },
+  {
+    "ordner": "2026_07_09_TK_Sommerkonzert",
+    "datum": "2026-07-09",
+    "titel": "TK - Sommerkonzert"
+  },
+  {
+    "ordner": "2026_07_23_TK_Sommerkonzert",
+    "datum": "2026-07-23",
+    "titel": "TK - Sommerkonzert"
+  },
+  {
+    "ordner": "2026_08_06_TK_Sommerkonzert",
+    "datum": "2026-08-06",
+    "titel": "TK - Sommerkonzert"
+  },
+  {
+    "ordner": "2026_08_15_TK_Tag_der_Blasmusik",
+    "datum": "2026-08-15",
+    "titel": "TK - Tag der Blasmusik"
+  },
+  {
+    "ordner": "2026_08_20_TK_Sommerkonzert",
+    "datum": "2026-08-20",
+    "titel": "TK - Sommerkonzert"
+  },
+  {
+    "ordner": "2026_08_23_TK_Musikfest_Oberstdorf",
+    "datum": "2026-08-23",
+    "titel": "TK - Musikfest Oberstdorf"
+  },
+  {
+    "ordner": "2026_09_03_TK_Sommerkonzert",
+    "datum": "2026-09-03",
+    "titel": "TK - Sommerkonzert"
+  },
+  {
+    "ordner": "2026_09_17_TK_Sommerkonzert",
+    "datum": "2026-09-17",
+    "titel": "TK - Sommerkonzert"
+  },
+  {
+    "ordner": "2026_10_01_TK_Sommerkonzert",
+    "datum": "2026-10-01",
+    "titel": "TK - Sommerkonzert"
+  },
+  {
+    "ordner": "2026_10_18_TK_Kriegergedenken",
+    "datum": "2026-10-18",
+    "titel": "TK - Kriegergedenken"
   }
 ]
