@@ -1,22 +1,23 @@
 name: Termine & Aktuelles synchronisieren
 
 on:
-  # Automatisch täglich um 06:00 UTC
+  # Automatisch täglich um 06:00 UTC (= 07:00 MEZ / 08:00 MESZ)
   schedule:
     - cron: '0 6 * * *'
 
-  # Manuell aus dem GitHub-Interface
+  # Manuell aus dem GitHub-Interface auslösbar
   workflow_dispatch:
 
-  # Bei jedem Push auf main – besonders wenn die Excel-Datei geändert wurde
+  # Bei jedem Push auf main wenn relevante Dateien geändert wurden
   push:
     branches:
       - main
     paths:
-      - 'data/termine.xlsx'   # Excel-Datei wurde aktualisiert
-      - 'Aktuelles/**'        # Neuer Aktuelles-Beitrag
-      - 'Termine/**'          # Manuell angelegter Termin
+      - 'data/termine.xlsx'
+      - 'Aktuelles/**'
+      - 'Termine/**'
       - 'sync_termine_from_xlsx.py'
+      - 'build_termine.py'
       - 'build_aktuelles.py'
 
 jobs:
@@ -25,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write   # Damit der Workflow ins Repo pushen kann
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -35,30 +36,34 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
       - name: Install dependencies
         run: pip install openpyxl
 
+      # Liest data/termine.xlsx und schreibt Termine/*/meta.json
       - name: Termine aus Excel synchronisieren
         run: python3 sync_termine_from_xlsx.py --file data/termine.xlsx
 
-      - name: Aktuelles indexieren
+      # Scannt Termine/-Ordner und schreibt Termine/index.json
+      - name: Termine index bauen
+        run: python3 build_termine.py
+
+      # Scannt Aktuelles/-Ordner und schreibt Aktuelles/index.json
+      - name: Aktuelles index bauen
         run: python3 build_aktuelles.py
 
-      - name: Geänderte Dateien committen
+      # Alle generierten Dateien ins Repo committen
+      - name: Geänderte Dateien committen und pushen
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add \
-            Termine/index.json \
-            "Termine/**/meta.json" \
-            Aktuelles/index.json
+          git add Termine/
+          git add Aktuelles/index.json
 
           if git diff --staged --quiet; then
             echo "Keine Änderungen – nichts zu committen."
           else
             git commit -m "chore: Termine & Aktuelles aktualisiert [skip ci]"
-            git push
+            git push origin main
           fi
