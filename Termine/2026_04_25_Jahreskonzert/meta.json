@@ -1,12 +1,12 @@
 {
-  "titel": "Frühjahrskonzert 2026",
-  "datum": "2026-03-15",
-  "uhrzeit": "19:30",
-  "ort": "Turnhalle Riezlern",
-  "adresse": "Riezlern, Kleinwalsertal",
+  "titel": "Jahreskonzert 2026",
+  "datum": "2026-04-25",
+  "uhrzeit": "20:00",
+  "ort": "Hirschegg, Walserhaus",
+  "adresse": "Walserstraße 2XX",
   "kategorie": "konzert",
   "beschreibung": "Das traditionelle Frühjahrskonzert der Trachtenkapelle Riezlern – ein musikalischer Abend mit Werken aus aller Welt. Eintritt frei, wir freuen uns über Spenden.",
-  "bilder": [],
+  "bilder": ["JK2026.png"],
   "eintritt": "frei",
   "featured": true
 }
