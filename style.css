@@ -561,3 +561,133 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
   .termin-card { grid-template-columns: 56px 1fr; gap: 16px; }
   .tc-day { font-size: 1.8rem; }
 }
+
+/* ══════════════════════════════
+   TERMINE – versteckte Einträge
+══════════════════════════════ */
+.termin-hidden { display: none; }
+
+.termine-mehr-wrap { text-align: center; margin-top: 28px; }
+#termineMoreBtn {
+  background: none; border: 2px solid var(--green-mid);
+  color: var(--green-mid); padding: 10px 28px; border-radius: 20px;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; cursor: pointer; font-family: 'Lato', sans-serif;
+  transition: all 0.2s;
+}
+#termineMoreBtn:hover { background: var(--green-mid); color: var(--white); }
+
+/* ══════════════════════════════
+   NEWS CARD – Weiterlesen
+══════════════════════════════ */
+.news-card-more {
+  display: inline-block; margin-top: 10px;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--green-mid);
+}
+.news-card:hover .news-card-more { color: var(--gold); }
+
+/* ══════════════════════════════
+   ARTIKEL PAGE
+══════════════════════════════ */
+.artikel-header {
+  max-width: 760px; margin: 0 auto 40px;
+}
+.artikel-header .hero-eyebrow { margin-bottom: 12px; }
+.artikel-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--green-dark); line-height: 1.2; margin-bottom: 10px;
+}
+.artikel-datum {
+  font-size: 0.78rem; color: var(--text-mid);
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.artikel-bilder {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px; margin-bottom: 36px;
+}
+.artikel-bilder img {
+  width: 100%; border-radius: var(--radius); object-fit: cover;
+  aspect-ratio: 4/3;
+}
+.artikel-text p {
+  font-size: 0.95rem; color: var(--text-mid);
+  line-height: 1.9; margin-bottom: 18px; max-width: 720px;
+}
+.artikel-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--green-mid); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; margin-bottom: 32px;
+  transition: color 0.2s;
+}
+.artikel-back:hover { color: var(--gold); }
+
+/* ══════════════════════════════
+   GALERIE ALBUM PAGE
+══════════════════════════════ */
+.gallery-album-header { max-width: 900px; margin: 0 auto 36px; }
+
+/* ══════════════════════════════
+   MUSIKANTEN PAGE
+══════════════════════════════ */
+.register-section { margin-bottom: 60px; }
+.register-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; color: var(--green-dark);
+  margin-bottom: 24px; padding-bottom: 10px;
+  border-bottom: 2px solid rgba(45,96,64,0.15);
+}
+.musikanten-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+.musikant-card { text-align: center; }
+.musikant-img {
+  width: 100%; aspect-ratio: 1; object-fit: cover;
+  border-radius: 50%; display: block; margin-bottom: 10px;
+  background: var(--green-light);
+  border: 3px solid rgba(45,96,64,0.15);
+}
+.musikant-img-placeholder {
+  width: 100%; aspect-ratio: 1; border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px; color: rgba(255,255,255,0.6); font-size: 2rem;
+}
+.musikant-name {
+  font-weight: 700; font-size: 0.85rem; color: var(--green-dark); margin-bottom: 2px;
+}
+.musikant-rolle {
+  font-size: 0.72rem; color: var(--text-mid); text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ══════════════════════════════
+   VORSTANDSCHAFT
+══════════════════════════════ */
+.vorstand-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px; margin-top: 32px;
+}
+.vorstand-card {
+  background: var(--cream); border-radius: var(--radius);
+  padding: 24px; display: flex; align-items: center; gap: 16px;
+}
+.vorstand-avatar {
+  width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.7); font-size: 1.5rem; overflow: hidden;
+}
+.vorstand-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.vorstand-info {}
+.vorstand-name { font-weight: 700; font-size: 0.9rem; color: var(--green-dark); margin-bottom: 2px; }
+.vorstand-rolle { font-size: 0.72rem; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.07em; }
+
+@media (max-width: 580px) {
+  .musikanten-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .vorstand-grid { grid-template-columns: 1fr; }
+  .artikel-bilder { grid-template-columns: 1fr; }
+}
