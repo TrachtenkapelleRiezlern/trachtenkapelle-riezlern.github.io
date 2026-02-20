@@ -1142,50 +1142,70 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
 .nav-birthday-pill {
   display: flex; align-items: center; gap: 6px;
   text-decoration: none;
-  background: rgba(193,154,58,0.15);
-  border: 1px solid rgba(193,154,58,0.55);
+  background: rgba(20,30,20,0.82);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(193,154,58,0.6);
   border-radius: 999px;
-  padding: 5px 14px 5px 10px;
-  /* absolute center within nav */
-  position: absolute;
+  padding: 9px 22px 9px 16px;
+  /* fixed floating above page */
+  position: fixed;
+  top: calc(var(--nav-height) + 8px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-80px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 200;
   animation: nbp-glow 2.5s ease-in-out infinite;
-  transition: background 0.2s, border-color 0.2s;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s, background 0.2s, border-color 0.2s;
   white-space: nowrap;
+}
+.nav-birthday-pill.pill-visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
   pointer-events: auto;
-  z-index: 1;
 }
 .nav-birthday-pill:hover {
   background: rgba(193,154,58,0.3);
   border-color: var(--gold);
 }
 @keyframes nbp-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(193,154,58,0); }
-  50%       { box-shadow: 0 0 0 5px rgba(193,154,58,0.2); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(193,154,58,0); border-color: rgba(193,154,58,0.55); }
+  50%       { box-shadow: 0 0 14px 4px rgba(193,154,58,0.35); border-color: rgba(193,154,58,0.95); }
 }
 .nbp-zaema {
   font-family: 'Playfair Display', serif;
   font-style: italic; font-weight: 700;
-  font-size: 0.82rem; color: var(--gold);
+  font-size: 1rem; color: var(--gold);
   letter-spacing: 0.04em;
 }
 .nbp-zahl {
-  display: inline-flex; align-items: baseline; gap: 1px;
+  display: inline-flex; align-items: center; gap: 3px;
 }
 .nbp-2 {
   font-family: 'Playfair Display', serif;
-  font-size: 1rem; font-weight: 700; color: #fff; line-height: 1;
+  font-size: 1.25rem; font-weight: 700; color: #fff; line-height: 1;
 }
 .nbp-rest {
-  font-size: 0.52rem; color: rgba(255,255,255,0.65);
-  font-family: 'Playfair Display', serif; line-height: 1;
+  font-size: 0.62rem; color: rgba(255,255,255,0.65);
+  font-family: 'Playfair Display', serif; line-height: 1.25; text-align: left;
 }
 .nbp-date {
-  font-size: 0.62rem; color: rgba(255,255,255,0.55);
+  font-size: 0.75rem; color: rgba(255,255,255,0.65);
   letter-spacing: 0.04em; border-left: 1px solid rgba(193,154,58,0.35);
-  padding-left: 8px; margin-left: 2px;
+  padding-left: 10px; margin-left: 4px;
 }
-@media (max-width: 900px) {
-  .nav-birthday-pill { display: none; }
+
+
+.mobile-menu .m-birthday {
+  color: var(--gold) !important;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(193,154,58,0.3);
+  margin-top: 8px;
+  padding-top: 16px !important;
+  text-align: center;
+}
+.mobile-menu .m-birthday:hover {
+  color: var(--gold-light) !important;
 }

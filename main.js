@@ -343,7 +343,7 @@ const HEADER_HTML = `<!-- ══════════════════
 
 <nav>
   <a class="nav-logo" href="index.html" aria-label="Trachtenkapelle Riezlern – Startseite">
-    <img src="images/logo.svg" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
+    <img src="images/logo.png" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Startseite</a></li>
@@ -355,11 +355,6 @@ const HEADER_HTML = `<!-- ══════════════════
     <li><a href="index.html#instagram">Instagram</a></li>
     <li><a href="kontakt.html" class="nav-btn">Kontakt</a></li>
   </ul>
-  <a href="geburtstagsfest.html" class="nav-birthday-pill" aria-label="ZÄÄMA 2hundertzehn – Unser Geburtstagsfest">
-    <span class="nbp-zaema">ZÄÄMA</span>
-    <span class="nbp-zahl"><span class="nbp-2">2</span><span class="nbp-rest">hundert·zehn</span></span>
-    <span class="nbp-date">28. Juni 2026</span>
-  </a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -374,7 +369,13 @@ const HEADER_HTML = `<!-- ══════════════════
   <a href="bilder.html">Bilder &amp; Videos</a>
   <a href="index.html#instagram">Instagram</a>
   <a href="kontakt.html" class="m-btn">Kontakt</a>
-</div>`;
+</div>
+
+<a href="geburtstagsfest.html" class="nav-birthday-pill" id="birthdayPill" aria-label="ZÄÄMA 2hundertzehn – Unser Geburtstagsfest">
+  <span class="nbp-zaema">ZÄÄMA</span>
+  <span class="nbp-zahl"><span class="nbp-2">2</span><span class="nbp-rest">hundert<br/>zehn</span></span>
+  <span class="nbp-date">28. Juni 2026</span>
+</a>`;
 const FOOTER_HTML = `<!-- ════════════════════════════════
    _footer.html  — include in every page
    ════════════════════════════════ -->
@@ -421,6 +422,25 @@ function injectHeaderFooter() {
 }
 
 // ── BOOT ──────────────────────────────────────────────────────────────────────
+
+// ── BIRTHDAY PILL SCROLL VISIBILITY ──────────────────────────────────────────
+function initBirthdayPill() {
+  const pill = document.getElementById('birthdayPill');
+  if (!pill) return;
+  const NAV_HEIGHT = parseInt(getComputedStyle(document.documentElement)
+    .getPropertyValue('--nav-height')) || 70;
+  const THRESHOLD = NAV_HEIGHT + 20;
+
+  function update() {
+    if (window.scrollY > THRESHOLD) {
+      pill.classList.add('pill-visible');
+    } else {
+      pill.classList.remove('pill-visible');
+    }
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
 document.addEventListener('DOMContentLoaded', () => {
   injectHeaderFooter();
   initHamburger();
@@ -430,4 +450,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAktuelles();
   if (typeof initArtikelPage === 'function') initArtikelPage();
   if (typeof initGalleryPage === 'function') initGalleryPage();
+  initBirthdayPill();
 });
