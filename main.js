@@ -57,7 +57,9 @@ function initActiveNav() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
     const href = a.getAttribute('href') || '';
-    if (href !== '#' && href !== '' && page === href) a.classList.add('active');
+    // Anchor-only links (z.B. index.html#instagram) nicht als aktiv markieren
+    const hrefPage = href.split('#')[0];
+    if (hrefPage && hrefPage !== '' && page === hrefPage && !href.includes('#')) a.classList.add('active');
   });
 }
 
@@ -353,6 +355,11 @@ const HEADER_HTML = `<!-- ══════════════════
     <li><a href="index.html#instagram">Instagram</a></li>
     <li><a href="kontakt.html" class="nav-btn">Kontakt</a></li>
   </ul>
+  <a href="geburtstagsfest.html" class="nav-birthday-pill" aria-label="ZÄÄMA 2hundertzehn – Unser Geburtstagsfest">
+    <span class="nbp-zaema">ZÄÄMA</span>
+    <span class="nbp-zahl"><span class="nbp-2">2</span><span class="nbp-rest">hundert·zehn</span></span>
+    <span class="nbp-date">28. Juni 2026</span>
+  </a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -375,7 +382,7 @@ const FOOTER_HTML = `<!-- ══════════════════
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-brand-name">Trachtenkapelle Riezlern</div>
+      <div class="footer-brand-name">Trachtenkapelle Riezlern e.V.</div>
       <p>Die erste Kapelle des Kleinwalsertals – seit über 200 Jahren Musik, Gemeinschaft und Tradition in Riezlern, Vorarlberg.</p>
     </div>
     <div class="footer-col">
@@ -401,11 +408,10 @@ const FOOTER_HTML = `<!-- ══════════════════
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Trachtenkapelle Riezlern · Riezlern, Kleinwalsertal</span>
+    <span>© 2026 Trachtenkapelle Riezlern e.V. · Riezlern, Kleinwalsertal</span>
     <span>Musik ist Leben.</span>
   </div>
-</footer>
-`;
+</footer>`;
 
 function injectHeaderFooter() {
   const headerEl = document.getElementById('site-header');

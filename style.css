@@ -31,6 +31,7 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
+  overflow: visible;
   padding: 0 5%; height: var(--nav-height);
   background: rgba(26, 58, 34, 0.97);
   backdrop-filter: blur(8px);
@@ -40,13 +41,14 @@ nav {
 .nav-logo {
   display: flex; align-items: center; text-decoration: none;
   overflow: visible;
+  flex-shrink: 0;
 }
 .nav-logo svg, .nav-logo img {
   height: 72px; width: auto;
   /* taller logo, nav bar stays same height via overflow */
 }
 
-.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; margin-left: auto; }
 .nav-links a {
   color: rgba(255,255,255,0.82); text-decoration: none;
   font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
@@ -1103,4 +1105,87 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
 .zaema-font, .hbb-title, h1 .zaema, .hero h1 .zaema-text {
   font-family: 'Playfair Display', serif;
   font-style: italic;
+}
+
+/* ══════════════════════════════
+   HERO BIRTHDAY BANNER – Geburtstagsfest Layout
+══════════════════════════════ */
+.hbb-gbf-title {
+  display: flex; align-items: baseline; gap: 6px;
+  line-height: 1;
+}
+.hbb-gbf-title .zaema-font {
+  font-size: 1.6rem; color: #fff;
+  font-style: italic;
+}
+.hbb-gbf-zahl {
+  display: inline-flex; align-items: baseline; gap: 2px;
+}
+.hbb-gbf-2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9em; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+.hbb-gbf-rest {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.38em; line-height: 1.25;
+  color: rgba(255,255,255,0.75); font-weight: 400;
+}
+.hbb-gbf-meta {
+  border-left: 1px solid rgba(193,154,58,0.45);
+  padding-left: 16px; margin-left: 4px;
+}
+
+/* ══════════════════════════════
+   NAV BIRTHDAY PILL
+══════════════════════════════ */
+.nav-birthday-pill {
+  display: flex; align-items: center; gap: 6px;
+  text-decoration: none;
+  background: rgba(193,154,58,0.15);
+  border: 1px solid rgba(193,154,58,0.55);
+  border-radius: 999px;
+  padding: 5px 14px 5px 10px;
+  /* absolute center within nav */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: nbp-glow 2.5s ease-in-out infinite;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  pointer-events: auto;
+  z-index: 1;
+}
+.nav-birthday-pill:hover {
+  background: rgba(193,154,58,0.3);
+  border-color: var(--gold);
+}
+@keyframes nbp-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(193,154,58,0); }
+  50%       { box-shadow: 0 0 0 5px rgba(193,154,58,0.2); }
+}
+.nbp-zaema {
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 0.82rem; color: var(--gold);
+  letter-spacing: 0.04em;
+}
+.nbp-zahl {
+  display: inline-flex; align-items: baseline; gap: 1px;
+}
+.nbp-2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700; color: #fff; line-height: 1;
+}
+.nbp-rest {
+  font-size: 0.52rem; color: rgba(255,255,255,0.65);
+  font-family: 'Playfair Display', serif; line-height: 1;
+}
+.nbp-date {
+  font-size: 0.62rem; color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em; border-left: 1px solid rgba(193,154,58,0.35);
+  padding-left: 8px; margin-left: 2px;
+}
+@media (max-width: 900px) {
+  .nav-birthday-pill { display: none; }
 }

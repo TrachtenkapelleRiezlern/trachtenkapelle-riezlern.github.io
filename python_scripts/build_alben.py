@@ -18,7 +18,7 @@ Wird auch automatisch vom GitHub Actions Workflow ausgeführt.
 
 import os, json
 
-BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images', 'gallery', 'alben')
+BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'images', 'gallery', 'alben')
 IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.webp'}
 SKIP_FILES  = {'titel.jpg', 'titel.jpeg', 'titel.png', 'index.json'}
 

@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """
-build_aktuelles.py
-──────────────────
-Scannt den Aktuelles/-Ordner und erstellt Aktuelles/index.json.
-Muss nach jeder Änderung an den Beitrags-Ordnern ausgeführt werden.
+build_termine.py
+─────────────────
+Scannt den Termine/-Ordner und erstellt Termine/index.json.
+Muss nach jeder Änderung an den Termin-Ordnern ausgeführt werden.
 
 Verwendung:
-    python3 build_aktuelles.py
+    python3 build_termine.py
+
+Ergebnis:
+    Termine/index.json  ←  Liste aller gültigen Termin-Ordner, sortiert nach Datum
 """
 
 import os
@@ -14,15 +17,15 @@ import json
 import re
 from pathlib import Path
 
-AKTUELLES_DIR = Path(__file__).parent / "Aktuelles"
-OUTPUT_FILE   = AKTUELLES_DIR / "index.json"
-FOLDER_REGEX  = re.compile(r"^\d{4}_\d{2}_\d{2}_")
+TERMINE_DIR  = Path(__file__).parent / "Termine"
+OUTPUT_FILE  = TERMINE_DIR / "index.json"
+FOLDER_REGEX = re.compile(r"^\d{4}_\d{2}_\d{2}_")   # muss mit JJJJ_MM_TT_ beginnen
 
 
 def build_index():
     entries = []
 
-    for folder in sorted(AKTUELLES_DIR.iterdir(), reverse=True):  # neueste zuerst
+    for folder in sorted(TERMINE_DIR.iterdir()):
         if not folder.is_dir():
             continue
         if not FOLDER_REGEX.match(folder.name):
@@ -45,25 +48,22 @@ def build_index():
             continue
 
         entries.append({
-            "ordner":    folder.name,
-            "datum":     meta["datum"],
-            "titel":     meta["titel"],
-            "kategorie": meta.get("kategorie", "allgemein"),
-            "titelbild": meta.get("titelbild"),
-            "featured":  meta.get("featured", False),
+            "ordner":  folder.name,
+            "datum":   meta["datum"],
+            "titel":   meta["titel"],
         })
         print(f"  ✓  {folder.name}")
 
-    # Neueste zuerst
-    entries.sort(key=lambda e: e["datum"], reverse=True)
+    # Sort by date ascending
+    entries.sort(key=lambda e: e["datum"])
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(entries, f, ensure_ascii=False, indent=2)
 
-    print(f"\n✅  {len(entries)} Beitrag/Beiträge → {OUTPUT_FILE}")
+    print(f"\n✅  {len(entries)} Termin(e) → {OUTPUT_FILE}")
     return entries
 
 
 if __name__ == "__main__":
-    print("Scanne Aktuelles/ …\n")
+    print("Scanne Termine/ …\n")
     build_index()

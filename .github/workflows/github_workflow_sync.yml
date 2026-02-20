@@ -14,10 +14,10 @@ on:
       - 'Aktuelles/**'
       - 'Termine/**'
       - 'images/gallery/alben/**'
-      - 'sync_termine_from_xlsx.py'
-      - 'build_termine.py'
-      - 'build_aktuelles.py'
-      - 'build_alben.py'
+      - 'python_scripts/sync_termine_from_xlsx.py'
+      - 'python_scripts/build_termine.py'
+      - 'python_scripts/build_aktuelles.py'
+      - 'python_scripts/build_alben.py'
 
 jobs:
   sync:
@@ -39,19 +39,19 @@ jobs:
 
       # Liest data/termine.xlsx und schreibt Termine/*/meta.json
       - name: Termine aus Excel synchronisieren
-        run: python3 sync_termine_from_xlsx.py --file data/termine.xlsx
+        run: python3 python_scripts/sync_termine_from_xlsx.py --file data/termine.xlsx
 
       # Scannt Termine/-Ordner und schreibt Termine/index.json
       - name: Termine index bauen
-        run: python3 build_termine.py
+        run: python3 python_scripts/build_termine.py
 
       # Scannt Aktuelles/-Ordner und schreibt Aktuelles/index.json
       - name: Aktuelles index bauen
-        run: python3 build_aktuelles.py
+        run: python3 python_scripts/build_aktuelles.py
 
       # Scannt images/gallery/alben/*/ und schreibt je ein index.json
       - name: Album-Indizes bauen
-        run: python3 build_alben.py
+        run: python3 python_scripts/build_alben.py
 
       # Alle generierten Dateien ins Repo committen
       - name: Geänderte Dateien committen und pushen
