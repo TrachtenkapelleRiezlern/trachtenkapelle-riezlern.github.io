@@ -10,7 +10,7 @@ const MAX_NEWS_HOME    = 3;
 const MONTH_SHORT = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 const WEEKDAYS    = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
-const KATEGORIE_LABEL = { konzert:'Konzert', prozession:'Kirchliches', fest:'Fest', auswaerts:'Auswärtsspiel', sonstiges:'Sonstiges' };
+const KATEGORIE_LABEL = { konzerte:'Konzerte', kirchliches:'Kirchliches', feste:'Feste', auswaerts:'Auswärtsspiel', sonstiges:'Sonstiges' };
 
 // ── HAMBURGER ────────────────────────────────────────────────────────────────
 function initHamburger() {
@@ -189,7 +189,12 @@ function renderTerminePage(termine, filter = 'all') {
   if (!container) return;
   document.getElementById('termineLoading')?.remove();
 
-  const filtered = filter === 'all' ? termine : termine.filter(t => (t.kategorie||'sonstiges') === filter);
+  const filtered = filter === 'all' ? termine : termine.filter(t => {
+    const kat = (t.kategorie || 'sonstiges');
+    // Support both old keys (konzert/prozession/fest) and new keys
+    const aliases = { konzert:'konzerte', prozession:'kirchliches', fest:'feste' };
+    return kat === filter || aliases[kat] === filter;
+  });
   container.innerHTML = '';
 
   if (!filtered.length) {
@@ -378,8 +383,8 @@ const FOOTER_HTML = `<!-- ══════════════════
       <ul>
         <li><a href="index.html">Startseite</a></li>
         <li><a href="verein.html">Unser Verein</a></li>
-        <li><a href="musikanten.html">Musikantinnen &amp; Musikanten</a></li>
-        <li><a href="verein.html#vorstandschaft">Vorstandschaft</a></li>
+        <li><a href="verein.html#mitglieder">Mitglieder</a></li>
+        <li><a href="verein.html#vorstand">Vorstand</a></li>
         <li><a href="verein.html#jugend">Jugendarbeit</a></li>
         <li><a href="verein.html#alphorn">Alphorn</a></li>
       </ul>
@@ -389,7 +394,6 @@ const FOOTER_HTML = `<!-- ══════════════════
       <ul>
         <li><a href="termine.html">Termine</a></li>
         <li><a href="aktuelles.html">Aktuelles</a></li>
-        <li><a href="konzerte.html">Unsere Konzerte</a></li>
         <li><a href="bilder.html">Bilder &amp; Videos</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="impressum.html">Impressum</a></li>
@@ -400,7 +404,8 @@ const FOOTER_HTML = `<!-- ══════════════════
     <span>© 2026 Trachtenkapelle Riezlern · Riezlern, Kleinwalsertal</span>
     <span>Musik ist Leben.</span>
   </div>
-</footer>`;
+</footer>
+`;
 
 function injectHeaderFooter() {
   const headerEl = document.getElementById('site-header');

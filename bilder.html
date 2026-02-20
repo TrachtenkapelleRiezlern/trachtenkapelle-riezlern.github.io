@@ -4,164 +4,129 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bilder &amp; Videos – Trachtenkapelle Riezlern</title>
+  <meta name="description" content="Trachtenkapelle Riezlern – Bildergalerie und Videos." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
 </head>
 <body>
 <div id="site-header"></div>
 
-<div class="page-hero">
-  <img src="images/hero/gruppenbild.jpg" alt="Trachtenkapelle Riezlern" />
-  <div class="page-hero-content">
-    <div class="hero-eyebrow">Galerie</div>
-    <h1>Bilder &amp; Videos</h1>
-  </div>
-</div>
+<div style="height:var(--nav-height);"></div>
 
-<section style="background:var(--white);">
+<section style="background:var(--white);padding-top:48px;">
   <div class="section-label">Fotoalben</div>
   <h2 class="section-title">Bilder aus dem Vereinsleben</h2>
   <p class="about-text" style="margin-bottom:40px;">
     Klick auf ein Album um alle Fotos zu sehen.
-    Titelbilder können als <code>images/gallery/alben/ALBUM-ID/titel.jpg</code> hinterlegt werden.
   </p>
 
   <div class="alben-grid">
-    <a href="gallery.html?album=fotoshooting-kleinwalsertal" class="album-card" id="album-fotoshooting-kleinwalsertal">
+    <a href="gallery.html?album=bmf_donnerstag" class="album-card" id="album-bmf_donnerstag">
       <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/fotoshooting-kleinwalsertal/titel.jpg" alt="Fotoshooting Kleinwalsertal" class="album-thumb" loading="lazy"
+        <img src="images/gallery/alben/bmf_donnerstag/titel.jpg" alt="BMF – Donnerstag" class="album-thumb" loading="lazy"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
         <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
         <div class="album-overlay">
-          <span>55 Fotos</span>
-        </div>
-      </div>
-      <div class="album-info">
-        <div class="album-datum">17. September 2023</div>
-        <div class="album-titel">Fotoshooting Kleinwalsertal</div>
-        <div class="album-count">55 Bilder</div>
-      </div>
-    </a>
-    <a href="gallery.html?album=sommerkonzerte-2020" class="album-card" id="album-sommerkonzerte-2020">
-      <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/sommerkonzerte-2020/titel.jpg" alt="Sommerkonzerte 2020" class="album-thumb" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
-        <div class="album-overlay">
-          <span>8 Fotos</span>
-        </div>
-      </div>
-      <div class="album-info">
-        <div class="album-datum">15. September 2020</div>
-        <div class="album-titel">Sommerkonzerte 2020</div>
-        <div class="album-count">8 Bilder</div>
-      </div>
-    </a>
-    <a href="gallery.html?album=tag-der-blasmusik-2020" class="album-card" id="album-tag-der-blasmusik-2020">
-      <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/tag-der-blasmusik-2020/titel.jpg" alt="Tag der Blasmusik 2020" class="album-thumb" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
-        <div class="album-overlay">
-          <span>11 Fotos</span>
-        </div>
-      </div>
-      <div class="album-info">
-        <div class="album-datum">15. September 2020</div>
-        <div class="album-titel">Tag der Blasmusik 2020</div>
-        <div class="album-count">11 Bilder</div>
-      </div>
-    </a>
-    <a href="gallery.html?album=tag-der-blasmusik-2016" class="album-card" id="album-tag-der-blasmusik-2016">
-      <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/tag-der-blasmusik-2016/titel.jpg" alt="Tag der Blasmusik 2016" class="album-thumb" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
-        <div class="album-overlay">
-          <span>29 Fotos</span>
-        </div>
-      </div>
-      <div class="album-info">
-        <div class="album-datum">17. August 2016</div>
-        <div class="album-titel">Tag der Blasmusik 2016</div>
-        <div class="album-count">29 Bilder</div>
-      </div>
-    </a>
-    <a href="gallery.html?album=bmf-donnerstag" class="album-card" id="album-bmf-donnerstag">
-      <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/bmf-donnerstag/titel.jpg" alt="BMF – Donnerstag" class="album-thumb" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
-        <div class="album-overlay">
-          <span>83 Fotos</span>
+          <span class="album-overlay-count" data-album="bmf_donnerstag">&#128247; Fotos</span>
         </div>
       </div>
       <div class="album-info">
         <div class="album-datum">11. August 2016</div>
         <div class="album-titel">BMF – Donnerstag</div>
-        <div class="album-count">83 Bilder</div>
+        <div class="album-count" data-album="bmf_donnerstag">Bilder werden geladen…</div>
       </div>
     </a>
-    <a href="gallery.html?album=bmf-freitag" class="album-card" id="album-bmf-freitag">
+    <a href="gallery.html?album=bmf_freitag" class="album-card" id="album-bmf_freitag">
       <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/bmf-freitag/titel.jpg" alt="BMF – Freitag" class="album-thumb" loading="lazy"
+        <img src="images/gallery/alben/bmf_freitag/titel.jpg" alt="BMF – Freitag" class="album-thumb" loading="lazy"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
         <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
         <div class="album-overlay">
-          <span>123 Fotos</span>
+          <span class="album-overlay-count" data-album="bmf_freitag">&#128247; Fotos</span>
         </div>
       </div>
       <div class="album-info">
         <div class="album-datum">11. August 2016</div>
         <div class="album-titel">BMF – Freitag</div>
-        <div class="album-count">123 Bilder</div>
+        <div class="album-count" data-album="bmf_freitag">Bilder werden geladen…</div>
       </div>
     </a>
-    <a href="gallery.html?album=bmf-samstag" class="album-card" id="album-bmf-samstag">
+    <a href="gallery.html?album=bmf_samstag" class="album-card" id="album-bmf_samstag">
       <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/bmf-samstag/titel.jpg" alt="BMF – Samstag" class="album-thumb" loading="lazy"
+        <img src="images/gallery/alben/bmf_samstag/titel.jpg" alt="BMF – Samstag" class="album-thumb" loading="lazy"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
         <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
         <div class="album-overlay">
-          <span>155 Fotos</span>
+          <span class="album-overlay-count" data-album="bmf_samstag">&#128247; Fotos</span>
         </div>
       </div>
       <div class="album-info">
         <div class="album-datum">11. August 2016</div>
         <div class="album-titel">BMF – Samstag</div>
-        <div class="album-count">155 Bilder</div>
+        <div class="album-count" data-album="bmf_samstag">Bilder werden geladen…</div>
       </div>
     </a>
-    <a href="gallery.html?album=bmf-sonntag" class="album-card" id="album-bmf-sonntag">
+    <a href="gallery.html?album=bmf_sonntag" class="album-card" id="album-bmf_sonntag">
       <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/bmf-sonntag/titel.jpg" alt="BMF – Sonntag" class="album-thumb" loading="lazy"
+        <img src="images/gallery/alben/bmf_sonntag/titel.jpg" alt="BMF – Sonntag" class="album-thumb" loading="lazy"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
         <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
         <div class="album-overlay">
-          <span>156 Fotos</span>
+          <span class="album-overlay-count" data-album="bmf_sonntag">&#128247; Fotos</span>
         </div>
       </div>
       <div class="album-info">
         <div class="album-datum">11. August 2016</div>
         <div class="album-titel">BMF – Sonntag</div>
-        <div class="album-count">156 Bilder</div>
+        <div class="album-count" data-album="bmf_sonntag">Bilder werden geladen…</div>
       </div>
     </a>
-    <a href="gallery.html?album=bmf-marschmusikwettbewerb" class="album-card" id="album-bmf-marschmusikwettbewerb">
+    <a href="gallery.html?album=fotoshooting_kanzelwand" class="album-card" id="album-fotoshooting_kanzelwand">
       <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/bmf-marschmusikwettbewerb/titel.jpg" alt="BMF – Marschmusikwettbewerb" class="album-thumb" loading="lazy"
+        <img src="images/gallery/alben/fotoshooting_kanzelwand/titel.jpg" alt="Fotoshooting Kanzelwand" class="album-thumb" loading="lazy"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
         <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
         <div class="album-overlay">
-          <span>47 Fotos</span>
+          <span class="album-overlay-count" data-album="fotoshooting_kanzelwand">&#128247; Fotos</span>
         </div>
       </div>
       <div class="album-info">
-        <div class="album-datum">11. August 2016</div>
-        <div class="album-titel">BMF – Marschmusikwettbewerb</div>
-        <div class="album-count">47 Bilder</div>
+        <div class="album-datum">17. September 2023</div>
+        <div class="album-titel">Fotoshooting Kanzelwand</div>
+        <div class="album-count" data-album="fotoshooting_kanzelwand">Bilder werden geladen…</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=sommerkonzerte_2020" class="album-card" id="album-sommerkonzerte_2020">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/sommerkonzerte_2020/titel.jpg" alt="Sommerkonzerte 2020" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span class="album-overlay-count" data-album="sommerkonzerte_2020">&#128247; Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">15. September 2020</div>
+        <div class="album-titel">Sommerkonzerte 2020</div>
+        <div class="album-count" data-album="sommerkonzerte_2020">Bilder werden geladen…</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=tdb_2020" class="album-card" id="album-tdb_2020">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/tdb_2020/titel.jpg" alt="Tag der Blasmusik 2020" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span class="album-overlay-count" data-album="tdb_2020">&#128247; Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">15. September 2020</div>
+        <div class="album-titel">Tag der Blasmusik 2020</div>
+        <div class="album-count" data-album="tdb_2020">Bilder werden geladen…</div>
       </div>
     </a>
   </div>
@@ -177,7 +142,7 @@
   </div>
   <div class="insta-embed">
     <div class="insta-placeholder">
-      <p>Instagram-Feed</p>
+      <p>Folge uns auf Instagram für aktuelle Bilder und Eindrücke.</p>
       <a href="https://www.instagram.com/trachtenkapelle_riezlern/" target="_blank" class="btn btn-green" rel="noopener">Auf Instagram folgen</a>
     </div>
   </div>
@@ -185,5 +150,28 @@
 
 <div id="site-footer"></div>
 <script src="main.js"></script>
+<script>
+// Dynamisch Bildanzahl pro Album laden
+const ALBUM_IDS = ["bmf_donnerstag", "bmf_freitag", "bmf_samstag", "bmf_sonntag", "fotoshooting_kanzelwand", "sommerkonzerte_2020", "tdb_2020"];
+ALBUM_IDS.forEach(id => {
+  fetch(`images/gallery/alben/${id}/index.json`)
+    .then(r => r.json())
+    .then(data => {
+      const count = Array.isArray(data.bilder) ? data.bilder.length : '?';
+      document.querySelectorAll(`[data-album="${id}"]`).forEach(el => {
+        if (el.classList.contains('album-count')) {
+          el.textContent = count + (count === 1 ? ' Bild' : ' Bilder');
+        } else {
+          el.innerHTML = '&#128247; ' + count + ' Fotos';
+        }
+      });
+    })
+    .catch(() => {
+      document.querySelectorAll(`[data-album="${id}"]`).forEach(el => {
+        if (el.classList.contains('album-count')) el.textContent = '';
+      });
+    });
+});
+</script>
 </body>
 </html>

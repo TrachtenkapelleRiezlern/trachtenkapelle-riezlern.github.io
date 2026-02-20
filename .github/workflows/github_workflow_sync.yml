@@ -1,13 +1,10 @@
-name: Termine & Aktuelles synchronisieren
-
+name: Termine, Aktuelles & Alben synchronisieren
 on:
   # Automatisch täglich um 06:00 UTC (= 07:00 MEZ / 08:00 MESZ)
   schedule:
     - cron: '0 6 * * *'
-
   # Manuell aus dem GitHub-Interface auslösbar
   workflow_dispatch:
-
   # Bei jedem Push auf main wenn relevante Dateien geändert wurden
   push:
     branches:
@@ -16,18 +13,18 @@ on:
       - 'data/termine.xlsx'
       - 'Aktuelles/**'
       - 'Termine/**'
+      - 'images/gallery/alben/**'
       - 'sync_termine_from_xlsx.py'
       - 'build_termine.py'
       - 'build_aktuelles.py'
+      - 'build_alben.py'
 
 jobs:
   sync:
     name: Sync & Build
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -52,18 +49,21 @@ jobs:
       - name: Aktuelles index bauen
         run: python3 build_aktuelles.py
 
+      # Scannt images/gallery/alben/*/ und schreibt je ein index.json
+      - name: Album-Indizes bauen
+        run: python3 build_alben.py
+
       # Alle generierten Dateien ins Repo committen
       - name: Geänderte Dateien committen und pushen
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           git add Termine/
           git add Aktuelles/index.json
-
+          git add images/gallery/alben/*/index.json
           if git diff --staged --quiet; then
             echo "Keine Änderungen – nichts zu committen."
           else
-            git commit -m "chore: Termine & Aktuelles aktualisiert [skip ci]"
+            git commit -m "chore: Termine, Aktuelles & Alben aktualisiert [skip ci]"
             git push origin main
           fi
