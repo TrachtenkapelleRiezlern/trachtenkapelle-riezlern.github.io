@@ -1,13 +1,13 @@
 {
-  "titel": "TK - Jahreskonzert",
-  "datum": "2026-04-25",
+  "titel": "Sommerkonzert",
+  "datum": "2026-10-01",
   "uhrzeit": "20:00",
-  "ort": "Walserhaus",
+  "ort": "Gemeindeplatz",
   "kategorie": "konzert",
   "beschreibung": "Testbeschreibung",
   "eintritt": "frei",
   "orchester": "TK",
-  "google_cal_id": "1pdrmpt3k4b14nh4q4b6r9qngc@google.com",
+  "google_cal_id": "qkva3bd3eki2p5o1tm1qsfb5pc@google.com",
   "bilder": [],
   "featured": false
 }
