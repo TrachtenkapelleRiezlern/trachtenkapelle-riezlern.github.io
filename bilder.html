@@ -3,48 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bilder & Videos – Trachtenkapelle Riezlern e.V.</title>
-  <meta name="description" content="Trachtenkapelle Riezlern e.V. – Blasmusik aus dem Kleinwalsertal seit 1816." />
+  <title>Bilder &amp; Videos – Trachtenkapelle Riezlern</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<!-- ════════════════════════════════
-   _header.html  — include in every page
-   Usage: copy <nav> and <div class="mobile-menu"> into your page
-   ════════════════════════════════ -->
-
-<nav>
-  <a class="nav-logo" href="index.html" aria-label="Trachtenkapelle Riezlern – Startseite">
-    <img src="images/logo.svg" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Startseite</a></li>
-    <li><a href="verein.html">Verein</a></li>
-    <li><a href="termine.html">Termine</a></li>
-    <li><a href="bilder.html">Bilder &amp; Videos</a></li>
-    <li><a href="index.html#instagram">Instagram</a></li>
-    <li><a href="kontakt.html" class="nav-btn">Kontakt</a></li>
-  </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile Navigation">
-  <a href="index.html">Startseite</a>
-  <a href="verein.html">Verein</a>
-  <a href="termine.html">Termine</a>
-  <a href="bilder.html">Bilder &amp; Videos</a>
-  <a href="index.html#instagram">Instagram</a>
-  <a href="kontakt.html" class="m-btn">Kontakt</a>
-</div>
-
+<div id="site-header"></div>
 
 <div class="page-hero">
-  <img src="images/hero/instrumente.jpg" alt="Instrumente" />
+  <img src="images/hero/gruppenbild.jpg" alt="Trachtenkapelle Riezlern" />
   <div class="page-hero-content">
     <div class="hero-eyebrow">Galerie</div>
     <h1>Bilder &amp; Videos</h1>
@@ -52,85 +21,169 @@
 </div>
 
 <section style="background:var(--white);">
-  <div class="section-header">
-    <div>
-      <div class="section-label">Fotogalerie</div>
-      <h2 class="section-title">Eindrücke aus dem Vereinsleben</h2>
-    </div>
-  </div>
-  <div class="gallery-grid" style="margin-bottom:12px;">
-    <div class="g-item"><img src="images/gallery/gallery_01.jpg" alt="Gruppenbild" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_02.jpg" alt="Alphornbläser" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_03.jpg" alt="Dirigentin" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_04.jpg" alt="Noten" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_05.jpg" alt="Trompeten" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_06.jpg" alt="Bergpanorama" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-  </div>
-  <div class="gallery-grid">
-    <div class="g-item"><img src="images/gallery/gallery_07.jpg" alt="Konzert" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_08.jpg" alt="Trachten" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_09.jpg" alt="Messing" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_10.jpg" alt="Probe" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_11.jpg" alt="Alpen" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-    <div class="g-item"><img src="images/gallery/gallery_12.jpg" alt="Jugend" loading="lazy" /><div class="g-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-  </div>
-</section>
+  <div class="section-label">Fotoalben</div>
+  <h2 class="section-title">Bilder aus dem Vereinsleben</h2>
+  <p class="about-text" style="margin-bottom:40px;">
+    Klick auf ein Album um alle Fotos zu sehen.
+    Titelbilder können als <code>images/gallery/alben/ALBUM-ID/titel.jpg</code> hinterlegt werden.
+  </p>
 
-<section class="insta-section" id="instagram">
-  <div class="insta-header">
-    <div class="section-label">Social Media</div>
-    <h2 class="section-title">Aktuelle Bilder auf Instagram</h2>
-    <a href="https://www.instagram.com/trachtenkapelle_riezlern/" target="_blank" rel="noopener" class="insta-handle">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-      </svg>
-      @trachtenkapelle_riezlern
+  <div class="alben-grid">
+    <a href="gallery.html?album=fotoshooting-kleinwalsertal" class="album-card" id="album-fotoshooting-kleinwalsertal">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/fotoshooting-kleinwalsertal/titel.jpg" alt="Fotoshooting Kleinwalsertal" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>55 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">17. September 2023</div>
+        <div class="album-titel">Fotoshooting Kleinwalsertal</div>
+        <div class="album-count">55 Bilder</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=sommerkonzerte-2020" class="album-card" id="album-sommerkonzerte-2020">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/sommerkonzerte-2020/titel.jpg" alt="Sommerkonzerte 2020" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>8 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">15. September 2020</div>
+        <div class="album-titel">Sommerkonzerte 2020</div>
+        <div class="album-count">8 Bilder</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=tag-der-blasmusik-2020" class="album-card" id="album-tag-der-blasmusik-2020">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/tag-der-blasmusik-2020/titel.jpg" alt="Tag der Blasmusik 2020" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>11 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">15. September 2020</div>
+        <div class="album-titel">Tag der Blasmusik 2020</div>
+        <div class="album-count">11 Bilder</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=tag-der-blasmusik-2016" class="album-card" id="album-tag-der-blasmusik-2016">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/tag-der-blasmusik-2016/titel.jpg" alt="Tag der Blasmusik 2016" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>29 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">17. August 2016</div>
+        <div class="album-titel">Tag der Blasmusik 2016</div>
+        <div class="album-count">29 Bilder</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=bmf-donnerstag" class="album-card" id="album-bmf-donnerstag">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/bmf-donnerstag/titel.jpg" alt="BMF – Donnerstag" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>83 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">11. August 2016</div>
+        <div class="album-titel">BMF – Donnerstag</div>
+        <div class="album-count">83 Bilder</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=bmf-freitag" class="album-card" id="album-bmf-freitag">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/bmf-freitag/titel.jpg" alt="BMF – Freitag" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>123 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">11. August 2016</div>
+        <div class="album-titel">BMF – Freitag</div>
+        <div class="album-count">123 Bilder</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=bmf-samstag" class="album-card" id="album-bmf-samstag">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/bmf-samstag/titel.jpg" alt="BMF – Samstag" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>155 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">11. August 2016</div>
+        <div class="album-titel">BMF – Samstag</div>
+        <div class="album-count">155 Bilder</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=bmf-sonntag" class="album-card" id="album-bmf-sonntag">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/bmf-sonntag/titel.jpg" alt="BMF – Sonntag" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>156 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">11. August 2016</div>
+        <div class="album-titel">BMF – Sonntag</div>
+        <div class="album-count">156 Bilder</div>
+      </div>
+    </a>
+    <a href="gallery.html?album=bmf-marschmusikwettbewerb" class="album-card" id="album-bmf-marschmusikwettbewerb">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/bmf-marschmusikwettbewerb/titel.jpg" alt="BMF – Marschmusikwettbewerb" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span>47 Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">11. August 2016</div>
+        <div class="album-titel">BMF – Marschmusikwettbewerb</div>
+        <div class="album-count">47 Bilder</div>
+      </div>
     </a>
   </div>
-  <div class="insta-embed-wrap">
-    <iframe src="https://www.instagram.com/trachtenkapelle_riezlern/embed" frameborder="0" scrolling="no" allowtransparency="true" title="Instagram"></iframe>
+</section>
+
+<section class="insta-section" id="instagram" style="background:var(--cream);">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Social Media</div>
+      <h2 class="section-title">Aktuelle Bilder auf Instagram</h2>
+    </div>
+    <a href="https://www.instagram.com/trachtenkapelle_riezlern/" target="_blank" class="text-link" rel="noopener">@trachtenkapelle_riezlern →</a>
+  </div>
+  <div class="insta-embed">
+    <div class="insta-placeholder">
+      <p>Instagram-Feed</p>
+      <a href="https://www.instagram.com/trachtenkapelle_riezlern/" target="_blank" class="btn btn-green" rel="noopener">Auf Instagram folgen</a>
+    </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════
-   _footer.html  — include in every page
-   ════════════════════════════════ -->
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-brand-name">Trachtenkapelle Riezlern e.V.</div>
-      <p>Die erste Kapelle des Kleinwalsertals – seit über 200 Jahren Musik, Gemeinschaft und Tradition in Riezlern, Vorarlberg.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="verein.html">Unser Verein</a></li>
-        <li><a href="verein.html#mitglieder">Mitglieder</a></li>
-        <li><a href="verein.html#vorstand">Vorstand</a></li>
-        <li><a href="verein.html#jugend">Jugendarbeit</a></li>
-        <li><a href="verein.html#alphorn">Alphorn</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Mehr</h4>
-      <ul>
-        <li><a href="termine.html">Termine</a></li>
-        <li><a href="aktuelles.html">Aktuelles</a></li>
-        <li><a href="bilder.html">Bilder &amp; Videos</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Trachtenkapelle Riezlern e.V. · Riezlern, Kleinwalsertal</span>
-    <span>Musik ist Leben.</span>
-  </div>
-</footer>
-
+<div id="site-footer"></div>
 <script src="main.js"></script>
 </body>
 </html>

@@ -2,19 +2,15 @@
    TRACHTENKAPELLE RIEZLERN – main.js
    ══════════════════════════════════════════════ */
 
-const TERMINE_INDEX   = 'Termine/index.json';
+const TERMINE_INDEX  = 'Termine/index.json';
 const AKTUELLES_INDEX = 'Aktuelles/index.json';
-const MAX_HERO_TERMINE   = 5;
-const MAX_NEWS_HOME      = 3;
-const TERMINE_INITIAL    = 5;   // sichtbar bevor "mehr anzeigen" geklickt wird
+const MAX_HERO_TERMINE = 5;
+const MAX_NEWS_HOME    = 3;
 
 const MONTH_SHORT = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 const WEEKDAYS    = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
-const KATEGORIE_LABEL = {
-  konzert:'Konzert', prozession:'Prozession', fest:'Fest',
-  auswaerts:'Auswärtsspiel', sonstiges:'Sonstiges'
-};
+const KATEGORIE_LABEL = { konzert:'Konzert', prozession:'Kirchliches', fest:'Fest', auswaerts:'Auswärtsspiel', sonstiges:'Sonstiges' };
 
 // ── HAMBURGER ────────────────────────────────────────────────────────────────
 function initHamburger() {
@@ -27,15 +23,11 @@ function initHamburger() {
     hamburger.setAttribute('aria-expanded', open);
   });
   mobileMenu.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-    })
+    a.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); })
   );
   document.addEventListener('click', e => {
     if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open'); hamburger.classList.remove('open');
     }
   });
 }
@@ -54,8 +46,7 @@ function initSlideshow() {
     if (dots[current]) dots[current].classList.add('active');
   }
   dots.forEach(dot => dot.addEventListener('click', () => {
-    clearInterval(interval);
-    goTo(+dot.dataset.index);
+    clearInterval(interval); goTo(+dot.dataset.index);
     interval = setInterval(() => goTo(current + 1), 5500);
   }));
   interval = setInterval(() => goTo(current + 1), 5500);
@@ -88,42 +79,48 @@ function formatDateDisplay(datum) {
   return `${d.getDate()}. ${MONTH_LONG[d.getMonth()]} ${d.getFullYear()}`;
 }
 
-function isFuture(datum) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return new Date(datum + 'T00:00:00') >= today;
-}
-
-// ── LOADERS ───────────────────────────────────────────────────────────────────
-async function loadIndex(path) {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`${path} nicht gefunden (${res.status})`);
+// ── GENERIC JSON LOADER ──────────────────────────────────────────────────────
+async function loadIndex(indexPath) {
+  const res = await fetch(indexPath);
+  if (!res.ok) throw new Error(`${indexPath} nicht gefunden (${res.status})`);
   return res.json();
 }
 
 async function loadMeta(ordner, base) {
   const res = await fetch(`${base}/${ordner}/meta.json`);
-  if (!res.ok) throw new Error(res.status);
-  return { ...(await res.json()), _ordner: ordner };
+  if (!res.ok) throw new Error(`meta.json nicht gefunden für ${ordner}`);
+  const meta = await res.json();
+  return { ...meta, _ordner: ordner };
 }
 
+// ── TERMINE LOADER ───────────────────────────────────────────────────────────
 async function loadTermine() {
   const index = await loadIndex(TERMINE_INDEX);
-  const results = await Promise.allSettled(index.map(e => loadMeta(e.ordner, 'Termine')));
+  const now = new Date(); now.setHours(0,0,0,0);
+
+  const results = await Promise.allSettled(
+    index.map(e => loadMeta(e.ordner, 'Termine'))
+  );
+
   return results
     .filter(r => r.status === 'fulfilled')
     .map(r => r.value)
-    .filter(t => isFuture(t.datum))           // vergangene herausfiltern
-    .sort((a, b) => new Date(a.datum) - new Date(b.datum));
+    .filter(t => new Date(t.datum + 'T00:00:00') >= now)
+    .sort((a,b) => new Date(a.datum) - new Date(b.datum));
 }
 
+// ── AKTUELLES LOADER ─────────────────────────────────────────────────────────
 async function loadAktuelles() {
   const index = await loadIndex(AKTUELLES_INDEX);
-  const results = await Promise.allSettled(index.map(e => loadMeta(e.ordner, 'Aktuelles')));
+
+  const results = await Promise.allSettled(
+    index.map(e => loadMeta(e.ordner, 'Aktuelles'))
+  );
+
   return results
     .filter(r => r.status === 'fulfilled')
     .map(r => r.value)
-    .sort((a, b) => new Date(b.datum) - new Date(a.datum));
+    .sort((a,b) => new Date(b.datum) - new Date(a.datum)); // neueste zuerst
 }
 
 // ── HERO TERMINE STRIP ───────────────────────────────────────────────────────
@@ -153,8 +150,38 @@ function renderHeroTermine(termine) {
   });
 }
 
-// ── TERMINE PAGE mit "Mehr anzeigen" ─────────────────────────────────────────
+// ── NEWS CARDS (Startseite) ───────────────────────────────────────────────────
+function renderNewsCards(beitraege) {
+  const grid = document.getElementById('newsGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+  const items = beitraege.slice(0, MAX_NEWS_HOME);
+
+  items.forEach((b, i) => {
+    const bildSrc = b.titelbild
+      ? `Aktuelles/${b._ordner}/${b.titelbild}`
+      : 'images/general/placeholder.jpg';
+    const dateStr = formatDateDisplay(b.datum);
+
+    const card = document.createElement('a');
+    card.href = `aktuelles.html#${b._ordner}`;
+    card.className = 'news-card' + (i === 0 ? ' featured' : '');
+    card.innerHTML = `
+      <img class="news-card-img" src="${bildSrc}" alt="${b.titel}" loading="lazy" />
+      <div class="news-card-body">
+        <div class="news-card-date">${dateStr}</div>
+        <h3 class="news-card-title">${b.titel}</h3>
+        <p class="news-card-text">${(b.beschreibung || '').substring(0, 120)}${(b.beschreibung||'').length > 120 ? '…' : ''}</p>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ── TERMINE PAGE ──────────────────────────────────────────────────────────────
 let _allTermine = [];
+
+const TERMINE_INITIAL = 5;  // sichtbar bevor "mehr anzeigen" geklickt wird
 
 function renderTerminePage(termine, filter = 'all') {
   const container = document.getElementById('termineList');
@@ -162,10 +189,7 @@ function renderTerminePage(termine, filter = 'all') {
   if (!container) return;
   document.getElementById('termineLoading')?.remove();
 
-  const filtered = filter === 'all'
-    ? termine
-    : termine.filter(t => (t.kategorie || 'sonstiges') === filter);
-
+  const filtered = filter === 'all' ? termine : termine.filter(t => (t.kategorie||'sonstiges') === filter);
   container.innerHTML = '';
 
   if (!filtered.length) {
@@ -174,7 +198,6 @@ function renderTerminePage(termine, filter = 'all') {
     return;
   }
 
-  // Erste 5 sichtbar, Rest versteckt
   filtered.forEach((t, idx) => {
     const { day, month, monthLong, weekday, year, time } = parseDatum(t);
     const kat  = KATEGORIE_LABEL[t.kategorie] || 'Veranstaltung';
@@ -226,36 +249,12 @@ function initTermineFilter() {
   });
 }
 
-// ── NEWS CARDS – Startseite ───────────────────────────────────────────────────
-function renderNewsCards(beitraege) {
-  const grid = document.getElementById('newsGrid');
-  if (!grid) return;
-  grid.innerHTML = '';
-
-  beitraege.slice(0, MAX_NEWS_HOME).forEach((b, i) => {
-    const bildSrc = b.titelbild
-      ? `Aktuelles/${b._ordner}/${b.titelbild}`
-      : 'images/general/placeholder.jpg';
-
-    const card = document.createElement('a');
-    card.href      = `artikel.html?id=${b._ordner}`;
-    card.className = 'news-card' + (i === 0 ? ' featured' : '');
-    card.innerHTML = `
-      <img class="news-card-img" src="${bildSrc}" alt="${b.titel}" loading="lazy" />
-      <div class="news-card-body">
-        <div class="news-card-date">${formatDateDisplay(b.datum)}</div>
-        <h3 class="news-card-title">${b.titel}</h3>
-        <p class="news-card-text">${(b.beschreibung||'').substring(0,120)}${(b.beschreibung||'').length>120?'…':''}</p>
-      </div>`;
-    grid.appendChild(card);
-  });
-}
-
 // ── AKTUELLES PAGE ────────────────────────────────────────────────────────────
 function renderAktuellesPage(beitraege) {
   const grid = document.getElementById('aktuellesGrid');
   if (!grid) return;
   document.getElementById('aktuellesLoading')?.remove();
+
   grid.innerHTML = '';
 
   if (!beitraege.length) {
@@ -267,95 +266,21 @@ function renderAktuellesPage(beitraege) {
     const bildSrc = b.titelbild
       ? `Aktuelles/${b._ordner}/${b.titelbild}`
       : 'images/general/placeholder.jpg';
+    const dateStr = formatDateDisplay(b.datum);
 
     const card = document.createElement('a');
-    card.href      = `artikel.html?id=${b._ordner}`;
+    card.href  = '#' + b._ordner;
+    card.id    = b._ordner;
     card.className = 'news-card';
     card.innerHTML = `
       <img class="news-card-img" src="${bildSrc}" alt="${b.titel}" loading="lazy" />
       <div class="news-card-body">
-        <div class="news-card-date">${formatDateDisplay(b.datum)}</div>
+        <div class="news-card-date">${dateStr}</div>
         <h3 class="news-card-title">${b.titel}</h3>
-        <p class="news-card-text">${(b.beschreibung||'').substring(0,160)}${(b.beschreibung||'').length>160?'…':''}</p>
-        <span class="news-card-more">Weiterlesen →</span>
+        <p class="news-card-text">${b.beschreibung || ''}</p>
       </div>`;
     grid.appendChild(card);
   });
-}
-
-// ── ARTIKEL PAGE ──────────────────────────────────────────────────────────────
-async function initArtikelPage() {
-  const container = document.getElementById('artikelContent');
-  if (!container) return;
-
-  const params  = new URLSearchParams(window.location.search);
-  const ordner  = params.get('id');
-  if (!ordner) {
-    container.innerHTML = '<p>Kein Beitrag ausgewählt.</p>';
-    return;
-  }
-
-  try {
-    const meta = await loadMeta(ordner, 'Aktuelles');
-
-    // Seitentitel setzen
-    document.title = `${meta.titel} – Trachtenkapelle Riezlern`;
-    const titleEl = document.getElementById('artikelTitel');
-    const dateEl  = document.getElementById('artikelDatum');
-    if (titleEl) titleEl.textContent = meta.titel;
-    if (dateEl)  dateEl.textContent  = formatDateDisplay(meta.datum);
-
-    // Bilder
-    const bilder = meta.bilder || (meta.titelbild ? [meta.titelbild] : []);
-    let bilderHtml = '';
-    if (bilder.length) {
-      bilderHtml = `<div class="artikel-bilder">` +
-        bilder.map(b => `<img src="Aktuelles/${ordner}/${b}" alt="${meta.titel}" loading="lazy" />`).join('') +
-        `</div>`;
-    }
-
-    container.innerHTML = `
-      ${bilderHtml}
-      <div class="artikel-text">
-        ${meta.beschreibung ? `<p>${meta.beschreibung.replace(/\n/g, '</p><p>')}</p>` : '<p>Kein Text vorhanden.</p>'}
-      </div>`;
-  } catch (e) {
-    container.innerHTML = '<p>Beitrag konnte nicht geladen werden.</p>';
-  }
-}
-
-// ── GALERIE – Unterseite ──────────────────────────────────────────────────────
-// Wenn gallery.html?album=xyz aufgerufen wird, werden Bilder aus images/gallery/xyz/ geladen.
-// Da wir kein serverseitiges Listing haben, lesen wir ein optionales gallery-index.json.
-async function initGalleryPage() {
-  const container = document.getElementById('galleryContent');
-  if (!container) return;
-
-  const params = new URLSearchParams(window.location.search);
-  const album  = params.get('album');
-  if (!album) { container.innerHTML = '<p>Kein Album ausgewählt.</p>'; return; }
-
-  const titleEl = document.getElementById('galleryTitel');
-
-  try {
-    const res  = await fetch(`images/gallery/${album}/index.json`);
-    const data = await res.json();
-    if (titleEl) titleEl.textContent = data.titel || album;
-
-    container.innerHTML = `<div class="gallery-grid">` +
-      (data.bilder || []).map(b => `
-        <div class="g-item">
-          <img src="images/gallery/${album}/${b}" alt="${data.titel||album}" loading="lazy" />
-          <div class="g-overlay">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </div>
-        </div>`).join('') +
-      `</div>`;
-  } catch {
-    container.innerHTML = `<p>Album nicht gefunden. Bitte <code>images/gallery/${album}/index.json</code> anlegen.</p>`;
-  }
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
@@ -369,39 +294,129 @@ async function initTermine() {
     if (hasHero) renderHeroTermine(_allTermine);
     if (hasPage) { initTermineFilter(); renderTerminePage(_allTermine, 'all'); }
   } catch (err) {
-    console.warn('Termine:', err.message);
+    console.warn('Termine Ladefehler:', err.message);
     const heroList = document.getElementById('heroTermineList');
     if (heroList) { heroList.classList.remove('loading'); heroList.innerHTML = ''; }
-    const tl = document.getElementById('termineList');
-    if (tl) {
+    const termineList = document.getElementById('termineList');
+    if (termineList) {
       document.getElementById('termineLoading')?.remove();
-      tl.innerHTML = '<div class="termine-empty">Termine konnten nicht geladen werden.</div>';
+      termineList.innerHTML = '<div class="termine-empty">Termine konnten nicht geladen werden.<br/><small>Bitte <code>build_termine.py</code> ausführen und <code>Termine/index.json</code> prüfen.</small></div>';
     }
   }
 }
 
 async function initAktuelles() {
-  const hasHome     = !!document.getElementById('newsGrid');
-  const hasAktuelles = !!document.getElementById('aktuellesGrid');
-  if (!hasHome && !hasAktuelles) return;
+  const hasNewsGrid    = !!document.getElementById('newsGrid');
+  const hasAktuellesGrid = !!document.getElementById('aktuellesGrid');
+  if (!hasNewsGrid && !hasAktuellesGrid) return;
 
   try {
     const beitraege = await loadAktuelles();
-    if (hasHome)      renderNewsCards(beitraege);
-    if (hasAktuelles) renderAktuellesPage(beitraege);
+    if (hasNewsGrid)      renderNewsCards(beitraege);
+    if (hasAktuellesGrid) renderAktuellesPage(beitraege);
   } catch (err) {
-    console.warn('Aktuelles:', err.message);
-    const g = document.getElementById('aktuellesGrid');
-    if (g) { document.getElementById('aktuellesLoading')?.remove(); g.innerHTML = '<div class="termine-empty">Konnte nicht geladen werden.</div>'; }
+    console.warn('Aktuelles Ladefehler:', err.message);
+    const grid = document.getElementById('aktuellesGrid');
+    if (grid) {
+      document.getElementById('aktuellesLoading')?.remove();
+      grid.innerHTML = '<div class="termine-empty">Beiträge konnten nicht geladen werden.<br/><small>Bitte <code>build_aktuelles.py</code> ausführen.</small></div>';
+    }
   }
 }
 
+// (boot moved to injectHeaderFooter block below)
+
+// ── HEADER / FOOTER INJECT ────────────────────────────────────────────────────
+// HTML is inlined here – no fetch() needed, works locally and on GitHub Pages.
+
+const HEADER_HTML = `<!-- ════════════════════════════════
+   _header.html  — include in every page
+   Usage: copy <nav> and <div class="mobile-menu"> into your page
+   ════════════════════════════════ -->
+
+<nav>
+  <a class="nav-logo" href="index.html" aria-label="Trachtenkapelle Riezlern – Startseite">
+    <img src="images/logo.svg" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="verein.html">Verein</a></li>
+    <li><a href="termine.html">Termine</a></li>
+    <li><a href="aktuelles.html">Aktuelles</a></li>
+    <li><a href="konzerte.html">Konzerte</a></li>
+    <li><a href="bilder.html">Bilder &amp; Videos</a></li>
+    <li><a href="index.html#instagram">Instagram</a></li>
+    <li><a href="kontakt.html" class="nav-btn">Kontakt</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile Navigation">
+  <a href="index.html">Startseite</a>
+  <a href="verein.html">Verein</a>
+  <a href="termine.html">Termine</a>
+  <a href="aktuelles.html">Aktuelles</a>
+  <a href="konzerte.html">Konzerte</a>
+  <a href="bilder.html">Bilder &amp; Videos</a>
+  <a href="index.html#instagram">Instagram</a>
+  <a href="kontakt.html" class="m-btn">Kontakt</a>
+</div>`;
+const FOOTER_HTML = `<!-- ════════════════════════════════
+   _footer.html  — include in every page
+   ════════════════════════════════ -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Trachtenkapelle Riezlern</div>
+      <p>Die erste Kapelle des Kleinwalsertals – seit über 200 Jahren Musik, Gemeinschaft und Tradition in Riezlern, Vorarlberg.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="verein.html">Unser Verein</a></li>
+        <li><a href="musikanten.html">Musikantinnen &amp; Musikanten</a></li>
+        <li><a href="verein.html#vorstandschaft">Vorstandschaft</a></li>
+        <li><a href="verein.html#jugend">Jugendarbeit</a></li>
+        <li><a href="verein.html#alphorn">Alphorn</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Mehr</h4>
+      <ul>
+        <li><a href="termine.html">Termine</a></li>
+        <li><a href="aktuelles.html">Aktuelles</a></li>
+        <li><a href="konzerte.html">Unsere Konzerte</a></li>
+        <li><a href="bilder.html">Bilder &amp; Videos</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Trachtenkapelle Riezlern · Riezlern, Kleinwalsertal</span>
+    <span>Musik ist Leben.</span>
+  </div>
+</footer>`;
+
+function injectHeaderFooter() {
+  const headerEl = document.getElementById('site-header');
+  const footerEl = document.getElementById('site-footer');
+  if (headerEl) headerEl.outerHTML = HEADER_HTML;
+  if (footerEl) footerEl.outerHTML = FOOTER_HTML;
+}
+
+// ── BOOT ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  injectHeaderFooter();
   initHamburger();
   initSlideshow();
   initActiveNav();
   initTermine();
   initAktuelles();
-  initArtikelPage();
-  initGalleryPage();
+  if (typeof initArtikelPage === 'function') initArtikelPage();
+  if (typeof initGalleryPage === 'function') initGalleryPage();
 });

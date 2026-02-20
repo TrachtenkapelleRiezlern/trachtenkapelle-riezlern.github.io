@@ -39,9 +39,11 @@ nav {
 
 .nav-logo {
   display: flex; align-items: center; text-decoration: none;
+  overflow: visible;
 }
 .nav-logo svg, .nav-logo img {
-  height: 40px; width: auto;
+  height: 72px; width: auto;
+  /* taller logo, nav bar stays same height via overflow */
 }
 
 .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
@@ -876,4 +878,116 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
 @media (max-width: 600px) {
   .konzert-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .register-foto { max-height: 240px; }
+}
+
+/* ══════════════════════════════
+   VORSTAND – Tabelle + Foto zentriert
+══════════════════════════════ */
+.vorstand-namen-liste { max-width: 500px; margin: 0 auto; }
+.vorstand-table { width: 100%; border-collapse: collapse; }
+.vorstand-table tr { border-bottom: 1px solid rgba(45,96,64,0.08); }
+.vorstand-table tr:last-child { border-bottom: none; }
+.vt-rolle {
+  padding: 10px 16px 10px 0;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--text-mid); white-space: nowrap; width: 200px;
+}
+.vt-name {
+  padding: 10px 0; font-size: 0.92rem;
+  font-weight: 600; color: var(--green-dark);
+}
+
+/* Register title – kein Icon mehr, nur Text */
+.register-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; color: var(--green-dark);
+  margin-bottom: 12px; padding-bottom: 10px;
+  border-bottom: 2px solid rgba(45,96,64,0.15);
+}
+
+/* Foto zentriert im Register */
+.register-foto-wrap { margin-left: auto; margin-right: auto; }
+
+/* Konzert-Motto unter Titel */
+.konzert-motto {
+  font-size: 0.72rem; color: var(--text-mid);
+  font-style: italic; margin-top: 4px;
+}
+
+/* ══════════════════════════════
+   ALBEN-GRID (bilder.html)
+══════════════════════════════ */
+.alben-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+.album-card {
+  display: block; text-decoration: none;
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--cream);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.13);
+}
+.album-thumb-wrap {
+  position: relative; aspect-ratio: 4/3; overflow: hidden;
+  background: var(--green-dark);
+}
+.album-thumb {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.35s;
+}
+.album-card:hover .album-thumb { transform: scale(1.05); }
+.album-thumb-placeholder {
+  width: 100%; height: 100%;
+  display: none; align-items: center; justify-content: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+}
+.album-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  color: rgba(255,255,255,0.9);
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; opacity: 0; transition: opacity 0.2s;
+}
+.album-card:hover .album-overlay { opacity: 1; }
+.album-info { padding: 14px 16px 18px; }
+.album-datum {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
+}
+.album-titel {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; color: var(--green-dark); line-height: 1.3;
+  margin-bottom: 4px;
+}
+.album-count {
+  font-size: 0.75rem; color: var(--text-mid);
+}
+
+/* ══════════════════════════════
+   GALLERY-GRID – Album-Kacheln (index.html)
+══════════════════════════════ */
+.g-item-album .g-overlay {
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: flex-end;
+  padding: 14px; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%);
+  opacity: 1;  /* always visible for label */
+}
+.g-album-label {
+  color: #fff; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.04em; line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 580px) {
+  .alben-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 }

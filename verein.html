@@ -11,36 +11,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<!-- ════════════════════════════════
-   _header.html  — include in every page
-   Usage: copy <nav> and <div class="mobile-menu"> into your page
-   ════════════════════════════════ -->
-
-<nav>
-  <a class="nav-logo" href="index.html" aria-label="Trachtenkapelle Riezlern – Startseite">
-    <img src="images/logo.svg" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Startseite</a></li>
-    <li><a href="verein.html">Verein</a></li>
-    <li><a href="termine.html">Termine</a></li>
-    <li><a href="bilder.html">Bilder &amp; Videos</a></li>
-    <li><a href="index.html#instagram">Instagram</a></li>
-    <li><a href="kontakt.html" class="nav-btn">Kontakt</a></li>
-  </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile Navigation">
-  <a href="index.html">Startseite</a>
-  <a href="verein.html">Verein</a>
-  <a href="termine.html">Termine</a>
-  <a href="bilder.html">Bilder &amp; Videos</a>
-  <a href="index.html#instagram">Instagram</a>
-  <a href="kontakt.html" class="m-btn">Kontakt</a>
-</div>
+<div id="site-header"></div>
 
 
 <div class="page-hero">
@@ -78,87 +49,31 @@
 <section id="vorstandschaft" style="background:var(--cream);">
   <div class="section-label">Führung</div>
   <h2 class="section-title">Vorstandschaft</h2>
-  <p class="about-text" style="margin-bottom:32px;">Alle drei Jahre neu gewählt – die Vorstandschaft der Trachtenkapelle Riezlern setzt sich aktuell aus folgenden Mitgliedern zusammen:</p>
+  <p class="about-text" style="margin-bottom:28px;">Alle drei Jahre neu gewählt. Aktuell setzt sich die Vorstandschaft aus folgenden Mitgliedern zusammen:</p>
 
-<div class="about-img-wrap" style="width:50%; max-width:500px; margin:0 auto;">
-    <img src="images/register/vorstand.jpg" 
-         alt="Vorstandschaft" 
-         loading="lazy" 
-         style="display:block; width:100%; height:auto;" />
-</div>
+  <div class="register-foto-wrap" style="max-width:900px;margin:0 auto 28px;">
+    <img src="images/register/vorstand.jpg" alt="Vorstandschaft Trachtenkapelle Riezlern"
+         class="register-foto" loading="lazy"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+    <div class="register-foto-placeholder" style="display:none;">
+      <span>&#9836;</span><p>Foto folgt</p>
+    </div>
+  </div>
 
-  <div class="vorstand-grid">
-    <div class="vorstand-card">
-      <div class="vorstand-avatar">&#9836;</div>
-      <div class="vorstand-info">
-        <div class="vorstand-name">Dagmar Hilbrand</div>
-        <div class="vorstand-rolle">Obfrau</div>
-        
-      </div>
-    </div>
-    <div class="vorstand-card">
-      <div class="vorstand-avatar">&#9836;</div>
-      <div class="vorstand-info">
-        <div class="vorstand-name">Roman Edlinger</div>
-        <div class="vorstand-rolle">Obfrau-Stellvertreter</div>
-        
-      </div>
-    </div>
-    <div class="vorstand-card">
-      <div class="vorstand-avatar">&#9836;</div>
-      <div class="vorstand-info">
-        <div class="vorstand-name">Katrin Berchtold</div>
-        <div class="vorstand-rolle">Kapellmeisterin</div>
-        
-      </div>
-    </div>
-    <div class="vorstand-card">
-      <div class="vorstand-avatar">&#9836;</div>
-      <div class="vorstand-info">
-        <div class="vorstand-name">Felix Fritz</div>
-        <div class="vorstand-rolle">Kapellmeister-Stv.</div>
-        
-      </div>
-    </div>
-    <div class="vorstand-card">
-      <div class="vorstand-avatar">&#9836;</div>
-      <div class="vorstand-info">
-        <div class="vorstand-name">Cornelia Gurschler</div>
-        <div class="vorstand-rolle">Kassiererin</div>
-        
-      </div>
-    </div>
-    <div class="vorstand-card">
-      <div class="vorstand-avatar">&#9836;</div>
-      <div class="vorstand-info">
-        <div class="vorstand-name">Manuel Tiefenbacher</div>
-        <div class="vorstand-rolle">Schriftführer</div>
-        <div class="musikant-note">nicht auf dem Bild</div>
-      </div>
-    </div>
-    <div class="vorstand-card">
-      <div class="vorstand-avatar">&#9836;</div>
-      <div class="vorstand-info">
-        <div class="vorstand-name">Sarah Frick</div>
-        <div class="vorstand-rolle">Jugendreferentin</div>
-        <div class="musikant-note">nicht auf dem Bild</div>
-      </div>
-    </div>
-    <div class="vorstand-card">
-      <div class="vorstand-avatar">&#9836;</div>
-      <div class="vorstand-info">
-        <div class="vorstand-name">Dominik Bromm</div>
-        <div class="vorstand-rolle">Beirat / Zeugwart</div>
-        
-      </div>
-    </div>
+  <div class="vorstand-namen-liste">
+    <table class="vorstand-table">
+      <tbody>
+        <tr><td class="vt-rolle">Obfrau</td><td class="vt-name">Dagmar Hilbrand</td></tr><tr><td class="vt-rolle">Obfrau-Stellvertreter</td><td class="vt-name">Roman Edlinger</td></tr><tr><td class="vt-rolle">Kapellmeisterin</td><td class="vt-name">Katrin Berchtold</td></tr><tr><td class="vt-rolle">Kapellmeister-Stv.</td><td class="vt-name">Felix Fritz</td></tr><tr><td class="vt-rolle">Kassiererin</td><td class="vt-name">Cornelia Gurschler</td></tr><tr><td class="vt-rolle">Schriftführer</td><td class="vt-name">Manuel Tiefenbacher&thinsp;<sup>*</sup></td></tr><tr><td class="vt-rolle">Jugendreferentin</td><td class="vt-name">Sarah Frick&thinsp;<sup>*</sup></td></tr><tr><td class="vt-rolle">Beirat / Zeugwart</td><td class="vt-name">Dominik Bromm</td></tr>
+      </tbody>
+    </table>
+    <p class="register-namen-hinweis" style="margin-top:12px;">* nicht auf dem Bild</p>
   </div>
 </section>
 
 <section style="background:var(--white);">
   <div class="about-layout">
     <div class="about-img-wrap">
-      <img src="images/general/about.jpg" alt="Musikantinnen und Musikanten" loading="lazy" />
+      <img src="images/hero/gruppenbild.jpg" alt="Musikantinnen und Musikanten" loading="lazy" />
     </div>
     <div>
       <div class="section-label">Die Menschen hinter der Musik</div>
@@ -196,39 +111,11 @@
   </div>
 </section>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-brand-name">Trachtenkapelle Riezlern</div>
-      <p>Die erste Kapelle des Kleinwalsertals – seit über 200 Jahren Musik, Gemeinschaft und Tradition in Riezlern, Vorarlberg.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="verein.html">Unser Verein</a></li>
-        <li><a href="verein.html#vorstandschaft">Vorstandschaft</a></li>
-        <li><a href="musikanten.html">Musikantinnen &amp; Musikanten</a></li>
-        <li><a href="verein.html#jugend">Jugendarbeit</a></li>
-        <li><a href="verein.html#alphorn">Alphorn</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Mehr</h4>
-      <ul>
-        <li><a href="termine.html">Termine</a></li>
-        <li><a href="aktuelles.html">Aktuelles</a></li>
-        <li><a href="bilder.html">Bilder &amp; Videos</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Trachtenkapelle Riezlern · Riezlern, Kleinwalsertal</span>
-    <span>Musik ist Leben.</span>
-  </div>
-</footer>
+<!-- ════════════════════════════════
+   _footer.html  — include in every page
+   ════════════════════════════════ -->
+
+<div id="site-footer"></div>
 
 <script src="main.js"></script>
 </body>

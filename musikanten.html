@@ -11,36 +11,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<!-- ════════════════════════════════
-   _header.html  — include in every page
-   Usage: copy <nav> and <div class="mobile-menu"> into your page
-   ════════════════════════════════ -->
-
-<nav>
-  <a class="nav-logo" href="index.html" aria-label="Trachtenkapelle Riezlern – Startseite">
-    <img src="images/logo.svg" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Startseite</a></li>
-    <li><a href="verein.html">Verein</a></li>
-    <li><a href="termine.html">Termine</a></li>
-    <li><a href="bilder.html">Bilder &amp; Videos</a></li>
-    <li><a href="index.html#instagram">Instagram</a></li>
-    <li><a href="kontakt.html" class="nav-btn">Kontakt</a></li>
-  </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile Navigation">
-  <a href="index.html">Startseite</a>
-  <a href="verein.html">Verein</a>
-  <a href="termine.html">Termine</a>
-  <a href="bilder.html">Bilder &amp; Videos</a>
-  <a href="index.html#instagram">Instagram</a>
-  <a href="kontakt.html" class="m-btn">Kontakt</a>
-</div>
+<div id="site-header"></div>
 
 
 <div class="page-hero">
@@ -53,15 +24,12 @@
 
 <section style="background:var(--white);">
 
-  <!-- KAPELLMEISTERIN -->
   <div class="kapellmeisterin-section">
     <div class="kapellmeisterin-inner">
       <div class="kapellmeisterin-img-wrap">
-        <img src="images/register/kapellmeisterin.jpg"
-             alt="Katrin Berchtold"
+        <img src="images/register/kapellmeisterin.jpg" alt="Katrin Berchtold"
              class="kapellmeisterin-foto"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-        />
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
         <div class="musikant-img-placeholder" style="width:160px;height:160px;font-size:3rem;border-radius:50%;display:none;">&#9836;</div>
       </div>
       <div class="kapellmeisterin-text">
@@ -84,267 +52,168 @@
   <div class="section-label" style="margin-bottom:8px;">Unsere Register</div>
   <h2 class="section-title" style="margin-bottom:48px;">Die Musikantinnen &amp; Musikanten</h2>
 
-  
-  <div class="register-section" id="floeten">
+    <div class="register-section" id="floeten">
     <div class="register-title">Flöten <span class="register-count">(3)</span></div>
     <p class="register-text">Die höchsten Töne in der Musik kommen neben der Triangel bei uns aus der ersten Reihe: unsere Flöten!</p>
     <div class="register-foto-wrap">
-      <img
-        src="images/register/floeten.jpg"
-        alt="Register Flöten"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/floeten.jpg" alt="Register Flöten" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
-      <span class="mitglied-name">Leonie Beranek</span>, <span class="mitglied-name mitglied-absent">Claudia Bereuter*</span>, <span class="mitglied-name">Katrin Huber</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="mitglied-name">Leonie Beranek</span>, <span class="mitglied-name  mitglied-absent">Claudia Bereuter*</span>, <span class="mitglied-name">Katrin Huber</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="holz">
+  </div>  <div class="register-section" id="holz">
     <div class="register-title">Holz <span class="register-count">(10)</span></div>
     <p class="register-text">Bei den Holzspielern kommt so mancher Musikant ins Staunen und fragt sich: wie kann man soviel Noten in so kurzer Zeit spielen?! Das macht ihr super! Weiter so!!</p>
     <div class="register-foto-wrap">
-      <img
-        src="images/register/holz.jpg"
-        alt="Register Holz"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/holz.jpg" alt="Register Holz" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
-      <span class="mitglied-name">Thomas Berchtold</span>, <span class="mitglied-name">Toni Berchtold</span>, <span class="mitglied-name mitglied-absent">Chun-Yi Chang*</span>, <span class="mitglied-name">Dagmar Hilbrand</span>, <span class="mitglied-name mitglied-absent">Sarah Leible-Frick*</span>, <span class="mitglied-name">Julia Merkle</span>, <span class="mitglied-name mitglied-absent">Jonas Müller*</span>, <span class="mitglied-name">Simone Rundel</span>, <span class="mitglied-name">Maya Schwärzler</span>, <span class="mitglied-name">Alfred Ultes</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="mitglied-name">Thomas Berchtold</span>, <span class="mitglied-name">Toni Berchtold</span>, <span class="mitglied-name  mitglied-absent">Chun-Yi Chang*</span>, <span class="mitglied-name">Dagmar Hilbrand</span>, <span class="mitglied-name  mitglied-absent">Sarah Leible-Frick*</span>, <span class="mitglied-name">Julia Merkle</span>, <span class="mitglied-name  mitglied-absent">Jonas Müller*</span>, <span class="mitglied-name">Simone Rundel</span>, <span class="mitglied-name">Maya Schwärzler</span>, <span class="mitglied-name">Alfred Ultes</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="saxophon">
+  </div>  <div class="register-section" id="saxophon">
     <div class="register-title">Saxophon <span class="register-count">(4)</span></div>
     <p class="register-text">Unsere Damen am Saxophon – bilden die Verbindung zwischen dem Holz und den hohen Blechbläsern.</p>
     <div class="register-foto-wrap">
-      <img
-        src="images/register/saxophon.jpg"
-        alt="Register Saxophon"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/saxophon.jpg" alt="Register Saxophon" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
-      <span class="mitglied-name">Elvira Schairer</span>, <span class="mitglied-name mitglied-absent">Lisa Schneider*</span>, <span class="mitglied-name mitglied-absent">Saphira Pistol*</span>, <span class="mitglied-name">Patricia Schwärzler</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="mitglied-name">Elvira Schairer</span>, <span class="mitglied-name  mitglied-absent">Lisa Schneider*</span>, <span class="mitglied-name  mitglied-absent">Saphira Pistol*</span>, <span class="mitglied-name">Patricia Schwärzler</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="hohes-blech">
+  </div>  <div class="register-section" id="hohes-blech">
     <div class="register-title">Hohes Blech <span class="register-count">(8)</span></div>
     <p class="register-text">Mal strahlende Fanfaren in den Trompeten, mal klingende Melodien in den Flügelhörnern – so vereint sich unser hohes Blech zu wunderschönen Klängen.</p>
     <div class="register-foto-wrap">
-      <img
-        src="images/register/hohes-blech.jpg"
-        alt="Register Hohes Blech"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/hohes-blech.jpg" alt="Register Hohes Blech" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
-      <span class="mitglied-name">Karle Bischof</span>, <span class="mitglied-name">Roman Edlinger</span>, <span class="mitglied-name mitglied-absent">Marco Fontain*</span>, <span class="mitglied-name mitglied-absent">Sara Fontain*</span>, <span class="mitglied-name">Cornelia Gurschler</span>, <span class="mitglied-name">Michi Heim</span>, <span class="mitglied-name">Josef Ritsch</span>, <span class="mitglied-name mitglied-absent">Fabian Felberbauer*</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="mitglied-name">Karle Bischof</span>, <span class="mitglied-name">Roman Edlinger</span>, <span class="mitglied-name  mitglied-absent">Marco Fontain*</span>, <span class="mitglied-name  mitglied-absent">Sara Fontain*</span>, <span class="mitglied-name">Cornelia Gurschler</span>, <span class="mitglied-name">Michi Heim</span>, <span class="mitglied-name">Josef Ritsch</span>, <span class="mitglied-name  mitglied-absent">Fabian Felberbauer*</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="tenorhorn">
+  </div>  <div class="register-section" id="tenorhorn">
     <div class="register-title">Tenorhorn &amp; Bariton <span class="register-count">(4)</span></div>
     <p class="register-text">Wenn es um wohlklingende Melodien geht, sind unsere Tenorhörner und Baritone immer da! Egal zu welcher Uhrzeit: der Ansatz passt!</p>
     <div class="register-foto-wrap">
-      <img
-        src="images/register/tenorhorn.jpg"
-        alt="Register Tenorhorn &amp; Bariton"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/tenorhorn.jpg" alt="Register Tenorhorn &amp; Bariton" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
-      <span class="mitglied-name">Günter Berchtold</span>, <span class="mitglied-name">Wolfgang Köberle</span>, <span class="mitglied-name">Florian Ritsch</span>, <span class="mitglied-name mitglied-absent">Manuel Tiefenbacher*</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="mitglied-name">Günter Berchtold</span>, <span class="mitglied-name">Wolfgang Köberle</span>, <span class="mitglied-name">Florian Ritsch</span>, <span class="mitglied-name  mitglied-absent">Manuel Tiefenbacher*</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="posaune">
+  </div>  <div class="register-section" id="posaune">
     <div class="register-title">Posaune <span class="register-count">(3)</span></div>
     
     <div class="register-foto-wrap">
-      <img
-        src="images/register/posaune.jpg"
-        alt="Register Posaune"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/posaune.jpg" alt="Register Posaune" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
-      <span class="mitglied-name">Martin Leible-Frick</span>, <span class="mitglied-name">Kilian Lang</span>, <span class="mitglied-name mitglied-absent">Aimee Bischof*</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="mitglied-name">Martin Leible-Frick</span>, <span class="mitglied-name">Kilian Lang</span>, <span class="mitglied-name  mitglied-absent">Aimee Bischof*</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="waldhorn">
+  </div>  <div class="register-section" id="waldhorn">
     <div class="register-title">Waldhorn <span class="register-count">(2)</span></div>
     <p class="register-text">Was hören wir denn da? Die beiden können weit mehr als nur Nachschlag – denn gerade beim Jahreskonzert glänzt unser Hornregister als „Seele des Orchesters“.</p>
     <div class="register-foto-wrap">
-      <img
-        src="images/register/waldhorn.jpg"
-        alt="Register Waldhorn"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/waldhorn.jpg" alt="Register Waldhorn" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
       <span class="mitglied-name">Maria Beier</span>, <span class="mitglied-name">Manfred Kessler</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="tuba">
+  </div>  <div class="register-section" id="tuba">
     <div class="register-title">Tuba <span class="register-count">(2)</span></div>
     
     <div class="register-foto-wrap">
-      <img
-        src="images/register/tuba.jpg"
-        alt="Register Tuba"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/tuba.jpg" alt="Register Tuba" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
       <span class="mitglied-name">Felix Ebert</span>, <span class="mitglied-name">Franz Matt</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="schlagzeug">
+  </div>  <div class="register-section" id="schlagzeug">
     <div class="register-title">Schlagzeug <span class="register-count">(7)</span></div>
-    <p class="register-text">Kleine Trommel, große Trommel, Tschinellen, Becken, Röhrenglocken, Glockenspiel … In keinem anderen Register muss man so viele Instrumente beherrschen! Dass da Verwirrung mit den Noten aufkommen kann, ist ganz normal!</p>
+    <p class="register-text">Kleine Trommel, große Trommel, Tschinellen, Becken, Röhrenglocken, Glockenspiel … In keinem anderen Register muss man so viele Instrumente beherrschen!</p>
     <div class="register-foto-wrap">
-      <img
-        src="images/register/schlagzeug.jpg"
-        alt="Register Schlagzeug"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/schlagzeug.jpg" alt="Register Schlagzeug" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
-      <span class="mitglied-name">Stefan Bereuter</span>, <span class="mitglied-name">Dominik Bromm</span>, <span class="mitglied-name mitglied-absent">Chun-Wen Chang*</span>, <span class="mitglied-name">Andreas Fauland</span>, <span class="mitglied-name">Manfred Felder</span>, <span class="mitglied-name">Kilian Haid</span>, <span class="mitglied-name mitglied-absent">Quentin Moosmann*</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="mitglied-name">Stefan Bereuter</span>, <span class="mitglied-name">Dominik Bromm</span>, <span class="mitglied-name  mitglied-absent">Chun-Wen Chang*</span>, <span class="mitglied-name">Andreas Fauland</span>, <span class="mitglied-name">Manfred Felder</span>, <span class="mitglied-name">Kilian Haid</span>, <span class="mitglied-name  mitglied-absent">Quentin Moosmann*</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>
-  <div class="register-section" id="faehnriche">
+  </div>  <div class="register-section" id="faehnriche">
     <div class="register-title">Fähnriche <span class="register-count">(2)</span></div>
     
     <div class="register-foto-wrap">
-      <img
-        src="images/register/faehnriche.jpg"
-        alt="Register Fähnriche"
-        class="register-foto"
-        loading="lazy"
-        onerror="this.parentElement.classList.add('register-foto-missing');this.style.display='none'"
-      />
+      <img src="images/register/faehnriche.jpg" alt="Register Fähnriche" class="register-foto" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
       <div class="register-foto-placeholder" style="display:none;">
-        <span>&#9836;</span>
-        <p>Foto folgt</p>
+        <span>&#9836;</span><p>Foto folgt</p>
       </div>
     </div>
     <div class="register-namen">
       <span class="register-namen-label">Mitglieder:</span>
       <span class="mitglied-name">Stefan Bereuter</span>, <span class="mitglied-name">Stephan Schuler</span>
-      <span class="register-namen-hinweis">&#160;&#160;* nicht auf dem Foto</span>
+      <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
   </div>
 
   <p style="margin-top:40px;font-size:0.8rem;color:var(--text-mid);font-style:italic;">
-    Fotos für die einzelnen Register werden in Kürze ergänzt.
-    Bilder bitte als <code>images/register/REGISTERNAME.jpg</code> ins Repo legen.
+    Fotos bitte als <code>images/register/REGISTERNAME.jpg</code> ins Repo legen.
   </p>
 </section>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-brand-name">Trachtenkapelle Riezlern</div>
-      <p>Die erste Kapelle des Kleinwalsertals – seit über 200 Jahren Musik, Gemeinschaft und Tradition in Riezlern, Vorarlberg.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="verein.html">Unser Verein</a></li>
-        <li><a href="verein.html#vorstandschaft">Vorstandschaft</a></li>
-        <li><a href="musikanten.html">Musikantinnen &amp; Musikanten</a></li>
-        <li><a href="verein.html#jugend">Jugendarbeit</a></li>
-        <li><a href="verein.html#alphorn">Alphorn</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Mehr</h4>
-      <ul>
-        <li><a href="termine.html">Termine</a></li>
-        <li><a href="aktuelles.html">Aktuelles</a></li>
-        <li><a href="bilder.html">Bilder &amp; Videos</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Trachtenkapelle Riezlern · Riezlern, Kleinwalsertal</span>
-    <span>Musik ist Leben.</span>
-  </div>
-</footer>
+<!-- ════════════════════════════════
+   _footer.html  — include in every page
+   ════════════════════════════════ -->
+
+<div id="site-footer"></div>
 
 <script src="main.js"></script>
 </body>
