@@ -14,7 +14,7 @@ import json
 import re
 from pathlib import Path
 
-AKTUELLES_DIR = Path(__file__).parent / "Aktuelles"
+AKTUELLES_DIR = Path(__file__).parent.parent / "Aktuelles"
 OUTPUT_FILE   = AKTUELLES_DIR / "index.json"
 FOLDER_REGEX  = re.compile(r"^\d{4}_\d{2}_\d{2}_")
 

@@ -29,7 +29,7 @@ except ImportError:
 # ── Konfiguration ─────────────────────────────────────────────────────────────
 DEFAULT_XLSX  = "data/termine.xlsx"
 DEFAULT_SHEET = None
-TERMINE_DIR   = Path(__file__).parent / "Termine"
+TERMINE_DIR   = Path(__file__).parent.parent / "Termine"
 INDEX_FILE    = TERMINE_DIR / "index.json"
 FOLDER_RE     = re.compile(r"^\d{4}_\d{2}_\d{2}_")  # gültige Termin-Ordner
 

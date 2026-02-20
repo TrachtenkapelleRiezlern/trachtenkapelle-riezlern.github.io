@@ -17,7 +17,7 @@ import json
 import re
 from pathlib import Path
 
-TERMINE_DIR  = Path(__file__).parent / "Termine"
+TERMINE_DIR  = Path(__file__).parent.parent / "Termine"
 OUTPUT_FILE  = TERMINE_DIR / "index.json"
 FOLDER_REGEX = re.compile(r"^\d{4}_\d{2}_\d{2}_")   # muss mit JJJJ_MM_TT_ beginnen
 
