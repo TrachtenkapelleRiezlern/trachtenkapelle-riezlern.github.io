@@ -194,7 +194,7 @@ function renderTerminePage(termine, filter = 'all') {
   const filtered = filter === 'all' ? termine : termine.filter(t => {
     const kat = (t.kategorie || 'sonstiges');
     // Support both old keys (konzert/prozession/fest) and new keys
-    const aliases = { konzert:'konzerte', prozession:'kirchliches', fest:'feste' };
+    const aliases = { konzerte:'konzerte', kirchliches:'kirchliches', feste:'feste' };
     return kat === filter || aliases[kat] === filter;
   });
   container.innerHTML = '';
