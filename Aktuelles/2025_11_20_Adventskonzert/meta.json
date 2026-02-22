@@ -5,7 +5,8 @@
   "autor":       "Trachtenkapelle Riezlern",
   "beschreibung": "Hier steht ein Fließtext …",    
   "titelbild":   "Adventskonzert_2025.png",    
-  "bilder":      ["Adventskonzert_2025.png"],       
+  "bilder":      ["Adventskonzert_2025.png"],
+  "inhalt":		 "Hier steht ein seeeeeeeeeeeeeeeeeeeeeeeeeeehr langer Fließtext.....",
   "featured":    true,                
   "tags":        ["konzert", "advent"]
 }

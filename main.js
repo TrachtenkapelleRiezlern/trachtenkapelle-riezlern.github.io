@@ -167,7 +167,7 @@ function renderNewsCards(beitraege) {
     const dateStr = formatDateDisplay(b.datum);
 
     const card = document.createElement('a');
-    card.href = `aktuelles.html#${b._ordner}`;
+    card.href = `artikel.html?id=${b._ordner}&base=Aktuelles`;
     card.className = 'news-card' + (i === 0 ? ' featured' : '');
     card.innerHTML = `
       <img class="news-card-img" src="${bildSrc}" alt="${b.titel}" loading="lazy" />
@@ -276,7 +276,7 @@ function renderAktuellesPage(beitraege) {
     const dateStr = formatDateDisplay(b.datum);
 
     const card = document.createElement('a');
-    card.href  = '#' + b._ordner;
+    card.href  = `artikel.html?id=${b._ordner}&base=Aktuelles`;
     card.id    = b._ordner;
     card.className = 'news-card';
     card.innerHTML = `
@@ -331,6 +331,67 @@ async function initAktuelles() {
   }
 }
 
+
+// ── ARTIKEL PAGE ──────────────────────────────────────────────────────────────
+function initArtikelPage() {
+  const content  = document.getElementById('artikelContent');
+  const titelEl  = document.getElementById('artikelTitel');
+  const datumEl  = document.getElementById('artikelDatum');
+  const katEl    = document.getElementById('artikelKategorie');
+  if (!content) return;
+
+  const params = new URLSearchParams(location.search);
+  const id     = params.get('id');
+  const base   = params.get('base') || 'Aktuelles';
+
+  if (!id) {
+    content.innerHTML = '<p>Kein Beitrag angegeben.</p>';
+    return;
+  }
+
+  fetch(`${base}/${id}/meta.json`)
+    .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+    .then(data => {
+      // Title & meta
+      document.title = (data.titel || id) + ' – Trachtenkapelle Riezlern';
+      if (titelEl)  titelEl.textContent  = data.titel || id;
+      if (datumEl)  datumEl.textContent  = data.datum ? formatDateDisplay(data.datum) : '';
+      if (katEl)    katEl.textContent    = KATEGORIE_LABEL[data.kategorie] || data.kategorie || 'Aktuelles';
+
+      // Hero image
+      let html = '';
+      if (data.titelbild) {
+        html += `<img src="${base}/${id}/${data.titelbild}" alt="${data.titel || ''}"
+                  style="width:100%;max-height:460px;object-fit:cover;border-radius:12px;margin-bottom:32px;" loading="lazy" />`;
+      }
+
+      // Full text: use "inhalt" field if present, else fall back to "beschreibung"
+      const text = data.inhalt || data.beschreibung || '';
+      if (text) {
+        html += `<div class="artikel-text">${text}</div>`;
+      } else {
+        html += '<p style="color:var(--text-mid);font-style:italic;">Kein Inhalt vorhanden.</p>';
+      }
+
+      // Gallery
+      if (data.bilder && data.bilder.length) {
+        html += '<div class="gallery-grid" style="margin-top:40px;">';
+        data.bilder.forEach(img => {
+          html += `<div class="g-item">
+            <img src="${base}/${id}/${img}" alt="" loading="lazy" />
+            <div class="g-overlay"></div>
+          </div>`;
+        });
+        html += '</div>';
+      }
+
+      content.innerHTML = html;
+    })
+    .catch(() => {
+      content.innerHTML = '<p style="color:var(--text-mid);">Beitrag konnte nicht geladen werden.</p>';
+    });
+}
+
 // (boot moved to injectHeaderFooter block below)
 
 // ── HEADER / FOOTER INJECT ────────────────────────────────────────────────────
@@ -343,7 +404,7 @@ const HEADER_HTML = `<!-- ══════════════════
 
 <nav>
   <a class="nav-logo" href="index.html" aria-label="Trachtenkapelle Riezlern – Startseite">
-    <img src="images/logo.png" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
+    <img src="images/logo.svg" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Startseite</a></li>

@@ -44,8 +44,8 @@ nav {
   flex-shrink: 0;
 }
 .nav-logo svg, .nav-logo img {
-  height: 72px; width: auto;
-  /* taller logo, nav bar stays same height via overflow */
+  height: calc(var(--nav-height) * 0.75); width: auto;
+  /* relative to nav height */
 }
 
 .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; margin-left: auto; }
@@ -121,7 +121,7 @@ nav {
   position: relative; z-index: 2; height: 100%;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  text-align: center; padding: 90px 20px 230px;
+  text-align: center; padding: calc(var(--nav-height) + 20px) 20px 230px;
   animation: fadeUp 1.2s ease both;
 }
 
@@ -1209,3 +1209,26 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
 .mobile-menu .m-birthday:hover {
   color: var(--gold-light) !important;
 }
+
+/* ══════════════════════════════
+   ARTIKEL PAGE
+══════════════════════════════ */
+.artikel-back {
+  display: inline-block; margin-bottom: 28px;
+  color: var(--green-mid); text-decoration: none;
+  font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.artikel-back:hover { color: var(--green-dark); }
+.artikel-header { margin-bottom: 32px; }
+.artikel-datum {
+  font-size: 0.8rem; color: var(--text-mid);
+  letter-spacing: 0.08em; margin-top: 8px;
+}
+.artikel-text {
+  font-size: 1rem; line-height: 1.8;
+  color: var(--text-dark);
+}
+.artikel-text p { margin-bottom: 1.2em; }
+.artikel-text h2 { font-family: 'Playfair Display', serif; margin: 2em 0 0.6em; }
+.artikel-text h3 { font-family: 'Playfair Display', serif; margin: 1.6em 0 0.5em; }
