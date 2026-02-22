@@ -404,7 +404,7 @@ const HEADER_HTML = `<!-- ══════════════════
 
 <nav>
   <a class="nav-logo" href="index.html" aria-label="Trachtenkapelle Riezlern – Startseite">
-    <img src="images/logo.svg" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
+    <img src="images/logo.png" alt="Trachtenkapelle Riezlern" class="nav-logo-img" />
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Startseite</a></li>

@@ -1,0 +1,58 @@
+[
+  {
+    "ordner": "2025_Adventskonzert",
+    "datum": "2025",
+    "titel": "Adventskonzert 2025",
+    "beschreibung": "Adventskonzert 2025",
+    "titelbild": "adventskonzert.png"
+  },
+  {
+    "ordner": "2022_Wunschkonzert",
+    "datum": "2022",
+    "titel": "Wunschkonzert",
+    "beschreibung": "Wunschkonzert",
+    "titelbild": "wunschkonzert.jpeg"
+  },
+  {
+    "ordner": "2022_Kinderkonzert",
+    "datum": "2021",
+    "titel": "Kinderkonzert",
+    "beschreibung": "Kinderkonzert",
+    "titelbild": "Kinderkonzert.jpg"
+  },
+  {
+    "ordner": "2020_Wanderkonzert",
+    "datum": "2020",
+    "titel": "Wanderkonzert",
+    "beschreibung": "Wanderkonzert",
+    "titelbild": "wanderkonzert.jpg"
+  },
+  {
+    "ordner": "2020_75_Jahre_Frieden",
+    "datum": "2020",
+    "titel": "75 Jahre Fireden",
+    "beschreibung": "75 Jahre Frieden",
+    "titelbild": "75jahrefrieden.jpg"
+  },
+  {
+    "ordner": "2018_konTAKTaufnahme",
+    "datum": "2019",
+    "titel": "konTAKTaufnahme",
+    "beschreibung": "konTAKTaufnahme",
+    "titelbild": "kontaktaufnahme.jpg"
+  },
+  {
+    "ordner": "2019_Vier_Elemente",
+    "datum": "2018",
+    "titel": "Die 4 Elemente",
+    "beschreibung": "Die 4 Elemente",
+    "titelbild": "dievierelemente.jpg"
+  },
+  {
+    "ordner": "2017_Lets_Dance",
+    "datum": "2017",
+    "titel": "Let's Dance",
+    "beschreibung": "Let's Dance",
+    "titelbild": "letsdance.jpg"
+  }
+]

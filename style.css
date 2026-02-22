@@ -1232,3 +1232,313 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
 .artikel-text p { margin-bottom: 1.2em; }
 .artikel-text h2 { font-family: 'Playfair Display', serif; margin: 2em 0 0.6em; }
 .artikel-text h3 { font-family: 'Playfair Display', serif; margin: 1.6em 0 0.5em; }
+
+/* ══════════════════════════════
+   LOGO VARIANTEN SHOWCASE
+══════════════════════════════ */
+.logo-showcase-title {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-mid);
+  margin: 40px auto 20px; text-align: center;
+}
+.logo-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; max-width: 960px; margin: 0 auto 40px;
+}
+.logo-variant { display: flex; flex-direction: column; gap: 10px; }
+.lv-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-mid); text-align: center;
+}
+.lv-card {
+  border-radius: 14px; padding: 32px 20px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 140px; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.lv-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+.lv-dark     { background: #0d1f12; }
+.lv-green    { background: var(--green-dark); }
+.lv-gold-bg  { background: linear-gradient(135deg, #b8892a, #d4a843); }
+.lv-cream    { background: var(--cream); border: 2px solid rgba(45,96,64,0.15); }
+
+/* ── V1 Klassisch ── */
+.lv1 { display: flex; align-items: baseline; gap: 6px; }
+.lv1-zaema {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+  font-size: 1.8rem; color: var(--gold);
+}
+.lv1-zahl { display: flex; align-items: baseline; gap: 2px; }
+.lv1-2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 3rem; color: #fff; line-height: 1;
+}
+.lv1-rest {
+  font-family: 'Playfair Display', serif; font-size: 0.65rem;
+  color: rgba(255,255,255,0.6); line-height: 1.3;
+}
+
+/* ── V2 Gestapelt ── */
+.lv2 { text-align: center; }
+.lv2-top {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+  font-size: 1.4rem; color: var(--gold); letter-spacing: 0.2em;
+  border-bottom: 1px solid rgba(193,154,58,0.4); padding-bottom: 8px; margin-bottom: 10px;
+}
+.lv2-bottom { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.lv2-2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 3.2rem; color: #fff; line-height: 1;
+}
+.lv2-words { display: flex; flex-direction: column; text-align: left; }
+.lv2-words span {
+  font-family: 'Playfair Display', serif; font-size: 0.7rem;
+  color: rgba(255,255,255,0.65); line-height: 1.4; letter-spacing: 0.08em;
+}
+
+/* ── V3 Monogramm ── */
+.lv3 { position: relative; display: flex; align-items: center; justify-content: center; }
+.lv3-bg {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 7rem; color: rgba(0,0,0,0.2); line-height: 1;
+  position: absolute; user-select: none;
+}
+.lv3-text {
+  position: relative; display: flex; flex-direction: column;
+  align-items: center; gap: 2px;
+}
+.lv3-zaema {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+  font-size: 1.6rem; color: #fff; letter-spacing: 0.1em;
+}
+.lv3-sub {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.8); font-weight: 700;
+}
+
+/* ── V4 Modern ── */
+.lv4 { display: flex; align-items: center; gap: 16px; }
+.lv4-2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 4rem; color: var(--gold); line-height: 1;
+}
+.lv4-divider { width: 1px; height: 56px; background: rgba(193,154,58,0.5); }
+.lv4-right { display: flex; flex-direction: column; gap: 4px; }
+.lv4-zaema {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+  font-size: 1.2rem; color: #fff;
+}
+.lv4-sub {
+  font-size: 0.55rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); font-weight: 700;
+}
+
+/* ── V5 Siegel ── */
+.lv5-ring {
+  width: 110px; height: 110px; border-radius: 50%;
+  border: 2px solid var(--green-mid);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0;
+  position: relative;
+}
+.lv5-2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 2.8rem; color: var(--green-dark); line-height: 1;
+}
+.lv5-zaema {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+  font-size: 0.65rem; color: var(--green-dark); letter-spacing: 0.12em;
+}
+.lv5-sub {
+  font-size: 0.42rem; letter-spacing: 0.12em; color: var(--text-mid);
+  font-weight: 700; text-transform: uppercase;
+}
+
+/* ── V6 Elegant ── */
+.lv6 { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.lv6-zaema {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+  font-size: 2rem; color: #fff; letter-spacing: 0.06em;
+}
+.lv6-line { width: 60px; height: 1px; background: var(--gold); }
+.lv6-bottom { display: flex; align-items: baseline; gap: 3px; }
+.lv6-2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 1.8rem; color: var(--gold); line-height: 1;
+}
+.lv6-rest {
+  font-family: 'Playfair Display', serif; font-size: 0.7rem;
+  color: rgba(255,255,255,0.6); font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .logo-showcase { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 440px) {
+  .logo-showcase { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════
+   LOGO VARIANTEN G–O
+══════════════════════════════ */
+
+/* G – Cinzel Antik */
+.lv7 { display: flex; align-items: center; gap: 10px; }
+.lv7-zaema { font-family:'Cinzel',serif; font-weight:700; font-size:1.3rem; color:var(--gold); letter-spacing:0.15em; }
+.lv7-zahl { display:flex; align-items:center; gap:3px; }
+.lv7-2 { font-family:'Cinzel',serif; font-weight:900; font-size:3.2rem; color:#fff; line-height:1; }
+.lv7-rest { font-family:'Cinzel',serif; font-size:0.48rem; color:rgba(255,255,255,0.55); letter-spacing:0.12em; line-height:1.6; }
+
+/* H – Bebas Plakat */
+.lv8 { text-align:center; }
+.lv8-zaema { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; color:#0d1f12; letter-spacing:0.1em; display:block; line-height:1; }
+.lv8-sub { display:flex; align-items:baseline; justify-content:center; gap:4px; }
+.lv8-2 { font-family:'Bebas Neue',sans-serif; font-size:3.5rem; color:#0d1f12; line-height:1; }
+.lv8-rest { font-family:'Bebas Neue',sans-serif; font-size:0.85rem; color:rgba(0,0,0,0.6); letter-spacing:0.08em; }
+
+/* I – Cormorant hauchfein */
+.lv9 { display:flex; align-items:baseline; gap:8px; }
+.lv9-zaema { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:2rem; color:var(--green-dark); }
+.lv9-zahl { display:flex; align-items:baseline; gap:2px; }
+.lv9-2 { font-family:'Cormorant Garamond',serif; font-weight:600; font-size:3.8rem; color:var(--green-dark); line-height:1; }
+.lv9-rest { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.7rem; color:var(--text-mid); line-height:1.35; }
+
+/* J – Josefin Minimal */
+.lv10 { text-align:center; }
+.lv10-zaema { font-family:'Josefin Sans',sans-serif; font-weight:100; font-size:1.5rem; color:#fff; letter-spacing:0.5em; display:block; }
+.lv10-line { width:80%; height:1px; background:var(--gold); margin:10px auto; }
+.lv10-bottom { display:flex; align-items:baseline; justify-content:center; gap:4px; }
+.lv10-2 { font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:2.4rem; color:var(--gold); line-height:1; }
+.lv10-rest { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.6rem; color:rgba(255,255,255,0.5); letter-spacing:0.2em; }
+
+/* K – DM Serif Kontrast */
+.lv11 { display:flex; align-items:center; gap:12px; }
+.lv11-2 { font-family:'DM Serif Display',serif; font-size:5rem; color:var(--gold); line-height:1; }
+.lv11-right { display:flex; flex-direction:column; }
+.lv11-zaema { font-family:'DM Serif Display',serif; font-style:italic; font-size:1.2rem; color:#fff; }
+.lv11-rest { font-family:'DM Serif Display',serif; font-size:0.6rem; color:rgba(255,255,255,0.5); letter-spacing:0.12em; }
+
+/* L – Baskerville Bürgerlich */
+.lv12 { text-align:center; }
+.lv12-zaema { font-family:'Libre Baskerville',serif; font-style:italic; font-size:1.8rem; color:var(--green-dark); display:block; }
+.lv12-divider { display:flex; align-items:center; gap:6px; margin:8px 0; }
+.lv12-divider span { color:var(--gold); font-size:0.7rem; }
+.lv12-line { flex:1; height:1px; background:rgba(45,96,64,0.3); }
+.lv12-bottom { font-family:'Libre Baskerville',serif; font-size:0.9rem; color:var(--green-dark); }
+.lv12-bottom em { font-style:italic; }
+
+/* M – Cinzel Säulen */
+.lv13 { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.lv13-top { font-family:'Cinzel',serif; font-weight:400; font-size:0.7rem; color:rgba(255,255,255,0.5); letter-spacing:0.35em; }
+.lv13-mid { font-family:'Cinzel',serif; font-weight:900; font-size:4.5rem; color:var(--gold); line-height:1; }
+.lv13-bot { font-family:'Cinzel',serif; font-weight:400; font-size:0.6rem; color:rgba(255,255,255,0.5); letter-spacing:0.25em; }
+
+/* N – Bebas + Cormorant */
+.lv14 { display:flex; align-items:center; gap:12px; }
+.lv14-2 { font-family:'Bebas Neue',sans-serif; font-size:5rem; color:var(--gold); line-height:1; }
+.lv14-text { display:flex; flex-direction:column; border-left:1px solid rgba(193,154,58,0.4); padding-left:12px; }
+.lv14-zaema { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.1em; }
+.lv14-rest { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.75rem; color:rgba(255,255,255,0.5); }
+
+/* O – Patrick Hand */
+.lv15 { display:flex; align-items:baseline; gap:8px; }
+.lv15-zaema { font-family:'Patrick Hand',cursive; font-size:1.8rem; color:#0d1f12; }
+.lv15-zahl { display:flex; align-items:baseline; gap:2px; }
+.lv15-2 { font-family:'Patrick Hand',cursive; font-size:3.5rem; color:#0d1f12; line-height:1; }
+.lv15-rest { font-family:'Patrick Hand',cursive; font-size:0.65rem; color:rgba(0,0,0,0.55); line-height:1.35; }
+
+/* ══════════════════════════════
+   LOGO VARIANTEN P–X
+══════════════════════════════ */
+
+/* P – Italiana ultra-elegant */
+.lv16 { display:flex; align-items:baseline; gap:10px; }
+.lv16-zaema { font-family:'Italiana',serif; font-size:2.2rem; color:#fff; letter-spacing:0.08em; }
+.lv16-zahl { display:flex; align-items:baseline; gap:3px; }
+.lv16-2 { font-family:'Italiana',serif; font-size:4rem; color:var(--gold); line-height:1; }
+.lv16-rest { font-family:'Italiana',serif; font-size:0.7rem; color:rgba(255,255,255,0.5); line-height:1.35; }
+
+/* Q – Yeseva One vintage */
+.lv17 { text-align:center; }
+.lv17-zaema { font-family:'Yeseva One',serif; font-size:2rem; color:var(--green-dark); display:block; }
+.lv17-bot { display:flex; align-items:baseline; justify-content:center; gap:4px; }
+.lv17-2 { font-family:'Yeseva One',serif; font-size:3.5rem; color:var(--green-dark); line-height:1; }
+.lv17-rest { font-family:'Yeseva One',serif; font-size:0.75rem; color:var(--text-mid); }
+
+/* R – Rozha One kräftig */
+.lv18 { display:flex; align-items:center; gap:12px; }
+.lv18-2 { font-family:'Rozha One',serif; font-size:5rem; color:#0d1f12; line-height:1; }
+.lv18-right { display:flex; flex-direction:column; }
+.lv18-zaema { font-family:'Rozha One',serif; font-size:1.2rem; color:#0d1f12; letter-spacing:0.06em; }
+.lv18-rest { font-family:'Rozha One',serif; font-size:0.62rem; color:rgba(0,0,0,0.5); }
+
+/* S – Fjalla One kompakt */
+.lv19 { display:flex; flex-direction:column; align-items:center; gap:0; line-height:1; }
+.lv19-top { font-family:'Fjalla One',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.45); letter-spacing:0.5em; }
+.lv19-2 { font-family:'Fjalla One',sans-serif; font-size:5rem; color:var(--gold); line-height:0.9; }
+.lv19-bot { font-family:'Fjalla One',sans-serif; font-size:0.65rem; color:rgba(255,255,255,0.45); letter-spacing:0.3em; }
+
+/* T – Josefin + Bebas Kontrast */
+.lv20 { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.lv20-zaema { font-family:'Josefin Sans',sans-serif; font-weight:100; font-size:0.9rem; color:rgba(255,255,255,0.5); letter-spacing:0.55em; }
+.lv20-2 { font-family:'Bebas Neue',sans-serif; font-size:5rem; color:var(--gold); line-height:1; }
+.lv20-rest { font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.55rem; color:rgba(255,255,255,0.4); letter-spacing:0.28em; }
+
+/* U – Cinzel + Cormorant */
+.lv21 { display:flex; align-items:center; gap:14px; }
+.lv21-2 { font-family:'Cinzel',serif; font-weight:900; font-size:4.5rem; color:var(--green-dark); line-height:1; }
+.lv21-right { display:flex; flex-direction:column; border-left:1px solid rgba(45,96,64,0.3); padding-left:12px; }
+.lv21-zaema { font-family:'Cinzel',serif; font-weight:700; font-size:0.8rem; color:var(--green-dark); letter-spacing:0.2em; }
+.lv21-rest { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.85rem; color:var(--text-mid); }
+
+/* V – Italiana gestapelt */
+.lv22 { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.lv22-zaema { font-family:'Italiana',serif; font-size:1.8rem; color:#fff; letter-spacing:0.12em; }
+.lv22-line { width:50px; height:1px; background:var(--gold); }
+.lv22-2 { font-family:'Italiana',serif; font-size:4rem; color:var(--gold); line-height:1; }
+.lv22-rest { font-family:'Italiana',serif; font-size:0.65rem; color:rgba(255,255,255,0.45); letter-spacing:0.2em; }
+
+/* W – Bebas komprimiert */
+.lv23 { display:flex; flex-direction:column; align-items:center; line-height:0.95; }
+.lv23-line1 { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:rgba(255,255,255,0.55); letter-spacing:0.4em; }
+.lv23-line2 { font-family:'Bebas Neue',sans-serif; font-size:3.2rem; color:var(--gold); letter-spacing:0.05em; }
+.lv23-line3 { font-family:'Bebas Neue',sans-serif; font-size:1.9rem; color:#fff; letter-spacing:0.3em; }
+
+/* X – Cormorant hauchzart gestapelt */
+.lv24 { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.lv24-zaema { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:2.8rem; color:var(--green-dark); line-height:1; }
+.lv24-zahl { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:1rem; color:var(--text-mid); letter-spacing:0.15em; }
+
+/* ══════════════════════════════
+   AKTUELLES / KONZERTE GRID
+══════════════════════════════ */
+.aktuelles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.aktuelles-grid .news-card-img {
+  aspect-ratio: 3/2;
+}
+@media (max-width: 900px) {
+  .aktuelles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .aktuelles-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════
+   KONZERTE – JAHRES-GRUPPEN
+══════════════════════════════ */
+.konzert-jahr-block {
+  margin-bottom: 52px;
+}
+.konzert-jahr-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 700;
+  color: var(--green-dark);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  display: inline-block;
+}

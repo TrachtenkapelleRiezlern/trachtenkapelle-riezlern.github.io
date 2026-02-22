@@ -12,12 +12,14 @@ on:
     paths:
       - 'data/termine.xlsx'
       - 'Aktuelles/**'
+      - 'Konzerte/**'
       - 'Termine/**'
       - 'images/gallery/alben/**'
       - 'python_scripts/sync_termine_from_xlsx.py'
       - 'python_scripts/build_termine.py'
       - 'python_scripts/build_aktuelles.py'
       - 'python_scripts/build_alben.py'
+      - 'python_scripts/build_konzerte.py'
 
 jobs:
   sync:
@@ -49,6 +51,10 @@ jobs:
       - name: Aktuelles index bauen
         run: python3 python_scripts/build_aktuelles.py
 
+      # Scannt Konzerte/-Ordner und schreibt Konzerte/index.json
+      - name: Konzerte index bauen
+        run: python3 python_scripts/build_konzerte.py
+
       # Scannt images/gallery/alben/*/ und schreibt je ein index.json
       - name: Album-Indizes bauen
         run: python3 python_scripts/build_alben.py
@@ -60,7 +66,9 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Termine/
           git add Aktuelles/index.json
+          git add Konzerte/index.json
           git add images/gallery/alben/*/index.json
+          git add images/gallery/alben/index.json
           if git diff --staged --quiet; then
             echo "Keine Änderungen – nichts zu committen."
           else
