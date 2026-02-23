@@ -10,12 +10,12 @@ on:
     branches:
       - main
     paths:
-      - 'data/termine.xlsx'
+      - 'data/termine.csv'
       - 'Aktuelles/**'
       - 'Konzerte/**'
       - 'Termine/**'
       - 'images/gallery/alben/**'
-      - 'python_scripts/sync_termine_from_xlsx.py'
+      - 'python_scripts/sync_termine_from_csv.py'
       - 'python_scripts/build_termine.py'
       - 'python_scripts/build_aktuelles.py'
       - 'python_scripts/build_alben.py'
@@ -37,11 +37,11 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install openpyxl
+        run: 
 
-      # Liest data/termine.xlsx und schreibt Termine/*/meta.json
+      # Liest data/termine.csv und schreibt Termine/*/meta.json
       - name: Termine aus Excel synchronisieren
-        run: python3 python_scripts/sync_termine_from_xlsx.py --file data/termine.xlsx
+        run: python3 python_scripts/sync_termine_from_csv.py --file data/termine.csv
 
       # Scannt Termine/-Ordner und schreibt Termine/index.json
       - name: Termine index bauen

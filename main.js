@@ -55,6 +55,7 @@ function initSlideshow() {
 // ── ACTIVE NAV ───────────────────────────────────────────────────────────────
 function initActiveNav() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
+
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
     const href = a.getAttribute('href') || '';
     // Anchor-only links (z.B. index.html#instagram) nicht als aktiv markieren
@@ -334,56 +335,122 @@ async function initAktuelles() {
 
 // ── ARTIKEL PAGE ──────────────────────────────────────────────────────────────
 function initArtikelPage() {
-  const content  = document.getElementById('artikelContent');
-  const titelEl  = document.getElementById('artikelTitel');
-  const datumEl  = document.getElementById('artikelDatum');
-  const katEl    = document.getElementById('artikelKategorie');
+  const content = document.getElementById('artikelContent');
+  const titelEl = document.getElementById('artikelTitel');
+  const datumEl = document.getElementById('artikelDatum');
+  const katEl   = document.getElementById('artikelKategorie');
   if (!content) return;
 
   const params = new URLSearchParams(location.search);
   const id     = params.get('id');
   const base   = params.get('base') || 'Aktuelles';
 
-  if (!id) {
-    content.innerHTML = '<p>Kein Beitrag angegeben.</p>';
-    return;
+  if (!id) { content.innerHTML = '<p>Kein Beitrag angegeben.</p>'; return; }
+
+  // Lightbox state
+  let lbImages = [], lbIndex = 0;
+
+  window.openLb = function(idx) {
+    lbIndex = idx;
+    const lb = document.getElementById('artikel-lightbox');
+    document.getElementById('artikel-lb-img').src = lbImages[idx];
+    document.getElementById('artikel-lb-counter').textContent = (idx+1) + ' / ' + lbImages.length;
+    lb.classList.add('lb-open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeLb = function() {
+    document.getElementById('artikel-lightbox').classList.remove('lb-open');
+    document.body.style.overflow = '';
+  };
+  window.lbNav = function(dir) {
+    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+    document.getElementById('artikel-lb-img').src = lbImages[lbIndex];
+    document.getElementById('artikel-lb-counter').textContent = (lbIndex+1) + ' / ' + lbImages.length;
+  };
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('artikel-lightbox')?.classList.contains('lb-open')) return;
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft')  lbNav(-1);
+    if (e.key === 'Escape') closeLb();
+  });
+
+  // Inject lightbox HTML once
+  if (!document.getElementById('artikel-lightbox')) {
+    const lb = document.createElement('div');
+    lb.id = 'artikel-lightbox';
+    lb.className = '';
+    lb.style.cssText = 'position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;';
+    lb.innerHTML = `
+      <div id="artikel-lb-backdrop" onclick="closeLb()" style="position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.3s;"></div>
+      <button onclick="lbNav(-1)" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:2rem;padding:12px 18px;border-radius:8px;cursor:pointer;z-index:2;">&#8249;</button>
+      <img id="artikel-lb-img" src="" style="position:relative;z-index:2;max-width:92vw;max-height:92vh;object-fit:contain;border-radius:4px;transform:scale(0.92);transition:transform 0.25s;cursor:zoom-out;" onclick="closeLb()" />
+      <button onclick="lbNav(1)" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:2rem;padding:12px 18px;border-radius:8px;cursor:pointer;z-index:2;">&#8250;</button>
+      <button onclick="closeLb()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;z-index:2;opacity:0.7;">&#10005;</button>
+      <div id="artikel-lb-counter" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.5);font-size:0.8rem;z-index:2;"></div>`;
+    document.body.appendChild(lb);
+
+    // Make closeLb/lbNav accessible from inline onclick
+    window.closeLb = closeLb;
+    window.lbNav = lbNav;
+
+    // CSS for open state via style tag
+    const style = document.createElement('style');
+    style.textContent = `
+      #artikel-lightbox.lb-open { opacity:1 !important; pointer-events:all !important; }
+      #artikel-lightbox.lb-open #artikel-lb-backdrop { background:rgba(0,0,0,0.92) !important; }
+      #artikel-lightbox.lb-open #artikel-lb-img { transform:scale(1) !important; }
+    `;
+    document.head.appendChild(style);
   }
 
   fetch(`${base}/${id}/meta.json`)
-    .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
     .then(data => {
-      // Title & meta
       document.title = (data.titel || id) + ' – Trachtenkapelle Riezlern';
-      if (titelEl)  titelEl.textContent  = data.titel || id;
-      if (datumEl)  datumEl.textContent  = data.datum ? formatDateDisplay(data.datum) : '';
-      if (katEl)    katEl.textContent    = KATEGORIE_LABEL[data.kategorie] || data.kategorie || 'Aktuelles';
+      if (titelEl) titelEl.textContent = data.titel || id;
+      if (datumEl) datumEl.textContent = data.datum ? formatDateDisplay(data.datum) : '';
+      if (katEl)   katEl.textContent   = KATEGORIE_LABEL[data.kategorie] || data.kategorie || 'Aktuelles';
 
-      // Hero image
       let html = '';
+
+      // Titelbild – natürliche Größe, kein Crop
       if (data.titelbild) {
-        html += `<img src="${base}/${id}/${data.titelbild}" alt="${data.titel || ''}"
-                  style="width:100%;max-height:460px;object-fit:cover;border-radius:12px;margin-bottom:32px;" loading="lazy" />`;
+        const src = `${base}/${id}/${data.titelbild}`;
+        html += `<img src="${src}" alt="${data.titel || ''}"
+          style="width:100%;height:auto;border-radius:12px;margin-bottom:32px;display:block;cursor:zoom-in;"
+          loading="lazy" onclick="artikelLbOpen('${src}')" />`;
       }
 
-      // Full text: use "inhalt" field if present, else fall back to "beschreibung"
+      // Text
       const text = data.inhalt || data.beschreibung || '';
-      if (text) {
-        html += `<div class="artikel-text">${text}</div>`;
-      } else {
-        html += '<p style="color:var(--text-mid);font-style:italic;">Kein Inhalt vorhanden.</p>';
-      }
+      html += text
+        ? `<div class="artikel-text">${text}</div>`
+        : '<p style="color:var(--text-mid);font-style:italic;">Kein Inhalt vorhanden.</p>';
 
-      // Gallery
+      // Galerie – natürliche Proportionen, klickbar
       if (data.bilder && data.bilder.length) {
-        html += '<div class="gallery-grid" style="margin-top:40px;">';
-        data.bilder.forEach(img => {
-          html += `<div class="g-item">
-            <img src="${base}/${id}/${img}" alt="" loading="lazy" />
-            <div class="g-overlay"></div>
+        lbImages = data.bilder.map(f => `${base}/${id}/${f}`);
+        // Include titelbild in lightbox if present
+        if (data.titelbild) lbImages = [`${base}/${id}/${data.titelbild}`, ...lbImages];
+
+        html += '<div class="artikel-galerie" style="margin-top:40px;">';
+        data.bilder.forEach((img, i) => {
+          const src = `${base}/${id}/${img}`;
+          const lbIdx = data.titelbild ? i + 1 : i;
+          html += `<div class="artikel-galerie-item" onclick="openLb(${lbIdx})" style="cursor:zoom-in;">
+            <img src="${src}" alt="" loading="lazy" style="width:100%;height:auto;display:block;border-radius:8px;" />
           </div>`;
         });
         html += '</div>';
+      } else if (data.titelbild) {
+        lbImages = [`${base}/${id}/${data.titelbild}`];
       }
+
+      // titelbild lightbox helper
+      window.artikelLbOpen = function(src) {
+        const idx = lbImages.indexOf(src);
+        openLb(idx >= 0 ? idx : 0);
+      };
 
       content.innerHTML = html;
     })
@@ -476,6 +543,7 @@ const FOOTER_HTML = `<!-- ══════════════════
 </footer>`;
 
 function injectHeaderFooter() {
+
   const headerEl = document.getElementById('site-header');
   const footerEl = document.getElementById('site-footer');
   if (headerEl) headerEl.outerHTML = HEADER_HTML;

@@ -1,77 +1,63 @@
-# Termine – Ordnerstruktur
+# Termine
 
-Jeder Termin hat einen eigenen Unterordner. Die Website liest diese Ordner automatisch
-und zeigt die Termine auf der Homepage und der Termine-Seite an.
-
-## Ordner-Namensschema
-
-```
-Termine/
-├── JJJJ_MM_TT_Kurzname/
-│   ├── meta.json        ← Pflicht: alle Metadaten
-│   └── bild.jpg         ← Optional: Bilder für den Termin
-```
-
-**Beispiele:**
-```
-Termine/2026_04_25_Jahreskonzert/
-Termine/2026_08_15_TdB/
-Termine/2026_11_29_Adventskonzert/
-```
-
-Das Datum im Ordnernamen (`JJJJ_MM_TT`) bestimmt die **Sortierung** der Termine.
+Termine können direkt als Ordner gepflegt werden, oder bequem über die CSV-Datei `data/termine.csv`.
 
 ---
 
-## meta.json – Alle Felder
+## Weg 1 – Manuell (Ordner anlegen)
+
+**1. Ordner anlegen** – Namensschema: `JJJJ_MM_TT_Titel`
+
+```
+2025_06_28_Geburtstagsfest/
+  meta.json
+```
+
+**2. `meta.json` erstellen:**
 
 ```json
 {
-  "titel":       "Frühjahrskonzert 2026",   // Pflicht – Anzeigename
-  "datum":       "2026-03-15",              // Pflicht – ISO-Format JJJJ-MM-TT
-  "uhrzeit":     "19:30",                  // Optional – "HH:MM", null = Ganztags
-  "ort":         "Turnhalle Riezlern",     // Optional
-  "adresse":     "Riezlern, Kleinwalsertal", // Optional
-  "kategorie":   "konzert",               // Optional – siehe Kategorien unten
-  "beschreibung": "Beschreibungstext …",  // Optional
-  "bilder":      ["foto1.jpg", "foto2.jpg"], // Optional – Dateinamen im selben Ordner
-  "eintritt":    "frei",                  // Optional – "frei", "5 Euro", null
-  "featured":    true                     // Optional – auf Homepage hervorheben
+  "titel": "Geburtstagsfest",
+  "datum": "2025-06-28",
+  "kategorie": "feste",
+  "ort": "Riezlern",
+  "beschreibung": "210 Jahre Trachtenkapelle Riezlern"
 }
 ```
 
-### Kategorien
-
-| Wert          | Anzeige          |
-|---------------|------------------|
-| `konzert`     | Konzert          |
-| `prozession`  | Prozession       |
-| `fest`        | Fest             |
-| `auswaerts`   | Auswärtsspiel    |
-| `sonstiges`   | Sonstiges        |
+**3. Pushen.** Fertig.
 
 ---
 
-## Neuen Termin anlegen
+## Weg 2 – CSV
 
-1. Ordner anlegen: `Termine/JJJJ_MM_TT_Kurzname/`
-2. `meta.json` mit den gewünschten Feldern erstellen
-3. Optional: Bilder in denselben Ordner legen und in `"bilder"` eintragen
-4. Fertig – die Website erkennt den Termin automatisch beim nächsten Laden
+`data/termine.csv` öffnen, neue Zeile einfüllen, speichern und pushen.
 
-## Termin entfernen
+| Spalte | Beispiel | Pflicht |
+|--------|---------|---------|
+| Datum | 28.06.2026 | ✓ |
+| Titel | Geburtstagsfest | ✓ |
+| Kategorie | feste | ✓ |
+| Ort | Riezlern | |
+| Beschreibung | Freitext | |
+| Öffentlich | Ja | ✓ |
 
-Einfach den gesamten Ordner löschen.
+> Nur Zeilen mit **„Ja"** in der Spalte „Öffentlich" erscheinen auf der Website.
 
 ---
 
-## Technischer Hintergrund
+## Felder
 
-Die Datei `Termine/index.json` wird von `build_termine.py` automatisch generiert
-und enthält eine Liste aller Termin-Ordner. Die Website lädt diese Datei und
-holt dann die einzelnen `meta.json`-Dateien.
+| Feld | Pflicht | Beschreibung |
+|------|---------|-------------|
+| `titel` | ✓ | Name des Termins |
+| `datum` | ✓ | Format `JJJJ-MM-TT` |
+| `kategorie` | ✓ | `konzerte` · `kirchliches` · `feste` · `sonstiges` |
+| `ort` | | Veranstaltungsort |
+| `beschreibung` | | Kurze Zusatzinfo |
 
-Zum Aktualisieren nach Änderungen:
-```bash
-python3 build_termine.py
-```
+## Termin löschen
+Ordner löschen und pushen.
+
+## Termin bearbeiten
+`meta.json` direkt in GitHub editieren und speichern.
