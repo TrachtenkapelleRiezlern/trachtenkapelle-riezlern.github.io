@@ -77,7 +77,7 @@ def sync(csv_path, dry_run=False):
     TERMINE_DIR.mkdir(parents=True, exist_ok=True)
 
     with open(csv_path, encoding='utf-8-sig') as f:
-        reader = csv.DictReader(f)
+        reader = csv.DictReader(f, delimiter=';')
         # Normalize headers to lowercase
         rows = []
         for row in reader:
