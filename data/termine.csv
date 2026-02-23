@@ -1,16 +1,16 @@
-﻿Orchester;Veranstaltung;Start Time;Tage;Stunden;End Time;Location;Title;Description;Öffentlich;Beschreibung;Eintritt;Kategorie
-TK;Erstkommunion;19.04.2026 10:00;;2;19.04. 12:00;Kirche Riezlern;Erstkommunion;;Ja;Testbeschreibung;frei;krichliches
-TK;Jahreskonzert;25.04.2026 20:00;;2;25.04. 22:00;Walserhaus;Jahreskonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Firmung;14.06.2026 10:00;;2;14.06. 12:00;Kirche Riezlern;Firmung;;Ja;Testbeschreibung;frei;krichliches
-TK;210 Jahre TK Riezlern;27.06.2026 10:00;;6;27.06. 16:00;Gemeindeplatz oder Kurpark;210 Jahre TK Riezlern;;Ja;Testbeschreibung;frei;feste
-TK;Sommerkonzert;09.07.2026 20:00;;1;09.07. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;23.07.2026 20:00;;1;23.07. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;06.08.2026 20:00;;1;06.08. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Tag der Blasmusik;15.08.2026 07:00;;11;15.08. 18:00;;Tag der Blasmusik;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;20.08.2026 20:00;;1;20.08. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Musikfest Oberstdorf;23.08.2026 10:00;;6;23.08. 16:00;Oberstdorf;TK Riezlern @ Musikfest Oberstdorf;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;03.09.2026 20:00;;1;03.09. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;17.09.2026 20:00;;1;17.09. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;01.10.2026 20:00;;1;01.10. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Kriegergedenken;18.10.2026 10:00;;2;18.10. 12:00;Kirche Riezlern;Kriegergedenken;;Ja;Testbeschreibung;frei;kirchliches
-TK;Testtermin;19.10.2026 10:00;;1;;Walserhaus;Testtermin;;Ja;Testbeschreibung;frei;feste
+﻿Orchester;Veranstaltung;Datum;Tage;Stunden;End Time;Location;Titel;Description;Öffentlich;Beschreibung;Eintritt;Kategorie
+TK;Erstkommunion;19.04.2026;;2;19.04. 12:00;Kirche Riezlern;Erstkommunion;;Ja;Testbeschreibung;frei;kirchliches
+TK;Jahreskonzert;25.04.2026;;2;25.04. 22:00;Walserhaus;Jahreskonzert;;Ja;Testbeschreibung;frei;konzerte
+TK;Firmung;14.06.2026;;2;14.06. 12:00;Kirche Riezlern;Firmung;;Ja;Testbeschreibung;frei;kirchliches
+TK;210 Jahre TK Riezlern;27.06.2026;;6;27.06. 16:00;Gemeindeplatz oder Kurpark;210 Jahre TK Riezlern;;Ja;Testbeschreibung;frei;feste
+TK;Sommerkonzert;09.07.2026;;1;09.07. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
+TK;Sommerkonzert;23.07.2026;;1;23.07. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
+TK;Sommerkonzert;06.08.2026;;1;06.08. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
+TK;Tag der Blasmusik;15.08.2026;;11;15.08. 18:00;;Tag der Blasmusik;;Ja;Testbeschreibung;frei;konzerte
+TK;Sommerkonzert;20.08.2026;;1;20.08. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
+TK;Musikfest Oberstdorf;23.08.2026;;6;23.08. 16:00;Oberstdorf;TK Riezlern @ Musikfest Oberstdorf;;Ja;Testbeschreibung;frei;konzerte
+TK;Sommerkonzert;03.09.2026;;1;03.09. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
+TK;Sommerkonzert;17.09.2026;;1;17.09. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
+TK;Sommerkonzert;01.10.2026;;1;01.10. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
+TK;Kriegergedenken;18.10.2026;;2;18.10. 12:00;Kirche Riezlern;Kriegergedenken;;Ja;Testbeschreibung;frei;kirchliches
+TK;Testtermin;19.10.2026;;1;;Walserhaus;Testtermin;;Ja;Testbeschreibung;frei;feste

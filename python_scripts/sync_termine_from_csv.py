@@ -50,7 +50,6 @@ def slugify(text):
 
 def parse_datum(raw):
     raw = raw.strip()
-    #print(raw.strip())
     for fmt in ('%d.%m.%Y', '%Y-%m-%d', '%d.%m.%y'):
         try:
             return datetime.strptime(raw, fmt).strftime('%Y-%m-%d')
