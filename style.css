@@ -159,7 +159,7 @@ nav {
 
 .hero-sub {
   color: rgba(255,255,255,0.72); font-size: 0.85rem; font-weight: 300;
-  letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 12px;
+  letter-spacing: 0.26em; text-transform: uppercase; margin: 12px 0;
 }
 .hero-tagline {
   font-family: 'Playfair Display', serif; font-style: italic;
@@ -181,10 +181,14 @@ nav {
   display: flex; flex-direction: column; justify-content: center;
   padding: 18px 24px; border-right: 1px solid rgba(255,255,255,0.1);
   min-width: 150px; flex-shrink: 0;
+  text-decoration: none; transition: background 0.2s;
 }
+.hero-termine-label:hover,
+.hero-termine-label:focus-visible { background: rgba(255,255,255,0.04); outline: none; }
 .ht-lbl { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; }
 .ht-alle { font-size: 0.7rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
-.ht-alle:hover { color: var(--gold-light); }
+.hero-termine-label:hover .ht-alle,
+.hero-termine-label:focus-visible .ht-alle { color: var(--gold-light); }
 
 .hero-termine-list { display: flex; flex: 1; overflow: hidden; }
 .hero-termine-list.loading { align-items: center; padding-left: 24px; }
@@ -458,6 +462,18 @@ section > .kapellmeisterin-section { max-width: 100%; }
   font-size: 0.76rem; color: var(--green-mid); font-weight: 700; margin-top: 6px;
 }
 
+/* ══════════════════════════════
+   KONTAKT PAGE
+══════════════════════════════ */
+.kontakt-layout {
+  max-width: 800px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+.kontakt-form {
+  display: flex; flex-direction: column; gap: 16px;
+}
+
 .termine-empty {
   padding: 60px 0; text-align: center; color: var(--text-mid); font-size: 0.9rem;
 }
@@ -540,6 +556,11 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
 
   .termin-card { grid-template-columns: 64px 1fr; }
   .tc-badge { display: none; }
+
+  .kontakt-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
 }
 
 /* ══════════════════════════════

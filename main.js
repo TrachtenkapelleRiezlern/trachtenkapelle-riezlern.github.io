@@ -144,7 +144,7 @@ function renderHeroTermine(termine) {
     el.className = 'hero-termin';
     el.innerHTML = `
       <div class="ht-date"><div class="ht-day">${day}</div><div class="ht-month">${month}</div></div>
-      <div class="ht-divider"></div>
+      <!-- <div class="ht-divider"></div> -->
       <div class="ht-info">
         <div class="ht-title">${t.titel}</div>
         <div class="ht-details">${t.ort ? t.ort + ' · ' : ''}${time}</div>
@@ -477,7 +477,8 @@ const HEADER_HTML = `<!-- ══════════════════
     <li><a href="index.html">Startseite</a></li>
     <li><a href="verein.html">Verein</a></li>
     <li><a href="termine.html">Termine</a></li>
-    <li><a href="aktuelles.html">Aktuelles</a></li>
+    <!-- TODO brauchen wir aktuelles? -->
+    <!-- <li><a href="aktuelles.html">Aktuelles</a></li> -->
     <li><a href="konzerte.html">Konzerte</a></li>
     <li><a href="bilder.html">Bilder &amp; Videos</a></li>
     <li><a href="index.html#instagram">Instagram</a></li>
@@ -492,7 +493,8 @@ const HEADER_HTML = `<!-- ══════════════════
   <a href="index.html">Startseite</a>
   <a href="verein.html">Verein</a>
   <a href="termine.html">Termine</a>
-  <a href="aktuelles.html">Aktuelles</a>
+    <!-- TODO brauchen wir aktuelles? -->
+    <!-- <a href="aktuelles.html">Aktuelles</a> -->
   <a href="konzerte.html">Konzerte</a>
   <a href="bilder.html">Bilder &amp; Videos</a>
   <a href="index.html#instagram">Instagram</a>
@@ -529,7 +531,8 @@ const FOOTER_HTML = `<!-- ══════════════════
       <h4>Mehr</h4>
       <ul>
         <li><a href="termine.html">Termine</a></li>
-        <li><a href="aktuelles.html">Aktuelles</a></li>
+        <!-- TODO brauchen wir aktuelles? -->
+        <!-- <li><a href="aktuelles.html">Aktuelles</a></li> -->
         <li><a href="bilder.html">Bilder &amp; Videos</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="impressum.html">Impressum</a></li>

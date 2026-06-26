@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/svg+xml" href="images/logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="images/logo.png" />
 </head>
 <body>
 <div id="site-header"></div>
@@ -27,9 +27,9 @@
   <div class="hero-content">
     <div class="hero-text-backdrop">
       <div class="hero-eyebrow">Seit 1816 · Riezlern, Kleinwalsertal</div>
-      <h1><span class="zaema-font">Zääma</span><br/><span class="zaema-font" style="font-size:0.65em;">Musiziira</span></h1>
+      <h1><span class="zaema-font">Zääma</span><span class="zaema-font" style="font-size:0.65em; display: block;">Musiziira</span></h1>
       <p class="hero-sub">Trachtenkapelle Riezlern</p>
-      <p class="hero-tagline">Die Musik ist die einzige Sprache ohne Worte.</p>
+      <!-- <p class="hero-tagline">Die Musik ist die einzige Sprache ohne Worte.</p> -->
       <a href="geburtstagsfest.html" class="hero-birthday-banner">
         <div class="hbb-inner">
           <div class="hbb-gbf-title">
@@ -45,19 +45,19 @@
         </div>
       </a>
 
-      <div class="btn-group">
+      <!-- <div class="btn-group">
         <a href="termine.html" class="btn btn-primary">Unsere Termine</a>
         <a href="#instagram" class="btn btn-outline">Instagram</a>
-      </div>
+      </div> -->
     </div>
   </div>
 
 
   <div class="hero-termine">
-    <div class="hero-termine-label">
+    <a href="termine.html" class="hero-termine-label">
       <span class="ht-lbl">Nächste Termine</span>
-      <a href="termine.html" class="ht-alle">Alle →</a>
-    </div>
+      <span class="ht-alle">Alle →</span>
+    </a>
     <div class="hero-termine-list loading" id="heroTermineList">
       <div class="hero-termine-loading">Termine werden geladen …</div>
     </div>
@@ -101,7 +101,8 @@
 </section>
 
 <!-- AKTUELLES – dynamisch via main.js aus Aktuelles/index.json -->
-<section class="news-section">
+<!-- TODO Beibehalten? -->
+<!-- <section class="news-section">
   <div class="section-header">
     <div>
       <div class="section-label">Neuigkeiten</div>
@@ -109,14 +110,14 @@
     </div>
     <a href="aktuelles.html" class="text-link">Alle Beiträge →</a>
   </div>
-  <div class="news-grid" id="newsGrid">
+  <div class="news-grid" id="newsGrid"> -->
     <!-- Wird von main.js befüllt -->
-    <div class="news-card featured" style="opacity:0.4;pointer-events:none;">
+    <!-- <div class="news-card featured" style="opacity:0.4;pointer-events:none;">
       <div class="news-card-img" style="background:var(--green-mid);aspect-ratio:3/2;"></div>
       <div class="news-card-body"><div class="news-card-date">Wird geladen …</div></div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- GALERIE -->
 <section class="gallery-section">
@@ -128,43 +129,43 @@
     <a href="bilder.html" class="text-link">Alle Alben →</a>
   </div>
   <div class="gallery-grid">
-    <a href="gallery.html?album=bmf_donnerstag" class="g-item g-item-album">
-      <img src="images/gallery/alben/bmf_donnerstag/titel.jpg" alt="BMF – Donnerstag" loading="lazy"
+    <a href="gallery.html?album=2016_BMF_Donnerstag" class="g-item g-item-album">
+      <img src="images/gallery/alben/2016_BMF_Donnerstag/titel.jpg" alt="BMF – Donnerstag" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">BMF – Donnerstag</div>
       </div>
     </a>
-    <a href="gallery.html?album=bmf_freitag" class="g-item g-item-album">
-      <img src="images/gallery/alben/bmf_freitag/titel.jpg" alt="BMF – Freitag" loading="lazy"
+    <a href="gallery.html?album=2016_BMF_Freitag" class="g-item g-item-album">
+      <img src="images/gallery/alben/2016_BMF_Freitag/titel.jpg" alt="BMF – Freitag" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">BMF – Freitag</div>
       </div>
     </a>
-    <a href="gallery.html?album=bmf_samstag" class="g-item g-item-album">
-      <img src="images/gallery/alben/bmf_samstag/titel.jpg" alt="BMF – Samstag" loading="lazy"
+    <a href="gallery.html?album=2016_BMF_Samstag" class="g-item g-item-album">
+      <img src="images/gallery/alben/2016_BMF_Samstag/titel.jpg" alt="BMF – Samstag" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">BMF – Samstag</div>
       </div>
     </a>
-    <a href="gallery.html?album=bmf_sonntag" class="g-item g-item-album">
-      <img src="images/gallery/alben/bmf_sonntag/titel.jpg" alt="BMF – Sonntag" loading="lazy"
+    <a href="gallery.html?album=2016_BMF_Sonntag" class="g-item g-item-album">
+      <img src="images/gallery/alben/2016_BMF_Sonntag/titel.jpg" alt="BMF – Sonntag" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">BMF – Sonntag</div>
       </div>
     </a>
-    <a href="gallery.html?album=fotoshooting_kanzelwand" class="g-item g-item-album">
-      <img src="images/gallery/alben/fotoshooting_kanzelwand/titel.jpg" alt="Fotoshooting Kanzelwand" loading="lazy"
+    <a href="gallery.html?album=2023_Fotoshooting_Kanzelwand" class="g-item g-item-album">
+      <img src="images/gallery/alben/2023_Fotoshooting_Kanzelwand/titel.jpg" alt="Fotoshooting Kanzelwand" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">Fotoshooting Kanzelwand</div>
       </div>
     </a>
-    <a href="gallery.html?album=sommerkonzerte_2020" class="g-item g-item-album">
-      <img src="images/gallery/alben/sommerkonzerte_2020/titel.jpg" alt="Sommerkonzerte 2020" loading="lazy"
+    <a href="gallery.html?album=2020_Sommerkonzerte" class="g-item g-item-album">
+      <img src="images/gallery/alben/2020_Sommerkonzerte/titel.jpg" alt="Sommerkonzerte 2020" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">Sommerkonzerte 2020</div>
