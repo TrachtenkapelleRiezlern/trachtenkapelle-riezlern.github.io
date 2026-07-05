@@ -55,12 +55,13 @@ function initSlideshow() {
 // ── ACTIVE NAV ───────────────────────────────────────────────────────────────
 function initActiveNav() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
+  const navPage = page === 'geschichte.html' ? 'verein.html' : page;
 
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
     const href = a.getAttribute('href') || '';
     // Anchor-only links (z.B. index.html#instagram) nicht als aktiv markieren
     const hrefPage = href.split('#')[0];
-    if (hrefPage && hrefPage !== '' && page === hrefPage && !href.includes('#')) a.classList.add('active');
+    if (hrefPage && hrefPage !== '' && navPage === hrefPage && !href.includes('#')) a.classList.add('active');
   });
 }
 
@@ -501,11 +502,11 @@ const HEADER_HTML = `<!-- ══════════════════
   <a href="kontakt.html" class="m-btn">Kontakt</a>
 </div>
 
-<a href="geburtstagsfest.html" class="nav-birthday-pill" id="birthdayPill" aria-label="ZÄÄMA 2hundertzehn – Unser Geburtstagsfest">
+<!-- <a href="geburtstagsfest.html" class="nav-birthday-pill" id="birthdayPill" aria-label="ZÄÄMA 2hundertzehn – Unser Geburtstagsfest">
   <span class="nbp-zaema">ZÄÄMA</span>
   <span class="nbp-zahl"><span class="nbp-2">2</span><span class="nbp-rest">hundert<br/>zehn</span></span>
   <span class="nbp-date">28. Juni 2026</span>
-</a>`;
+</a> -->`;
 const FOOTER_HTML = `<!-- ════════════════════════════════
    _footer.html  — include in every page
    ════════════════════════════════ -->

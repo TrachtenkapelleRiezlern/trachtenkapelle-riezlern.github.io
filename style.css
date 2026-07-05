@@ -494,6 +494,226 @@ section > .kapellmeisterin-section { max-width: 100%; }
 .verein-section { background: var(--white); }
 .verein-text { max-width: 720px; }
 .verein-text p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 18px; }
+.history-teaser { background: var(--cream); }
+.history-teaser .about-img-wrap img {
+  aspect-ratio: 3 / 2;
+  object-position: center;
+}
+
+/* ══════════════════════════════
+   VERGANGENHEIT PAGE
+══════════════════════════════ */
+.history-page-hero { height: 430px; }
+.history-page-hero img { object-position: center 42%; opacity: 0.5; }
+.history-page-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(12,30,17,0.18), rgba(12,30,17,0.72));
+}
+.history-page-hero .page-hero-content { z-index: 2; }
+.history-intro-section { background: var(--white); }
+.history-intro {
+  max-width: 780px;
+  text-align: center;
+}
+.history-intro .artikel-back { display: table; }
+.history-intro .section-title { margin-bottom: 24px; }
+.history-intro .about-text {
+  font-size: 0.96rem;
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.history-timeline-section { background: var(--cream); }
+.history-timeline-header {
+  max-width: 940px;
+  margin-bottom: 48px;
+}
+.history-timeline {
+  display: flex;
+  flex-direction: column;
+  max-width: 940px;
+}
+.history-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 34px;
+  padding-bottom: 48px;
+}
+.history-entry:last-child { padding-bottom: 0; }
+.history-entry::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: -8px;
+  left: 161px;
+  width: 1px;
+  background: rgba(45,96,64,0.2);
+}
+.history-entry:last-child::before { display: none; }
+.history-entry::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 156px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 5px var(--cream);
+}
+.history-year {
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding-top: 4px;
+  text-align: right;
+}
+.history-entry-content {
+  padding-left: 18px;
+}
+.history-entry-content h3 {
+  color: var(--green-dark);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
+.history-entry-content p {
+  color: var(--text-mid);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.history-entry-content p:last-child { margin-bottom: 0; }
+.history-archive-note {
+  margin-top: 54px;
+  margin-left: 202px;
+  padding: 22px 24px;
+  background: rgba(201,168,76,0.1);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.history-archive-note strong {
+  display: block;
+  color: var(--green-dark);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+.history-archive-note p {
+  color: var(--text-mid);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+.history-leadership-section { background: var(--white); }
+.history-leadership-header {
+  max-width: 940px;
+  margin-bottom: 40px;
+}
+.history-leadership-header p {
+  color: var(--text-mid);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+.history-leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.history-leadership-card {
+  overflow: hidden;
+  background: var(--cream);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(26,58,34,0.07);
+}
+.history-leadership-card h3 {
+  padding: 24px 26px;
+  background: var(--green-dark);
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+}
+.history-leadership-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.history-leadership-table th,
+.history-leadership-table td {
+  padding: 11px 18px;
+  border-bottom: 1px solid rgba(26,58,34,0.09);
+  text-align: left;
+}
+.history-leadership-table th {
+  color: var(--green-mid);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.history-leadership-table td {
+  color: var(--text-mid);
+  font-size: 0.84rem;
+}
+.history-leadership-table th:first-child,
+.history-leadership-table td:first-child {
+  width: 36%;
+  white-space: nowrap;
+  color: var(--gold);
+  font-weight: 700;
+}
+.history-leadership-table tbody tr:last-child td { border-bottom: none; }
+.history-leadership-table tbody tr:hover { background: rgba(255,255,255,0.55); }
+.history-closing-section { background: var(--cream); }
+.history-closing {
+  max-width: 720px;
+  text-align: center;
+}
+.history-closing .about-quote {
+  margin: 24px auto 30px;
+  padding: 0;
+  border-left: none;
+}
+
+@media (max-width: 900px) {
+  .history-page-hero { height: 360px; }
+  .history-timeline-header { margin-bottom: 36px; }
+  .history-entry {
+    display: block;
+    padding-left: 28px;
+    padding-bottom: 42px;
+  }
+  .history-entry::before {
+    left: 5px;
+    top: 7px;
+  }
+  .history-entry::after {
+    left: 0;
+    top: 6px;
+  }
+  .history-year {
+    padding-top: 0;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  .history-entry-content { padding-left: 0; }
+  .history-archive-note {
+    margin-top: 42px;
+    margin-left: 0;
+  }
+  .history-leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 440px) {
+  .history-leadership-card h3 { padding: 20px; }
+  .history-leadership-table th,
+  .history-leadership-table td { padding: 10px 12px; }
+  .history-leadership-table td { font-size: 0.8rem; }
+}
 
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
 .team-card {
