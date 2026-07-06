@@ -55,7 +55,10 @@ function initSlideshow() {
 // ── ACTIVE NAV ───────────────────────────────────────────────────────────────
 function initActiveNav() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
-  const navPage = page === 'geschichte.html' ? 'verein.html' : page;
+  const rueckblickePages = ['aktuelles.html', 'konzerte.html', 'bilder.html', 'gallery.html', 'artikel.html'];
+  const navPage = page === 'geschichte.html'
+    ? 'verein.html'
+    : rueckblickePages.includes(page) ? 'rueckblicke.html' : page;
 
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
     const href = a.getAttribute('href') || '';
@@ -271,7 +274,8 @@ function renderAktuellesPage(beitraege) {
     return;
   }
 
-  beitraege.forEach(b => {
+  const limit = Number(grid.dataset.limit) || beitraege.length;
+  beitraege.slice(0, limit).forEach(b => {
     const bildSrc = b.titelbild
       ? `Aktuelles/${b._ordner}/${b.titelbild}`
       : 'images/general/placeholder.jpg';
@@ -290,6 +294,72 @@ function renderAktuellesPage(beitraege) {
       </div>`;
     grid.appendChild(card);
   });
+}
+
+// ── RÜCKBLICKE PAGE ──────────────────────────────────────────────────────────
+function rueckblickAlbumCard(a) {
+  return `
+    <a href="gallery.html?album=${a.id}" class="album-card">
+      <div class="album-thumb-wrap">
+        <img src="images/gallery/alben/${a.id}/titel.jpg" alt="${a.titel}" class="album-thumb" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
+        <div class="album-overlay">
+          <span class="album-overlay-count">${a.anzahl} Fotos</span>
+        </div>
+      </div>
+      <div class="album-info">
+        <div class="album-datum">${a.jahr || ''}</div>
+        <div class="album-titel">${a.titel}</div>
+        <div class="album-count">${a.anzahl} Bilder</div>
+      </div>
+    </a>`;
+}
+
+async function initRueckblicke() {
+  const concertGrid = document.getElementById('rueckblickeKonzerteGrid');
+  const albumGrid = document.getElementById('rueckblickeAlbenGrid');
+  if (!concertGrid && !albumGrid) return;
+
+  if (concertGrid) {
+    try {
+      const res = await fetch('Konzerte/index.json');
+      if (!res.ok) throw new Error('Konzertindex nicht gefunden');
+      const konzerte = await res.json();
+      document.getElementById('rueckblickeKonzerteLoading')?.remove();
+      concertGrid.innerHTML = konzerte.slice(0, 3).map(k => {
+        const bild = k.titelbild
+          ? `<img class="news-card-img" src="Konzerte/${k.ordner}/${k.titelbild}" alt="${k.titel}" loading="lazy" />`
+          : '<div class="news-card-img rueckblicke-card-placeholder">&#127926;</div>';
+        const teaser = (k.beschreibung || '').substring(0, 120);
+        return `
+          <a href="artikel.html?id=${k.ordner}&base=Konzerte" class="news-card">
+            ${bild}
+            <div class="news-card-body">
+              <div class="news-card-date">${k.datum || ''}</div>
+              <h3 class="news-card-title">${k.titel}</h3>
+              ${teaser ? `<p class="news-card-text">${teaser}</p>` : ''}
+            </div>
+          </a>`;
+      }).join('');
+    } catch (err) {
+      document.getElementById('rueckblickeKonzerteLoading')?.remove();
+      concertGrid.innerHTML = '<div class="termine-empty">Konzert-Rückblicke konnten nicht geladen werden.</div>';
+    }
+  }
+
+  if (albumGrid) {
+    try {
+      const res = await fetch('images/gallery/alben/index.json');
+      if (!res.ok) throw new Error('Albumindex nicht gefunden');
+      const alben = await res.json();
+      document.getElementById('rueckblickeAlbenLoading')?.remove();
+      albumGrid.innerHTML = alben.slice(0, 6).map(rueckblickAlbumCard).join('');
+    } catch (err) {
+      document.getElementById('rueckblickeAlbenLoading')?.remove();
+      albumGrid.innerHTML = '<div class="termine-empty">Alben konnten nicht geladen werden.</div>';
+    }
+  }
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
@@ -478,10 +548,7 @@ const HEADER_HTML = `<!-- ══════════════════
     <li><a href="index.html">Startseite</a></li>
     <li><a href="verein.html">Verein</a></li>
     <li><a href="termine.html">Termine</a></li>
-    <!-- TODO brauchen wir aktuelles? -->
-    <!-- <li><a href="aktuelles.html">Aktuelles</a></li> -->
-    <li><a href="konzerte.html">Konzerte</a></li>
-    <li><a href="bilder.html">Bilder &amp; Videos</a></li>
+    <li><a href="rueckblicke.html">Rückblicke</a></li>
     <li><a href="index.html#instagram">Instagram</a></li>
     <li><a href="kontakt.html" class="nav-btn">Kontakt</a></li>
   </ul>
@@ -494,10 +561,7 @@ const HEADER_HTML = `<!-- ══════════════════
   <a href="index.html">Startseite</a>
   <a href="verein.html">Verein</a>
   <a href="termine.html">Termine</a>
-    <!-- TODO brauchen wir aktuelles? -->
-    <!-- <a href="aktuelles.html">Aktuelles</a> -->
-  <a href="konzerte.html">Konzerte</a>
-  <a href="bilder.html">Bilder &amp; Videos</a>
+  <a href="rueckblicke.html">Rückblicke</a>
   <a href="index.html#instagram">Instagram</a>
   <a href="kontakt.html" class="m-btn">Kontakt</a>
 </div>
@@ -532,9 +596,7 @@ const FOOTER_HTML = `<!-- ══════════════════
       <h4>Mehr</h4>
       <ul>
         <li><a href="termine.html">Termine</a></li>
-        <!-- TODO brauchen wir aktuelles? -->
-        <!-- <li><a href="aktuelles.html">Aktuelles</a></li> -->
-        <li><a href="bilder.html">Bilder &amp; Videos</a></li>
+        <li><a href="rueckblicke.html">Rückblicke</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="impressum.html">Impressum</a></li>
       </ul>
@@ -581,6 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNav();
   initTermine();
   initAktuelles();
+  initRueckblicke();
   if (typeof initArtikelPage === 'function') initArtikelPage();
   if (typeof initGalleryPage === 'function') initGalleryPage();
   initBirthdayPill();

@@ -409,6 +409,48 @@ section > .kapellmeisterin-section { max-width: 100%; }
 .about-text { font-size: 0.86rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 10px; }
 
 /* ══════════════════════════════
+   RÜCKBLICKE PAGE
+══════════════════════════════ */
+.rueckblicke-hero img { object-position: center 35%; }
+.rueckblicke-intro { background: var(--white); }
+.rueckblicke-lead {
+  max-width: 760px;
+  text-align: center;
+}
+.rueckblicke-lead p {
+  color: var(--text-mid);
+  font-size: 0.96rem;
+  line-height: 1.85;
+  margin-top: 18px;
+}
+.rueckblicke-news { background: var(--cream); }
+.rueckblicke-concerts { background: var(--white); }
+.rueckblicke-albums { background: var(--cream); }
+.rueckblicke-actions {
+  margin-top: 36px;
+  text-align: center;
+}
+.rueckblicke-card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-dark);
+  color: var(--gold-light);
+  font-size: 3rem;
+}
+.alben-grid.rueckblicke-alben-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .alben-grid.rueckblicke-alben-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 580px) {
+  .alben-grid.rueckblicke-alben-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════
    TERMINE PAGE
 ══════════════════════════════ */
 .termine-page { background: var(--cream); }

@@ -23,6 +23,7 @@ Inhalte werden über einfache JSON-Dateien und Python-Scripts gepflegt.
 ├── kontakt.html                ← Kontaktformular
 ├── konzerte.html               ← Konzert-Übersicht nach Jahr
 ├── musikanten.html             ← Alle Musikantinnen & Musikanten
+├── rueckblicke.html            ← Neuigkeiten, Konzerte und Fotoalben
 ├── termine.html                ← Terminkalender mit Filter
 ├── verein.html                 ← Über den Verein, Vorstandschaft, Jugend, Alphorn
 │
@@ -85,16 +86,19 @@ Vereinsgeschichte, Statistiken, Vorstandschaft mit Namensliste, Mitglieder-Berei
 ### Termine (`termine.html`)
 Alle kommenden Veranstaltungen mit Filter nach Kategorie (Konzerte / Kirchliches / Feste). Die ersten 5 Termine sind sichtbar, weitere werden per „Alle anzeigen"-Button eingeblendet.
 
-### Aktuelles (`aktuelles.html`)
-Neuigkeiten als Karten-Raster. Klick auf eine Karte öffnet die Detailseite (`artikel.html`).
+### Rückblicke (`rueckblicke.html`)
+Zentrale Übersicht für Neuigkeiten aus dem Verein, aktuelle Konzert-Rückblicke sowie Bilder und Videos. Die vollständigen Konzert- und Fotoarchive sind von hier aus verlinkt.
 
-### Konzerte (`konzerte.html`)
+### Aktuelles-Archiv (`aktuelles.html`)
+Neuigkeiten als Karten-Raster. Klick auf eine Karte öffnet die Detailseite (`artikel.html`). Die neuesten Beiträge erscheinen auch unter „Rückblicke“.
+
+### Konzertarchiv (`konzerte.html`)
 Konzert-Rückblicke, nach Jahr gruppiert mit fetter Jahres-Überschrift. Klick auf ein Konzert öffnet die Detailseite.
 
 ### Detailseite (`artikel.html`)
 Universelle Detailseite für Aktuelles und Konzerte. Lädt die Inhalte dynamisch aus der jeweiligen `meta.json` – URL-Parameter `?id=ORDNER&base=Aktuelles` bzw. `&base=Konzerte`.
 
-### Bilder & Videos (`bilder.html`)
+### Fotoarchiv (`bilder.html`)
 Übersicht aller Fotoalben als Kacheln mit Vorschaubild und Bildanzahl. Alben werden automatisch aus `images/gallery/alben/index.json` geladen.
 
 ### Album (`gallery.html`)
