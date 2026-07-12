@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/svg+xml" href="images/logo.png" />
+  <link rel="icon" type="image/svg+xml" href="images/icon.png" />
 </head>
 <body>
 <div id="site-header"></div>
@@ -75,7 +75,7 @@
 <section class="insta-section" id="instagram">
   <div class="insta-header">
     <div class="section-label">Social Media</div>
-    <h2 class="section-title">Uns auf Instagram folgen</h2>
+    <h2 class="section-title">Folge uns auf Instagram</h2>
     <a href="https://www.instagram.com/trachtenkapelle_riezlern/" target="_blank" rel="noopener" class="insta-handle">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
@@ -100,25 +100,6 @@
   </div>
 </section>
 
-<!-- AKTUELLES – dynamisch via main.js aus Aktuelles/index.json -->
-<!-- TODO Beibehalten? -->
-<!-- <section class="news-section">
-  <div class="section-header">
-    <div>
-      <div class="section-label">Neuigkeiten</div>
-      <h2 class="section-title">Aktuelles</h2>
-    </div>
-    <a href="aktuelles.html" class="text-link">Alle Beiträge →</a>
-  </div>
-  <div class="news-grid" id="newsGrid"> -->
-    <!-- Wird von main.js befüllt -->
-    <!-- <div class="news-card featured" style="opacity:0.4;pointer-events:none;">
-      <div class="news-card-img" style="background:var(--green-mid);aspect-ratio:3/2;"></div>
-      <div class="news-card-body"><div class="news-card-date">Wird geladen …</div></div>
-    </div>
-  </div>
-</section> -->
-
 <!-- GALERIE -->
 <section class="gallery-section">
   <div class="section-header">
@@ -126,46 +107,46 @@
       <div class="section-label">Eindrücke</div>
       <h2 class="section-title">Bilder vom Verein</h2>
     </div>
-    <a href="bilder.html" class="text-link">Alle Alben →</a>
+    <a href="rueckblicke.html" class="text-link">Alle Rückblicke →</a>
   </div>
   <div class="gallery-grid">
-    <a href="gallery.html?album=2016_BMF_Donnerstag" class="g-item g-item-album">
-      <img src="images/gallery/alben/2016_BMF_Donnerstag/titel.jpg" alt="BMF – Donnerstag" loading="lazy"
+    <a href="rueckblick.html?id=2016_bezirksmusikfest" class="g-item g-item-album">
+      <img src="Rueckblicke/2016_bezirksmusikfest/albums/2016_BMF_Donnerstag/titel.jpg" alt="BMF – Donnerstag" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">BMF – Donnerstag</div>
       </div>
     </a>
-    <a href="gallery.html?album=2016_BMF_Freitag" class="g-item g-item-album">
-      <img src="images/gallery/alben/2016_BMF_Freitag/titel.jpg" alt="BMF – Freitag" loading="lazy"
+    <a href="rueckblick.html?id=2016_bezirksmusikfest" class="g-item g-item-album">
+      <img src="Rueckblicke/2016_bezirksmusikfest/albums/2016_BMF_Freitag/titel.jpg" alt="BMF – Freitag" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">BMF – Freitag</div>
       </div>
     </a>
-    <a href="gallery.html?album=2016_BMF_Samstag" class="g-item g-item-album">
-      <img src="images/gallery/alben/2016_BMF_Samstag/titel.jpg" alt="BMF – Samstag" loading="lazy"
+    <a href="rueckblick.html?id=2016_bezirksmusikfest" class="g-item g-item-album">
+      <img src="Rueckblicke/2016_bezirksmusikfest/albums/2016_BMF_Samstag/titel.jpg" alt="BMF – Samstag" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">BMF – Samstag</div>
       </div>
     </a>
-    <a href="gallery.html?album=2016_BMF_Sonntag" class="g-item g-item-album">
-      <img src="images/gallery/alben/2016_BMF_Sonntag/titel.jpg" alt="BMF – Sonntag" loading="lazy"
+    <a href="rueckblick.html?id=2016_bezirksmusikfest" class="g-item g-item-album">
+      <img src="Rueckblicke/2016_bezirksmusikfest/albums/2016_BMF_Sonntag/titel.jpg" alt="BMF – Sonntag" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">BMF – Sonntag</div>
       </div>
     </a>
-    <a href="gallery.html?album=2023_Fotoshooting_Kanzelwand" class="g-item g-item-album">
-      <img src="images/gallery/alben/2023_Fotoshooting_Kanzelwand/titel.jpg" alt="Fotoshooting Kanzelwand" loading="lazy"
+    <a href="rueckblick.html?id=2023_fotoshooting_kanzelwand" class="g-item g-item-album">
+      <img src="Rueckblicke/2023_fotoshooting_kanzelwand/albums/2023_Fotoshooting_Kanzelwand/titel.jpg" alt="Fotoshooting Kanzelwand" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">Fotoshooting Kanzelwand</div>
       </div>
     </a>
-    <a href="gallery.html?album=2020_Sommerkonzerte" class="g-item g-item-album">
-      <img src="images/gallery/alben/2020_Sommerkonzerte/titel.jpg" alt="Sommerkonzerte 2020" loading="lazy"
+    <a href="rueckblick.html?id=2020_sommerkonzerte" class="g-item g-item-album">
+      <img src="Rueckblicke/2020_sommerkonzerte/albums/2020_Sommerkonzerte/titel.jpg" alt="Sommerkonzerte 2020" loading="lazy"
            onerror="this.style.display='none'" />
       <div class="g-overlay">
         <div class="g-album-label">Sommerkonzerte 2020</div>

@@ -1,0 +1,23 @@
+{
+  "titel": "Fotoshooting Kanzelwand",
+  "datum": "2023",
+  "tags": [
+    "Bilder",
+    "Fotoshooting"
+  ],
+  "beschreibung": "Neue Bilder der Trachtenkapelle vor der Kulisse der Kanzelwand.",
+  "albums": [
+    {
+      "id": "2023_Fotoshooting_Kanzelwand",
+      "titel": "Fotoshooting Kanzelwand",
+      "datum": "",
+      "bilder": [
+        "albums/2023_Fotoshooting_Kanzelwand/561A0137.jpg",
+        "albums/2023_Fotoshooting_Kanzelwand/561A0215.jpg",
+        "albums/2023_Fotoshooting_Kanzelwand/561A0223.jpg",
+        "albums/2023_Fotoshooting_Kanzelwand/561A0228.jpg",
+        "albums/2023_Fotoshooting_Kanzelwand/gallery_04.jpg"
+      ]
+    }
+  ]
+}

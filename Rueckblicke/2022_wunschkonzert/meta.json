@@ -1,0 +1,14 @@
+{
+  "titel": "Wunschkonzert",
+  "datum": "2022-03-26",
+  "tags": [
+    "Konzert"
+  ],
+  "beschreibung": "Ein Konzertabend mit Wunschprogramm.",
+  "concert": {
+    "titel": "Wunschkonzert",
+    "datum": "2022",
+    "beschreibung": "Wunschkonzert",
+    "titelbild": "concert/wunschkonzert.jpeg"
+  }
+}

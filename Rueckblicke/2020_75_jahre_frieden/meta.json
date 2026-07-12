@@ -1,0 +1,15 @@
+{
+  "titel": "75 Jahre Frieden",
+  "datum": "2020-03-21",
+  "tags": [
+    "Konzert",
+    "Gedenken"
+  ],
+  "beschreibung": "Musikalisches Erinnern an 75 Jahre Frieden.",
+  "concert": {
+    "titel": "75 Jahre Fireden",
+    "datum": "2020",
+    "beschreibung": "75 Jahre Frieden",
+    "titelbild": "concert/75jahrefrieden.jpg"
+  }
+}

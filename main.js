@@ -3,9 +3,7 @@
    ══════════════════════════════════════════════ */
 
 const TERMINE_INDEX  = 'Termine/index.json';
-const AKTUELLES_INDEX = 'Aktuelles/index.json';
 const MAX_HERO_TERMINE = 5;
-const MAX_NEWS_HOME    = 3;
 
 const MONTH_SHORT = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -55,7 +53,7 @@ function initSlideshow() {
 // ── ACTIVE NAV ───────────────────────────────────────────────────────────────
 function initActiveNav() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
-  const rueckblickePages = ['aktuelles.html', 'konzerte.html', 'bilder.html', 'gallery.html', 'artikel.html'];
+  const rueckblickePages = ['rueckblick.html'];
   const navPage = page === 'geschichte.html'
     ? 'verein.html'
     : rueckblickePages.includes(page) ? 'rueckblicke.html' : page;
@@ -116,20 +114,6 @@ async function loadTermine() {
     .sort((a,b) => new Date(a.datum) - new Date(b.datum));
 }
 
-// ── AKTUELLES LOADER ─────────────────────────────────────────────────────────
-async function loadAktuelles() {
-  const index = await loadIndex(AKTUELLES_INDEX);
-
-  const results = await Promise.allSettled(
-    index.map(e => loadMeta(e.ordner, 'Aktuelles'))
-  );
-
-  return results
-    .filter(r => r.status === 'fulfilled')
-    .map(r => r.value)
-    .sort((a,b) => new Date(b.datum) - new Date(a.datum)); // neueste zuerst
-}
-
 // ── HERO TERMINE STRIP ───────────────────────────────────────────────────────
 function renderHeroTermine(termine) {
   const list = document.getElementById('heroTermineList');
@@ -154,34 +138,6 @@ function renderHeroTermine(termine) {
         <div class="ht-details">${t.ort ? t.ort + ' · ' : ''}${time}</div>
       </div>`;
     list.appendChild(el);
-  });
-}
-
-// ── NEWS CARDS (Startseite) ───────────────────────────────────────────────────
-function renderNewsCards(beitraege) {
-  const grid = document.getElementById('newsGrid');
-  if (!grid) return;
-
-  grid.innerHTML = '';
-  const items = beitraege.slice(0, MAX_NEWS_HOME);
-
-  items.forEach((b, i) => {
-    const bildSrc = b.titelbild
-      ? `Aktuelles/${b._ordner}/${b.titelbild}`
-      : 'images/general/placeholder.jpg';
-    const dateStr = formatDateDisplay(b.datum);
-
-    const card = document.createElement('a');
-    card.href = `artikel.html?id=${b._ordner}&base=Aktuelles`;
-    card.className = 'news-card' + (i === 0 ? ' featured' : '');
-    card.innerHTML = `
-      <img class="news-card-img" src="${bildSrc}" alt="${b.titel}" loading="lazy" />
-      <div class="news-card-body">
-        <div class="news-card-date">${dateStr}</div>
-        <h3 class="news-card-title">${b.titel}</h3>
-        <p class="news-card-text">${(b.beschreibung || '').substring(0, 120)}${(b.beschreibung||'').length > 120 ? '…' : ''}</p>
-      </div>`;
-    grid.appendChild(card);
   });
 }
 
@@ -261,104 +217,248 @@ function initTermineFilter() {
   });
 }
 
-// ── AKTUELLES PAGE ────────────────────────────────────────────────────────────
-function renderAktuellesPage(beitraege) {
-  const grid = document.getElementById('aktuellesGrid');
-  if (!grid) return;
-  document.getElementById('aktuellesLoading')?.remove();
-
-  grid.innerHTML = '';
-
-  if (!beitraege.length) {
-    grid.innerHTML = '<div class="termine-empty">Noch keine Beiträge vorhanden.</div>';
-    return;
-  }
-
-  const limit = Number(grid.dataset.limit) || beitraege.length;
-  beitraege.slice(0, limit).forEach(b => {
-    const bildSrc = b.titelbild
-      ? `Aktuelles/${b._ordner}/${b.titelbild}`
-      : 'images/general/placeholder.jpg';
-    const dateStr = formatDateDisplay(b.datum);
-
-    const card = document.createElement('a');
-    card.href  = `artikel.html?id=${b._ordner}&base=Aktuelles`;
-    card.id    = b._ordner;
-    card.className = 'news-card';
-    card.innerHTML = `
-      <img class="news-card-img" src="${bildSrc}" alt="${b.titel}" loading="lazy" />
-      <div class="news-card-body">
-        <div class="news-card-date">${dateStr}</div>
-        <h3 class="news-card-title">${b.titel}</h3>
-        <p class="news-card-text">${b.beschreibung || ''}</p>
-      </div>`;
-    grid.appendChild(card);
-  });
+// ── RÜCKBLICKE PAGE ──────────────────────────────────────────────────────────
+function escapeHtml(value = '') {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[ch]));
 }
 
-// ── RÜCKBLICKE PAGE ──────────────────────────────────────────────────────────
-function rueckblickAlbumCard(a) {
+function rueckblickYear(item) {
+  return String(item.datum || '').slice(0, 4) || 'Archiv';
+}
+
+function formatRueckblickDate(item) {
+  const datum = item.datum || '';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(datum)) return formatDateDisplay(datum);
+  return datum || 'Archiv';
+}
+
+function rueckblickAssetPath(memoryId, filePath) {
+  if (!filePath) return 'images/logo.png';
+  if (/^(https?:)?\/\//.test(filePath) || filePath.startsWith('/')) return filePath;
+  return `Rueckblicke/${memoryId}/${filePath}`;
+}
+
+function rueckblickCoverPath(memoryId) {
+  return `Rueckblicke/${memoryId}/cover.jpg`;
+}
+
+function rueckblickCard(item, isFirstInYear) {
+  const memoryId = item._ordner || item.id || '';
+  const image = rueckblickCoverPath(memoryId);
+  const href = `rueckblick.html?id=${encodeURIComponent(memoryId)}`;
+  const tags = Array.isArray(item.tags)
+    ? item.tags
+    : (item.rubrik ? [item.rubrik] : []);
+  const tagHtml = tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
+
   return `
-    <a href="gallery.html?album=${a.id}" class="album-card">
-      <div class="album-thumb-wrap">
-        <img src="images/gallery/alben/${a.id}/titel.jpg" alt="${a.titel}" class="album-thumb" loading="lazy"
+    <article class="rueckblick-item${isFirstInYear ? ' year-start' : ''}">
+      <div class="rueckblick-year-marker" aria-hidden="${isFirstInYear ? 'false' : 'true'}">${isFirstInYear ? escapeHtml(rueckblickYear(item)) : ''}</div>
+      <a class="rueckblick-image-link" href="${escapeHtml(href)}" aria-label="${escapeHtml(item.titel)} ansehen">
+        <img src="${escapeHtml(image)}" alt="${escapeHtml(item.titel)}" loading="lazy"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="album-thumb-placeholder" style="display:none;">&#127926;</div>
-        <div class="album-overlay">
-          <span class="album-overlay-count">${a.anzahl} Fotos</span>
+        <div class="rueckblick-image-placeholder" style="display:none;">&#127926;</div>
+      </a>
+      <div class="rueckblick-content">
+        <div class="rueckblick-meta">
+          <span>${escapeHtml(formatRueckblickDate(item))}</span>
+          ${tagHtml}
+        </div>
+        <h3>${escapeHtml(item.titel)}</h3>
+        ${item.beschreibung ? `<p>${escapeHtml(item.beschreibung)}</p>` : ''}
+        <div class="rueckblick-links">
+          <a class="rueckblick-link" href="${escapeHtml(href)}">Rückblick ansehen</a>
         </div>
       </div>
-      <div class="album-info">
-        <div class="album-datum">${a.jahr || ''}</div>
-        <div class="album-titel">${a.titel}</div>
-        <div class="album-count">${a.anzahl} Bilder</div>
-      </div>
-    </a>`;
+    </article>
+  `;
 }
 
 async function initRueckblicke() {
-  const concertGrid = document.getElementById('rueckblickeKonzerteGrid');
-  const albumGrid = document.getElementById('rueckblickeAlbenGrid');
-  if (!concertGrid && !albumGrid) return;
+  const timeline = document.getElementById('rueckblickeTimeline');
+  if (!timeline) return;
 
-  if (concertGrid) {
-    try {
-      const res = await fetch('Konzerte/index.json');
-      if (!res.ok) throw new Error('Konzertindex nicht gefunden');
-      const konzerte = await res.json();
-      document.getElementById('rueckblickeKonzerteLoading')?.remove();
-      concertGrid.innerHTML = konzerte.slice(0, 3).map(k => {
-        const bild = k.titelbild
-          ? `<img class="news-card-img" src="Konzerte/${k.ordner}/${k.titelbild}" alt="${k.titel}" loading="lazy" />`
-          : '<div class="news-card-img rueckblicke-card-placeholder">&#127926;</div>';
-        const teaser = (k.beschreibung || '').substring(0, 120);
-        return `
-          <a href="artikel.html?id=${k.ordner}&base=Konzerte" class="news-card">
-            ${bild}
-            <div class="news-card-body">
-              <div class="news-card-date">${k.datum || ''}</div>
-              <h3 class="news-card-title">${k.titel}</h3>
-              ${teaser ? `<p class="news-card-text">${teaser}</p>` : ''}
-            </div>
-          </a>`;
-      }).join('');
-    } catch (err) {
-      document.getElementById('rueckblickeKonzerteLoading')?.remove();
-      concertGrid.innerHTML = '<div class="termine-empty">Konzert-Rückblicke konnten nicht geladen werden.</div>';
+  try {
+    const index = await loadIndex('Rueckblicke/index.json');
+    const results = await Promise.allSettled(
+      index.map(e => loadMeta(e.ordner, 'Rueckblicke'))
+    );
+    const items = results
+      .filter(r => r.status === 'fulfilled')
+      .map(r => r.value);
+    const sorted = items
+      .slice()
+      .sort((a,b) => String(b.datum || '').localeCompare(String(a.datum || '')));
+
+    document.getElementById('rueckblickeLoading')?.remove();
+
+    if (!sorted.length) {
+      timeline.innerHTML = '<div class="termine-empty">Noch keine Rückblicke vorhanden.</div>';
+      return;
     }
+
+    let lastYear = '';
+    timeline.innerHTML = sorted.map(item => {
+      const year = rueckblickYear(item);
+      const isFirstInYear = year !== lastYear;
+      lastYear = year;
+      return rueckblickCard(item, isFirstInYear);
+    }).join('');
+  } catch (err) {
+    console.warn('Rückblicke Ladefehler:', err.message);
+    document.getElementById('rueckblickeLoading')?.remove();
+    timeline.innerHTML = '<div class="termine-empty">Rückblicke konnten nicht geladen werden.</div>';
+  }
+}
+
+function renderRueckblickTags(tags = []) {
+  return tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
+}
+
+function renderRueckblickText(meta, article, concert) {
+  const explicitText = meta.inhalt || meta.text;
+  const articleText = article?.inhalt || article?.beschreibung;
+  const concertText = concert?.inhalt || concert?.beschreibung;
+  const text = explicitText || articleText || concertText || '';
+  return text ? `<div class="artikel-text rueckblick-detail-text">${text}</div>` : '';
+}
+
+function renderRueckblickConcert(concert) {
+  if (!concert) return '';
+  return `
+    <section class="rueckblick-detail-block">
+      <div class="section-label">Konzert</div>
+      <h2>${escapeHtml(concert.titel || 'Konzert')}</h2>
+      ${concert.datum ? `<p class="rueckblick-detail-muted">${escapeHtml(concert.datum)}</p>` : ''}
+      ${concert.beschreibung ? `<p>${escapeHtml(concert.beschreibung)}</p>` : ''}
+    </section>`;
+}
+
+function renderRueckblickAlbum(album, memoryId, previewLimit = 8, bare = false) {
+  const bilder = album.bilder || [];
+  const shown = bilder.slice(0, previewLimit);
+  const remaining = Math.max(0, bilder.length - shown.length);
+  const albumKey = album.id || album.titel || 'album';
+  const imagesHtml = shown.length
+    ? shown.map((filename, idx) => `
+        <button class="rueckblick-photo" type="button" onclick="openRueckblickLightbox('${escapeHtml(albumKey)}', ${idx})">
+          <img src="${escapeHtml(rueckblickAssetPath(memoryId, filename))}" alt="" loading="lazy" />
+        </button>
+      `).join('')
+    : '<p class="rueckblick-detail-muted">Zu diesem Album sind noch keine Bilder hinterlegt.</p>';
+
+  if (bare) {
+    return `
+      <div class="rueckblick-album-inline" data-album="${escapeHtml(albumKey)}">
+        <div class="rueckblick-photo-grid">${imagesHtml}</div>
+        ${remaining ? `<button class="btn btn-green rueckblick-load-photos" type="button" data-album="${escapeHtml(albumKey)}">Weitere ${remaining} Bilder laden</button>` : ''}
+      </div>`;
   }
 
-  if (albumGrid) {
-    try {
-      const res = await fetch('images/gallery/alben/index.json');
-      if (!res.ok) throw new Error('Albumindex nicht gefunden');
-      const alben = await res.json();
-      document.getElementById('rueckblickeAlbenLoading')?.remove();
-      albumGrid.innerHTML = alben.slice(0, 6).map(rueckblickAlbumCard).join('');
-    } catch (err) {
-      document.getElementById('rueckblickeAlbenLoading')?.remove();
-      albumGrid.innerHTML = '<div class="termine-empty">Alben konnten nicht geladen werden.</div>';
-    }
+  return `
+    <section class="rueckblick-detail-block rueckblick-album-block" data-album="${escapeHtml(albumKey)}">
+      <div class="section-label">Bilder</div>
+      <h2>${escapeHtml(album.titel || albumKey)}</h2>
+      <p class="rueckblick-detail-muted">${bilder.length} Bilder${remaining ? ` · ${shown.length} als Vorschau` : ''}</p>
+      <div class="rueckblick-photo-grid">${imagesHtml}</div>
+      ${remaining ? `<button class="btn btn-green rueckblick-load-photos" type="button" data-album="${escapeHtml(albumKey)}">Weitere ${remaining} Bilder laden</button>` : ''}
+    </section>`;
+}
+
+function initRueckblickPhotoButtons(albumsById, previewLimit = 8) {
+  window._rueckblickAlbums = albumsById;
+  window.openRueckblickLightbox = function(albumId, idx) {
+    const album = window._rueckblickAlbums?.[albumId];
+    if (!album) return;
+    window.rueckblickLbImages = (album.bilder || []).map(f => rueckblickAssetPath(album._memoryId, f));
+    window.rueckblickLbIndex = idx;
+    document.getElementById('rueckblick-lb-img').src = window.rueckblickLbImages[idx];
+    document.getElementById('rueckblick-lb-counter').textContent = (idx + 1) + ' / ' + window.rueckblickLbImages.length;
+    document.getElementById('rueckblick-lightbox').classList.add('lb-open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeRueckblickLightbox = function() {
+    document.getElementById('rueckblick-lightbox').classList.remove('lb-open');
+    document.body.style.overflow = '';
+  };
+  window.rueckblickLbNav = function(dir) {
+    const images = window.rueckblickLbImages || [];
+    if (!images.length) return;
+    window.rueckblickLbIndex = (window.rueckblickLbIndex + dir + images.length) % images.length;
+    document.getElementById('rueckblick-lb-img').src = images[window.rueckblickLbIndex];
+    document.getElementById('rueckblick-lb-counter').textContent = (window.rueckblickLbIndex + 1) + ' / ' + images.length;
+  };
+
+  document.querySelectorAll('.rueckblick-load-photos').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const albumId = btn.dataset.album;
+      const album = albumsById[albumId];
+      if (!album) return;
+      const grid = btn.closest('.rueckblick-album-block, .rueckblick-album-inline')?.querySelector('.rueckblick-photo-grid');
+      if (!grid) return;
+      grid.innerHTML = (album.bilder || []).map((filename, idx) => `
+        <button class="rueckblick-photo" type="button" onclick="openRueckblickLightbox('${escapeHtml(albumId)}', ${idx})">
+          <img src="${escapeHtml(rueckblickAssetPath(album._memoryId, filename))}" alt="" loading="lazy" />
+        </button>
+      `).join('');
+      btn.remove();
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('rueckblick-lightbox')?.classList.contains('lb-open')) return;
+    if (e.key === 'ArrowRight') window.rueckblickLbNav(1);
+    if (e.key === 'ArrowLeft')  window.rueckblickLbNav(-1);
+    if (e.key === 'Escape') window.closeRueckblickLightbox();
+  });
+}
+
+async function initRueckblickDetailPage() {
+  const content = document.getElementById('rueckblickDetailContent');
+  if (!content) return;
+
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  if (!id) {
+    content.innerHTML = '<div class="termine-empty">Kein Rückblick angegeben.</div>';
+    return;
+  }
+
+  try {
+    const meta = await loadMeta(id, 'Rueckblicke');
+    const articleResult = meta.article || null;
+    const concertResult = meta.concert || null;
+    const albums = (meta.albums || []).map(album => ({ ...album, _memoryId: id }));
+    const title = meta.titel || id;
+    const cover = rueckblickCoverPath(id);
+
+    document.title = `${title} – Trachtenkapelle Riezlern`;
+    document.getElementById('rueckblickDetailTitle').textContent = title;
+    document.getElementById('rueckblickDetailDate').textContent = formatRueckblickDate(meta);
+    document.getElementById('rueckblickDetailTags').innerHTML = renderRueckblickTags(meta.tags || []);
+    document.getElementById('rueckblickDetailLead').textContent = meta.beschreibung || '';
+
+    const textHtml = renderRueckblickText(meta, articleResult, concertResult);
+    const concertHtml = renderRueckblickConcert(concertResult);
+    const albumOnly = !textHtml && !concertHtml && albums.length === 1;
+
+    content.innerHTML = `
+      <img class="rueckblick-detail-cover" src="${escapeHtml(cover)}" alt="${escapeHtml(title)}" loading="lazy" />
+      ${textHtml}
+      ${concertHtml}
+      ${albums.map(album => renderRueckblickAlbum(album, id, 8, albumOnly)).join('')}
+    `;
+
+    initRueckblickPhotoButtons(Object.fromEntries(albums.map(album => [album.id || album.titel || 'album', album])));
+  } catch (err) {
+    console.warn('Rückblick Detail Ladefehler:', err.message);
+    content.innerHTML = '<div class="termine-empty">Dieser Rückblick konnte nicht geladen werden.</div>';
   }
 }
 
@@ -382,152 +482,6 @@ async function initTermine() {
       termineList.innerHTML = '<div class="termine-empty">Termine konnten nicht geladen werden.<br/><small>Bitte <code>build_termine.py</code> ausführen und <code>Termine/index.json</code> prüfen.</small></div>';
     }
   }
-}
-
-async function initAktuelles() {
-  const hasNewsGrid    = !!document.getElementById('newsGrid');
-  const hasAktuellesGrid = !!document.getElementById('aktuellesGrid');
-  if (!hasNewsGrid && !hasAktuellesGrid) return;
-
-  try {
-    const beitraege = await loadAktuelles();
-    if (hasNewsGrid)      renderNewsCards(beitraege);
-    if (hasAktuellesGrid) renderAktuellesPage(beitraege);
-  } catch (err) {
-    console.warn('Aktuelles Ladefehler:', err.message);
-    const grid = document.getElementById('aktuellesGrid');
-    if (grid) {
-      document.getElementById('aktuellesLoading')?.remove();
-      grid.innerHTML = '<div class="termine-empty">Beiträge konnten nicht geladen werden.<br/><small>Bitte <code>build_aktuelles.py</code> ausführen.</small></div>';
-    }
-  }
-}
-
-
-// ── ARTIKEL PAGE ──────────────────────────────────────────────────────────────
-function initArtikelPage() {
-  const content = document.getElementById('artikelContent');
-  const titelEl = document.getElementById('artikelTitel');
-  const datumEl = document.getElementById('artikelDatum');
-  const katEl   = document.getElementById('artikelKategorie');
-  if (!content) return;
-
-  const params = new URLSearchParams(location.search);
-  const id     = params.get('id');
-  const base   = params.get('base') || 'Aktuelles';
-
-  if (!id) { content.innerHTML = '<p>Kein Beitrag angegeben.</p>'; return; }
-
-  // Lightbox state
-  let lbImages = [], lbIndex = 0;
-
-  window.openLb = function(idx) {
-    lbIndex = idx;
-    const lb = document.getElementById('artikel-lightbox');
-    document.getElementById('artikel-lb-img').src = lbImages[idx];
-    document.getElementById('artikel-lb-counter').textContent = (idx+1) + ' / ' + lbImages.length;
-    lb.classList.add('lb-open');
-    document.body.style.overflow = 'hidden';
-  };
-  window.closeLb = function() {
-    document.getElementById('artikel-lightbox').classList.remove('lb-open');
-    document.body.style.overflow = '';
-  };
-  window.lbNav = function(dir) {
-    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
-    document.getElementById('artikel-lb-img').src = lbImages[lbIndex];
-    document.getElementById('artikel-lb-counter').textContent = (lbIndex+1) + ' / ' + lbImages.length;
-  };
-  document.addEventListener('keydown', e => {
-    if (!document.getElementById('artikel-lightbox')?.classList.contains('lb-open')) return;
-    if (e.key === 'ArrowRight') lbNav(1);
-    if (e.key === 'ArrowLeft')  lbNav(-1);
-    if (e.key === 'Escape') closeLb();
-  });
-
-  // Inject lightbox HTML once
-  if (!document.getElementById('artikel-lightbox')) {
-    const lb = document.createElement('div');
-    lb.id = 'artikel-lightbox';
-    lb.className = '';
-    lb.style.cssText = 'position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;';
-    lb.innerHTML = `
-      <div id="artikel-lb-backdrop" onclick="closeLb()" style="position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.3s;"></div>
-      <button onclick="lbNav(-1)" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:2rem;padding:12px 18px;border-radius:8px;cursor:pointer;z-index:2;">&#8249;</button>
-      <img id="artikel-lb-img" src="" style="position:relative;z-index:2;max-width:92vw;max-height:92vh;object-fit:contain;border-radius:4px;transform:scale(0.92);transition:transform 0.25s;cursor:zoom-out;" onclick="closeLb()" />
-      <button onclick="lbNav(1)" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:2rem;padding:12px 18px;border-radius:8px;cursor:pointer;z-index:2;">&#8250;</button>
-      <button onclick="closeLb()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;z-index:2;opacity:0.7;">&#10005;</button>
-      <div id="artikel-lb-counter" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.5);font-size:0.8rem;z-index:2;"></div>`;
-    document.body.appendChild(lb);
-
-    // Make closeLb/lbNav accessible from inline onclick
-    window.closeLb = closeLb;
-    window.lbNav = lbNav;
-
-    // CSS for open state via style tag
-    const style = document.createElement('style');
-    style.textContent = `
-      #artikel-lightbox.lb-open { opacity:1 !important; pointer-events:all !important; }
-      #artikel-lightbox.lb-open #artikel-lb-backdrop { background:rgba(0,0,0,0.92) !important; }
-      #artikel-lightbox.lb-open #artikel-lb-img { transform:scale(1) !important; }
-    `;
-    document.head.appendChild(style);
-  }
-
-  fetch(`${base}/${id}/meta.json`)
-    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-    .then(data => {
-      document.title = (data.titel || id) + ' – Trachtenkapelle Riezlern';
-      if (titelEl) titelEl.textContent = data.titel || id;
-      if (datumEl) datumEl.textContent = data.datum ? formatDateDisplay(data.datum) : '';
-      if (katEl)   katEl.textContent   = KATEGORIE_LABEL[data.kategorie] || data.kategorie || 'Aktuelles';
-
-      let html = '';
-
-      // Titelbild – natürliche Größe, kein Crop
-      if (data.titelbild) {
-        const src = `${base}/${id}/${data.titelbild}`;
-        html += `<img src="${src}" alt="${data.titel || ''}"
-          style="width:100%;height:auto;border-radius:12px;margin-bottom:32px;display:block;cursor:zoom-in;"
-          loading="lazy" onclick="artikelLbOpen('${src}')" />`;
-      }
-
-      // Text
-      const text = data.inhalt || data.beschreibung || '';
-      html += text
-        ? `<div class="artikel-text">${text}</div>`
-        : '<p style="color:var(--text-mid);font-style:italic;">Kein Inhalt vorhanden.</p>';
-
-      // Galerie – natürliche Proportionen, klickbar
-      if (data.bilder && data.bilder.length) {
-        lbImages = data.bilder.map(f => `${base}/${id}/${f}`);
-        // Include titelbild in lightbox if present
-        if (data.titelbild) lbImages = [`${base}/${id}/${data.titelbild}`, ...lbImages];
-
-        html += '<div class="artikel-galerie" style="margin-top:40px;">';
-        data.bilder.forEach((img, i) => {
-          const src = `${base}/${id}/${img}`;
-          const lbIdx = data.titelbild ? i + 1 : i;
-          html += `<div class="artikel-galerie-item" onclick="openLb(${lbIdx})" style="cursor:zoom-in;">
-            <img src="${src}" alt="" loading="lazy" style="width:100%;height:auto;display:block;border-radius:8px;" />
-          </div>`;
-        });
-        html += '</div>';
-      } else if (data.titelbild) {
-        lbImages = [`${base}/${id}/${data.titelbild}`];
-      }
-
-      // titelbild lightbox helper
-      window.artikelLbOpen = function(src) {
-        const idx = lbImages.indexOf(src);
-        openLb(idx >= 0 ? idx : 0);
-      };
-
-      content.innerHTML = html;
-    })
-    .catch(() => {
-      content.innerHTML = '<p style="color:var(--text-mid);">Beitrag konnte nicht geladen werden.</p>';
-    });
 }
 
 // (boot moved to injectHeaderFooter block below)
@@ -642,9 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSlideshow();
   initActiveNav();
   initTermine();
-  initAktuelles();
   initRueckblicke();
-  if (typeof initArtikelPage === 'function') initArtikelPage();
-  if (typeof initGalleryPage === 'function') initGalleryPage();
+  initRueckblickDetailPage();
   initBirthdayPill();
 });

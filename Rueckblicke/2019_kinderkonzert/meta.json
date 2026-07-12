@@ -1,0 +1,15 @@
+{
+  "titel": "Kinderkonzert",
+  "datum": "2019-03-16",
+  "tags": [
+    "Konzert",
+    "Jugend"
+  ],
+  "beschreibung": "Musik für junge Ohren und neugierige Zuhörerinnen und Zuhörer.",
+  "concert": {
+    "titel": "Kinderkonzert",
+    "datum": "2021",
+    "beschreibung": "Kinderkonzert",
+    "titelbild": "concert/Kinderkonzert.jpg"
+  }
+}

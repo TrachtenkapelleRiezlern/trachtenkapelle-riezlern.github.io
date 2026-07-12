@@ -1,0 +1,14 @@
+{
+  "titel": "Wanderkonzert",
+  "datum": "2020-10-24",
+  "tags": [
+    "Konzert"
+  ],
+  "beschreibung": "Ein musikalischer Rückblick aus dem besonderen Jahr 2020.",
+  "concert": {
+    "titel": "Wanderkonzert",
+    "datum": "2020",
+    "beschreibung": "Wanderkonzert",
+    "titelbild": "concert/wanderkonzert.jpg"
+  }
+}

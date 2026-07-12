@@ -1,4 +1,4 @@
-name: Termine, Aktuelles & Alben synchronisieren
+name: Termine synchronisieren
 on:
   # Automatisch täglich um 06:00 UTC (= 07:00 MEZ / 08:00 MESZ)
   schedule:
@@ -11,15 +11,9 @@ on:
       - main
     paths:
       - 'data/termine.csv'
-      - 'Aktuelles/**'
-      - 'Konzerte/**'
       - 'Termine/**'
-      - 'images/gallery/alben/**'
       - 'python_scripts/sync_termine_from_csv.py'
       - 'python_scripts/build_termine.py'
-      - 'python_scripts/build_aktuelles.py'
-      - 'python_scripts/build_alben.py'
-      - 'python_scripts/build_konzerte.py'
 
 jobs:
   sync:
@@ -36,9 +30,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: 
-
       # Liest data/termine.csv und schreibt Termine/*/meta.json
       - name: Termine aus Excel synchronisieren
         run: python3 python_scripts/sync_termine_from_csv.py --file data/termine.csv
@@ -47,31 +38,15 @@ jobs:
       - name: Termine index bauen
         run: python3 python_scripts/build_termine.py
 
-      # Scannt Aktuelles/-Ordner und schreibt Aktuelles/index.json
-      - name: Aktuelles index bauen
-        run: python3 python_scripts/build_aktuelles.py
-
-      # Scannt Konzerte/-Ordner und schreibt Konzerte/index.json
-      - name: Konzerte index bauen
-        run: python3 python_scripts/build_konzerte.py
-
-      # Scannt images/gallery/alben/*/ und schreibt je ein index.json
-      - name: Album-Indizes bauen
-        run: python3 python_scripts/build_alben.py
-
       # Alle generierten Dateien ins Repo committen
       - name: Geänderte Dateien committen und pushen
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Termine/
-          git add Aktuelles/index.json
-          git add Konzerte/index.json
-          git add images/gallery/alben/*/index.json
-          git add images/gallery/alben/index.json
           if git diff --staged --quiet; then
             echo "Keine Änderungen – nichts zu committen."
           else
-            git commit -m "chore: Termine, Aktuelles & Alben aktualisiert [skip ci]"
+            git commit -m "chore: Termine aktualisiert [skip ci]"
             git push origin main
           fi

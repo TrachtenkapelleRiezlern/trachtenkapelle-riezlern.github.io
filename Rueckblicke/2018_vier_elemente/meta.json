@@ -1,0 +1,14 @@
+{
+  "titel": "Die 4 Elemente",
+  "datum": "2018-06-15",
+  "tags": [
+    "Konzert"
+  ],
+  "beschreibung": "Ein Konzertprogramm rund um die vier Elemente.",
+  "concert": {
+    "titel": "Die 4 Elemente",
+    "datum": "2018",
+    "beschreibung": "Die 4 Elemente",
+    "titelbild": "concert/dievierelemente.jpg"
+  }
+}
