@@ -68,6 +68,7 @@ Rueckblicke/2026_jahreskonzert_fantasie/
   "datum": "2026-04-25",
   "tags": ["Konzert", "Jahreskonzert"],
   "beschreibung": "Unser Jahreskonzert 2026 unter dem Motto „Fantasie“.",
+  "detailbild": "concert/programm.jpg",
   "inhalt": "<p>Hier steht der Rückblickstext.</p>",
   "concert": {
     "titel": "Jahreskonzert 2026 – Fantasie",
@@ -96,12 +97,13 @@ Rueckblicke/2026_jahreskonzert_fantasie/
 | `datum` | ✓ | `JJJJ-MM-TT` oder nur `JJJJ`; bestimmt die Sortierung |
 | `tags` | | sichtbare Schlagworte |
 | `beschreibung` | | kurzer Teaser für Übersicht und Detailseite |
+| `detailbild` | | optionales großes Bild auf der Detailseite; sonst wird `cover.jpg` verwendet |
 | `inhalt` / `text` | | eigener Rückblicktext; HTML ist erlaubt |
 | `article` | | optionaler Artikelblock, z.B. aus alten Inhalten migriert |
 | `concert` | | optionaler Konzertblock |
 | `albums` | | optionale Fotoalben, vollständig im Rückblick-Ordner |
 
-Das Titelbild eines Rückblicks heißt immer `cover.jpg` und liegt direkt im jeweiligen Rückblick-Ordner. Alle Datei-Pfade in `meta.json` sind relativ zum jeweiligen Rückblick-Ordner.
+Das Titelbild eines Rückblicks heißt immer `cover.jpg` und liegt direkt im jeweiligen Rückblick-Ordner. Es wird in Übersichten und Karten verwendet. Mit `detailbild` kann optional ein anderes Bild für die Detailseite gewählt werden. Alle Datei-Pfade in `meta.json` sind relativ zum jeweiligen Rückblick-Ordner.
 
 ### Beispiel für einen Artikeltext
 

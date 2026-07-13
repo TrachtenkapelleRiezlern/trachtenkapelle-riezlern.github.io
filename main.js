@@ -506,7 +506,9 @@ async function initRueckblickDetailPage() {
     const concertResult = meta.concert || null;
     const albums = (meta.albums || []).map(album => ({ ...album, _memoryId: id }));
     const title = meta.titel || id;
-    const cover = rueckblickCoverPath(id);
+    const detailImage = meta.detailbild
+      ? rueckblickAssetPath(id, meta.detailbild)
+      : rueckblickCoverPath(id);
 
     document.title = `${title} – Trachtenkapelle Riezlern`;
     document.getElementById('rueckblickDetailTitle').textContent = title;
@@ -523,7 +525,7 @@ async function initRueckblickDetailPage() {
     const albumOnly = !textHtml && !concertHtml && albums.length === 1;
 
     content.innerHTML = `
-      <img class="rueckblick-detail-cover" src="${escapeHtml(cover)}" alt="${escapeHtml(title)}" loading="lazy" />
+      <img class="rueckblick-detail-cover" src="${escapeHtml(detailImage)}" alt="${escapeHtml(title)}" loading="lazy" />
       ${textHtml}
       ${concertHtml}
       ${albums.map(album => renderRueckblickAlbum(album, id, 8, albumOnly)).join('')}
