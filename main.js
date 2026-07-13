@@ -386,10 +386,10 @@ function renderRueckblickTags(tags = []) {
   return tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
 }
 
-function renderRueckblickText(meta, article, concert) {
+function renderRueckblickText(meta, article, concert, includeConcertFallback = true) {
   const explicitText = meta.inhalt || meta.text;
   const articleText = article?.inhalt || article?.beschreibung;
-  const concertText = concert?.inhalt || concert?.beschreibung;
+  const concertText = includeConcertFallback ? (concert?.inhalt || concert?.beschreibung) : '';
   const text = explicitText || articleText || concertText || '';
   return text ? `<div class="artikel-text rueckblick-detail-text">${text}</div>` : '';
 }
@@ -509,8 +509,12 @@ async function initRueckblickDetailPage() {
     document.getElementById('rueckblickDetailTags').innerHTML = renderRueckblickTags(meta.tags || []);
     document.getElementById('rueckblickDetailLead').textContent = meta.beschreibung || '';
 
-    const textHtml = renderRueckblickText(meta, articleResult, concertResult);
-    const concertHtml = renderRueckblickConcert(concertResult);
+    const hasOwnText = !!(meta.inhalt || meta.text || articleResult?.inhalt || articleResult?.beschreibung);
+    const hasConcert = !!concertResult;
+    const hasAlbums = albums.length > 0;
+    const concertOnly = !hasOwnText && hasConcert && !hasAlbums;
+    const textHtml = renderRueckblickText(meta, articleResult, concertResult, concertOnly);
+    const concertHtml = concertOnly ? '' : renderRueckblickConcert(concertResult);
     const albumOnly = !textHtml && !concertHtml && albums.length === 1;
 
     content.innerHTML = `

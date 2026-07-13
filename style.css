@@ -912,6 +912,12 @@ section > .kapellmeisterin-section { max-width: 100%; }
     padding: 20px;
     border-radius: 0 var(--radius) var(--radius) 0;
   }
+  .rueckblick-content p {
+    display: none;
+  }
+  .rueckblick-meta span:nth-child(n + 3) {
+    display: none;
+  }
   .rueckblicke-archive-box { padding: 26px 22px; }
   .rueckblicke-archive-links .btn { width: 100%; text-align: center; }
   .rueckblick-photo-grid { grid-template-columns: repeat(2, 1fr); }
