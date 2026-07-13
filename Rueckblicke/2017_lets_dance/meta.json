@@ -1,0 +1,14 @@
+{
+  "titel": "Let's Dance",
+  "datum": "2017-06-10",
+  "tags": [
+    "Konzert"
+  ],
+  "beschreibung": "Ein Konzertabend mit tänzerischem Schwung.",
+  "concert": {
+    "titel": "Let's Dance",
+    "datum": "2017",
+    "beschreibung": "Let's Dance",
+    "titelbild": "concert/letsdance.jpg"
+  }
+}

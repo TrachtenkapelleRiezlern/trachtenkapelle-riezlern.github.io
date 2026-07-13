@@ -1,0 +1,16 @@
+{
+  "titel": "Adventskonzert 2025",
+  "datum": "2025-11-30",
+  "tags": [
+    "Konzert",
+    "Advent"
+  ],
+  "beschreibung": "Ein stimmungsvoller Konzertabend in der Adventszeit.",
+  "inhalt": "<p>Am ersten Adventsonntag lud die Trachtenkapelle Riezlern zum Adventskonzert in die Pfarrkirche ein. In ruhiger Atmosphäre und bei Kerzenschein standen besinnliche Melodien, feine Solostellen und vertraute Klänge im Mittelpunkt.</p><p>Kapellmeisterin und Musikantinnen und Musikanten gestalteten ein Programm, das bewusst Raum zum Zuhören ließ. Zwischen festlichen Bläserklängen und leisen Momenten entstand ein Abend, der viele Besucherinnen und Besucher auf die Adventszeit einstimmte.</p><p>Ein herzliches Vergelt’s Gott gilt allen, die gekommen sind, sowie allen Helferinnen und Helfern rund um Vorbereitung, Aufbau und Organisation.</p>",
+  "concert": {
+    "titel": "Adventskonzert 2025",
+    "datum": "2025",
+    "beschreibung": "Adventskonzert in der Pfarrkirche Riezlern",
+    "titelbild": "concert/adventskonzert.png"
+  }
+}

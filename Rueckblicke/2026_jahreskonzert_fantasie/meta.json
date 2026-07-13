@@ -1,0 +1,18 @@
+{
+  "titel": "Jahreskonzert 2026 – Fantasie",
+  "datum": "2026-04-25",
+  "tags": [
+    "Konzert",
+    "Jahreskonzert"
+  ],
+  "beschreibung": "Unser Jahreskonzert 2026 unter dem Motto „Fantasie“.",
+  "article": {
+    "titel": "Jahreskonzert 2026 - Fantasie",
+    "datum": "2026-04-25",
+    "kategorie": "konzert",
+    "autor": "Trachtenkapelle Riezlern",
+    "beschreibung": "Hier steht ein Fließtext …",
+    "inhalt": "Hier steht ein <i>seeeeeeeeeeeeeeeeeeeeeeeeeeehr</i> langer Fließtext.....",
+    "featured": true
+  }
+}

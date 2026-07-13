@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rückblick – Trachtenkapelle Riezlern</title>
+  <meta name="description" content="Ein Rückblick aus dem Vereinsleben der Trachtenkapelle Riezlern." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+<div id="site-header"></div>
+<div style="height:var(--nav-height);"></div>
+
+<section class="rueckblick-detail-section">
+  <div class="rueckblick-detail-shell">
+    <a href="rueckblicke.html" class="artikel-back">← Zurück zu Rückblicke</a>
+    <div class="artikel-header rueckblick-detail-header">
+      <div class="rueckblick-detail-date" id="rueckblickDetailDate"></div>
+      <h1 id="rueckblickDetailTitle">Rückblick wird geladen …</h1>
+      <div class="rueckblick-detail-tags" id="rueckblickDetailTags"></div>
+      <p id="rueckblickDetailLead"></p>
+    </div>
+    <div id="rueckblickDetailContent">
+      <div class="termine-loading">Rückblick wird geladen …</div>
+    </div>
+  </div>
+</section>
+
+<div id="rueckblick-lightbox">
+  <div id="rueckblick-lb-backdrop" onclick="closeRueckblickLightbox()"></div>
+  <button class="rueckblick-lb-btn" id="rueckblick-lb-prev" onclick="rueckblickLbNav(-1)">&#8249;</button>
+  <img id="rueckblick-lb-img" src="" alt="" onclick="closeRueckblickLightbox()" />
+  <button class="rueckblick-lb-btn" id="rueckblick-lb-next" onclick="rueckblickLbNav(1)">&#8250;</button>
+  <button id="rueckblick-lb-close" onclick="closeRueckblickLightbox()">&#10005;</button>
+  <div id="rueckblick-lb-counter"></div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="main.js?v=rueckblick-detail"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "titel": "konTAKTaufnahme",
+  "datum": "2018-05-05",
+  "tags": [
+    "Konzert"
+  ],
+  "beschreibung": "Ein Konzertabend unter dem Motto „konTAKTaufnahme“.",
+  "concert": {
+    "titel": "konTAKTaufnahme",
+    "beschreibung": "konTAKTaufnahme",
+    "titelbild": "concert/kontaktaufnahme.jpg"
+  }
+}

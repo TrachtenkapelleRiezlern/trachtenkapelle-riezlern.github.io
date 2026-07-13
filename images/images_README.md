@@ -1,62 +1,29 @@
-# images/ – Bildordner
+# images/ – allgemeine Website-Bilder
 
-Alle Bilder der Website werden hier abgelegt. Die HTML-Dateien referenzieren sie mit relativen Pfaden.
+Dieser Ordner enthält allgemeine Bilder, die nicht zu einem konkreten Rückblick gehören.
 
-```
+```text
 images/
-├── hero/          ← Slideshow-Bilder auf der Startseite
-│   ├── gruppenbild.jpg
-│   ├── dirigentin.jpg
-│   ├── alphornblaeser.jpg
-│   └── ...
-│
-├── gallery/       ← Bildergalerie (bilder.html)
-│   ├── konzert_2025_01.jpg
-│   └── ...
-│
-├── news/          ← Titelbilder für Aktuelles-Beiträge
-│   └── ...
-│
-└── general/       ← Allgemeine Bilder (About-Section, Verein, etc.)
-    ├── about.jpg
-    └── ...
+├── hero/          ← Hero- und Stimmungsbilder
+├── general/       ← Vereins-/Infobilder
+├── register/      ← Register- und Vorstandsbilder
+└── logo.*         ← Logo-Dateien
 ```
 
-## Empfohlene Bildformate
+Bilder, die zu einem vergangenen Ereignis gehören, liegen direkt im jeweiligen Rückblick:
 
-- **Format:** JPEG oder WebP
-- **Hero-Bilder:** min. 1600 × 900 px
-- **Galerie:** min. 800 × 600 px
-- **Dateigröße:** max. 500 KB pro Bild (für schnelle Ladezeiten)
-
-## Benennung
-
-Sprechende Dateinamen ohne Sonderzeichen oder Leerzeichen:
-- ✅ `konzert_sommer_2025.jpg`
-- ✅ `gruppenbild_berge.jpg`
-- ❌ `561A0216-ffba4264.jpg` (Kameradateiname)
-- ❌ `Foto 2025 (1).jpg` (Leerzeichen & Klammern)
-
-## Verwendung in HTML
-
-```html
-<img src="images/hero/gruppenbild.jpg" alt="Beschreibung" />
-<img src="images/gallery/konzert_2025_01.jpg" alt="Konzert Sommer 2025" />
+```text
+Rueckblicke/2025_adventskonzert/
+├── cover.jpg
+├── article/
+├── concert/
+└── albums/
 ```
 
-## Verwendung in meta.json (Termine / Aktuelles)
+## Empfehlungen
 
-Bilder die zu einem Termin oder Beitrag gehören, legt ihr direkt  
-im jeweiligen Unterordner ab:
+- Hero-Bilder: mindestens 1600 × 900 px
+- Allgemeine Fotos: möglichst komprimiert, ca. 500 KB bis 1 MB
+- Dateinamen: sprechend, ohne Sonderzeichen, z.B. `gruppenbild_berge.jpg`
 
-```
-Termine/2026_07_12_Sommerkonzert_I/
-├── meta.json
-├── buehne.jpg
-└── publikum.jpg
-```
-
-Und in `meta.json`:
-```json
-{ "bilder": ["buehne.jpg", "publikum.jpg"] }
-```
+Große Fotos können mit `python_scripts/compress_bilder.py` komprimiert werden.

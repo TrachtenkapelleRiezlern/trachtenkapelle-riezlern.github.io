@@ -1,0 +1,33 @@
+{
+  "titel": "Alphornfestival",
+  "datum": "2018",
+  "tags": [
+    "Bilder",
+    "Alphorn"
+  ],
+  "beschreibung": "Bilder vom Alphornfestival 2018.",
+  "albums": [
+    {
+      "id": "2018_Alphornfestival",
+      "titel": "2018 Alphorn",
+      "datum": "",
+      "bilder": [
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (157).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (78).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (88).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (89).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (90).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (91).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (92).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (93).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (94).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival @Frank Drechsel (95).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival Weckruf @Frank Drechsel (1) - Kopie.jpg",
+        "albums/2018_Alphornfestival/Alphornfestival Weckruf @Frank Drechsel (2).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival Weckruf @Frank Drechsel (3) - Kopie.jpg",
+        "albums/2018_Alphornfestival/Alphornfestival Weckruf @Frank Drechsel (4).jpg",
+        "albums/2018_Alphornfestival/Alphornfestival Weckruf @Frank Drechsel (5).jpg"
+      ]
+    }
+  ]
+}
