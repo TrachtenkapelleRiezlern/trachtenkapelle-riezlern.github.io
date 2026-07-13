@@ -136,7 +136,7 @@ function renderHeroTermine(termine) {
       <!-- <div class="ht-divider"></div> -->
       <div class="ht-info">
         <div class="ht-title">${t.titel}</div>
-        <div class="ht-details">${t.ort ? t.ort + ' · ' : ''}${time}</div>
+        <div class="ht-details">${time}${t.ort ? ' · ' + t.ort : ''}</div>
       </div>`;
     list.appendChild(el);
   });
