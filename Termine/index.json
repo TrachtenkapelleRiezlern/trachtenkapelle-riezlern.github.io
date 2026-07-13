@@ -1,32 +1,12 @@
 [
   {
-    "ordner": "2026_04_19_Erstkommunion",
-    "datum": "2026-04-19",
-    "titel": "Erstkommunion"
-  },
-  {
-    "ordner": "2026_04_25_Jahreskonzert",
-    "datum": "2026-04-25",
-    "titel": "Jahreskonzert"
-  },
-  {
-    "ordner": "2026_06_14_Firmung",
-    "datum": "2026-06-14",
-    "titel": "Firmung"
-  },
-  {
-    "ordner": "2026_06_27_210_Jahre_TK_Riezlern",
-    "datum": "2026-06-27",
-    "titel": "210 Jahre TK Riezlern"
-  },
-  {
-    "ordner": "2026_07_09_Sommerkonzert",
-    "datum": "2026-07-09",
+    "ordner": "2026_07_23_Sommerkonzert",
+    "datum": "2026-07-23",
     "titel": "Sommerkonzert"
   },
   {
-    "ordner": "2026_07_23_Sommerkonzert",
-    "datum": "2026-07-23",
+    "ordner": "2026_08_02_Sommerkonzert",
+    "datum": "2026-08-02",
     "titel": "Sommerkonzert"
   },
   {
@@ -45,9 +25,9 @@
     "titel": "Sommerkonzert"
   },
   {
-    "ordner": "2026_08_23_TK_Riezlern_Musikfest_Oberstdorf",
+    "ordner": "2026_08_23_Musikfest_Oberstdorf",
     "datum": "2026-08-23",
-    "titel": "TK Riezlern @ Musikfest Oberstdorf"
+    "titel": "Musikfest Oberstdorf"
   },
   {
     "ordner": "2026_09_03_Sommerkonzert",
@@ -60,9 +40,14 @@
     "titel": "Sommerkonzert"
   },
   {
-    "ordner": "2026_10_01_Sommerkonzert",
+    "ordner": "2026_09_27_Alphorntage",
+    "datum": "2026-09-27",
+    "titel": "Alphorntage"
+  },
+  {
+    "ordner": "2026_10_01_Letztes_Sommerkonzert",
     "datum": "2026-10-01",
-    "titel": "Sommerkonzert"
+    "titel": "Letztes Sommerkonzert"
   },
   {
     "ordner": "2026_10_18_Kriegergedenken",
@@ -70,8 +55,8 @@
     "titel": "Kriegergedenken"
   },
   {
-    "ordner": "2026_10_19_Testtermin",
-    "datum": "2026-10-19",
-    "titel": "Testtermin"
+    "ordner": "2026_11_29_Adventskonzert",
+    "datum": "2026-11-29",
+    "titel": "Adventskonzert"
   }
 ]

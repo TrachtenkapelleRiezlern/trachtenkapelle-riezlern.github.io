@@ -153,19 +153,30 @@ Auf der Detailseite werden zunächst einige Fotos angezeigt. Bei größeren Albe
 
 ## Termine pflegen
 
-Termine werden über `data/termine.csv` gepflegt und durch GitHub Actions in `Termine/` und `Termine/index.json` synchronisiert.
+Termine werden in Google Sheets gepflegt. GitHub Actions lädt daraus `data/termine.csv` und synchronisiert anschließend `Termine/` und `Termine/index.json`.
+
+Google Sheet:
+
+```text
+https://docs.google.com/spreadsheets/d/14qnUPCQeRqDsPerpj-848IgoBDI53lwBVmT45awWFUw/edit
+```
+
+Die Tabelle muss für „Jeder mit dem Link“ lesbar sein, damit GitHub Actions sie ohne Anmeldung als CSV herunterladen kann.
 
 Wichtige Spalten:
 
 | Spalte | Beispiel | Pflicht |
 |--------|----------|---------|
-| Datum | `28.06.2026` | ✓ |
-| Titel | `Geburtstagsfest` | ✓ |
+| Start Time | `Mo. 22.09.25 20:00` | ✓* |
+| Datum | `28.06.2026` | ✓* |
+| Titel / Title | `Geburtstagsfest` | ✓ |
 | Kategorie | `feste` | ✓ |
-| Ort | `Riezlern` | |
+| Ort / Location | `Riezlern` | |
 | Uhrzeit | `20:00` | |
 | Beschreibung | kurzer Text | |
 | Öffentlich | `Ja` | ✓ |
+
+✓* Entweder `Start Time` oder `Datum` muss vorhanden sein. Wenn `Start Time` eine Uhrzeit enthält, wird diese automatisch als `uhrzeit` übernommen.
 
 Erlaubte Kategorien:
 
@@ -175,6 +186,14 @@ Erlaubte Kategorien:
 | `kirchliches` | Kirchliches |
 | `feste` | Feste & Feiern |
 | `sonstiges` | Sonstiges |
+
+Lokal kann die Synchronisierung so getestet werden:
+
+```bash
+python3 python_scripts/download_termine_csv.py
+python3 python_scripts/sync_termine_from_csv.py --file data/termine.csv
+python3 python_scripts/build_termine.py
+```
 
 ## Lokal testen
 

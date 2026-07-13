@@ -1,16 +1,109 @@
-﻿Orchester;Veranstaltung;Datum;Tage;Stunden;End Time;Location;Titel;Description;Öffentlich;Beschreibung;Eintritt;Kategorie
-TK;Erstkommunion;19.04.2026;;2;19.04. 12:00;Kirche Riezlern;Erstkommunion;;Ja;Testbeschreibung;frei;kirchliches
-TK;Jahreskonzert;25.04.2026;;2;25.04. 22:00;Walserhaus;Jahreskonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Firmung;14.06.2026;;2;14.06. 12:00;Kirche Riezlern;Firmung;;Ja;Testbeschreibung;frei;kirchliches
-TK;210 Jahre TK Riezlern;27.06.2026;;6;27.06. 16:00;Gemeindeplatz oder Kurpark;210 Jahre TK Riezlern;;Ja;Testbeschreibung;frei;feste
-TK;Sommerkonzert;09.07.2026;;1;09.07. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;23.07.2026;;1;23.07. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;06.08.2026;;1;06.08. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Tag der Blasmusik;15.08.2026;;11;15.08. 18:00;;Tag der Blasmusik;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;20.08.2026;;1;20.08. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Musikfest Oberstdorf;23.08.2026;;6;23.08. 16:00;Oberstdorf;TK Riezlern @ Musikfest Oberstdorf;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;03.09.2026;;1;03.09. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;17.09.2026;;1;17.09. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Sommerkonzert;01.10.2026;;1;01.10. 21:00;Gemeindeplatz;Sommerkonzert;;Ja;Testbeschreibung;frei;konzerte
-TK;Kriegergedenken;18.10.2026;;2;18.10. 12:00;Kirche Riezlern;Kriegergedenken;;Ja;Testbeschreibung;frei;kirchliches
-TK;Testtermin;19.10.2026;;1;;Walserhaus;Testtermin;;Ja;Testbeschreibung;frei;feste
+Orchester,Veranstaltung,Start Time,Tage,Stunden,End Time,Location,Title,Description,Color,Guests,Id,Next,Kategorie,Öffentlich
+TK,Tutti,Mo. 22.09.25 20:00,,2,22.09. 22:00,Probelokal,TK - Tutti,,10,,,-1,,
+TK,Tutti,Mo. 29.09.25 20:00,,2,29.09. 22:00,Probelokal,TK - Tutti,,10,,s1vopc0km8ml6s1bi92rehdsm4@google.com,-1,,
+TK,Schlagzeug Einteilung,Mo. 06.10.25 19:00,,1,06.10. 20:00,Probelokal,TK - Schlagzeug Einteilung,,10,,jtep6rkuqovb3alg7dmu53jm34@google.com,-1,,
+TK,Tutti,Mo. 06.10.25 20:00,,2,06.10. 22:00,Probelokal,TK - Tutti,,10,,c73ojrf66g0lavqhqegtertt6c@google.com,-1,,
+TK,Klarinetten,Mo. 13.10.25 19:00,,"1,5",13.10. 20:30,Probelokal,TK - Klarinetten,,10,,n2a8eir9ffhnigpla23jv4nrk0@google.com,-1,,
+TK,Hohes Blech,Mo. 13.10.25 20:30,,"1,5",13.10. 22:00,Probelokal,TK - Hohes Blech,,10,,28tlrg3nb40usm45d3jn8bt5e0@google.com,-1,,
+TK,Saxophone,Do. 16.10.25 19:00,,"1,5",16.10. 20:30,Probelokal,TK - Saxophone,,10,,n487vctfpvl9hduj6doln87pvg@google.com,-1,,
+TK,Tiefes Blech,Do. 16.10.25 20:30,,"1,5",16.10. 22:00,Probelokal,TK - Tiefes Blech,,10,,8v5947ovtfqrme5ht9nkmoggeg@google.com,-1,,
+TK,Querflöten & Oboe,Mo. 20.10.25 19:00,,1,20.10. 20:00,Probelokal,TK - Querflöten & Oboe,,10,,3ipb58al7jeh3ailai7h7lvhvo@google.com,-1,,
+TK,Tutti,Mo. 20.10.25 20:00,,2,20.10. 22:00,Probelokal,TK - Tutti,,10,,9ikbds8adf25m07q3dfqgmmm9k@google.com,-1,,
+TK,Tutti,Mo. 27.10.25 20:00,,2,27.10. 22:00,Probelokal,TK - Tutti,,10,,bmk51cvpn4nik1qo6uqud24pfk@google.com,-1,,
+TK,Schlagwerk,Mo. 03.11.25 19:00,,1,03.11. 20:00,Probelokal,TK - Schlagwerk,,10,,t7kmtrkg1ai2sqddvfhm6r3fm0@google.com,-1,,
+TK,Tutti,Mo. 03.11.25 20:00,,2,03.11. 22:00,Probelokal,TK - Tutti,,10,,8rfb59c35app154u81dnskacqs@google.com,-1,,
+TK,Schlagwerk,Mo. 10.11.25 19:00,,1,10.11. 20:00,Probelokal,TK - Schlagwerk,,10,,vu4moqde61s9ibfq25i45jqmug@google.com,-1,,
+TK,Solisten Bleak Winter,Mo. 10.11.25 20:00,,"0,5",10.11. 20:30,Probelokal,TK - Solisten Bleak Winter,,10,,ckmbnh42dv94v0l19o4eceonco@google.com,-1,,
+TK,Tutti,Mo. 10.11.25 20:30,,"1,5",10.11. 22:00,Probelokal,TK - Tutti,,10,,dcnig3d6sbtan52ifjts4scevo@google.com,-1,,
+TK,Saxophone,Do. 13.11.25 19:00,,"1,5",13.11. 20:30,Probelokal,TK - Saxophone,,10,,cno74n5160mc03sf07sa5ppda8@google.com,-1,,
+TK,Hohes Blech,Do. 13.11.25 20:30,,"1,5",13.11. 22:00,Probelokal,TK - Hohes Blech,,10,,11evd8qotr6861t8muf9h7hr5g@google.com,-1,,
+TK,Querflöten & Oboe,Fr. 14.11.25 19:00,,"1,5",14.11. 20:30,Probelokal,TK - Querflöten & Oboe,,10,,q81trmr86e3b12806gl14tc4j0@google.com,-1,,
+TK,Klarinetten,Fr. 14.11.25 20:30,,"1,5",14.11. 22:00,Probelokal,TK - Klarinetten,,10,,jc07lql4v68dk6a4luahqlrfjg@google.com,-1,,
+TK,Klarinetten-Ensemble,Mo. 17.11.25 19:00,,1,17.11. 20:00,Probelokal,TK - Klarinetten-Ensemble,,10,,f3hcs2qk8p7m2bmvq06cco2h58@google.com,-1,,
+TK,Tutti,Mo. 17.11.25 20:00,,2,17.11. 22:00,Probelokal,TK - Tutti,,10,,njqlek6nm2ijqol5033ld1k6dg@google.com,-1,,
+TK,Tutti mit Kinderchor,Do. 20.11.25 18:30,,2,20.11. 20:30,Probelokal,TK - Tutti mit Kinderchor,,10,,rfvn3821vkke66a89rh5htq23c@google.com,-1,,
+TK,Tiefes Blech,Do. 20.11.25 20:15,,"1,75",20.11. 22:00,Probelokal,TK - Tiefes Blech,,10,,phso32aeshg412sogo4h7f8754@google.com,-1,,
+TK,Klarinetten-Ensemble,Fr. 21.11.25 19:00,,1,21.11. 20:00,Probelokal,TK - Klarinetten-Ensemble,,10,,dcp3lf6vbkph31sp3n5nfsp1kk@google.com,-1,,
+TK,Tutti,Mo. 24.11.25 20:00,,2,24.11. 22:00,Probelokal,TK - Tutti,,10,,hn87ere8nduegm55dv4tovtqj4@google.com,-1,,
+TK,Generalprobe,Sa. 29.11.25 15:00,,2,29.11. 17:00,Kirche Riezlern,TK - Generalprobe,,5,,i7og5n4o4lh1gp59tcd6h7219c@google.com,-1,,
+TK,Adventskonzert,So. 30.11.25 17:00,,1,30.11. 18:00,Kirche Riezlern,TK - Adventskonzert,,5,,c67aphb4it276n9h7o6qj11hgo@google.com,-1,,
+TK,Hauptversammlung,Mo. 01.12.25 20:00,,2,01.12. 22:00,Probelokal,TK - Hauptversammlung,,10,,b3iml1fffba10da7vtb4balhbo@google.com,-1,,
+TK,Tutti,Mo. 12.01.26 20:00,,2,12.01. 22:00,Probelokal,TK - Tutti,,10,,57caqad6q7uct4do4sge8ekn4k@google.com,-1,,
+TK,Tutti,Mo. 19.01.26 20:00,,2,19.01. 22:00,Probelokal,TK - Tutti,,10,,d7bu8h3m38fhkq08m1r7fnncgs@google.com,-1,,
+TK,Offene Probe,Mo. 26.01.26 20:00,,2,26.01. 22:00,Probelokal,TK - Offene Probe,,10,,hgn6bav9c62dufg7mesc7lh2c8@google.com,-1,,
+TK,Tutti,Mo. 02.02.26 20:00,,2,02.02. 22:00,Probelokal,TK - Tutti,,10,,etabfdadmlivtnc8i4se8dlmt8@google.com,-1,,
+TK,Schlagwerk Einteilung,Mo. 09.02.26 19:00,,1,09.02. 20:00,Probelokal,TK - Schlagwerk Einteilung,,10,,gnpsbb215i4eorp35mk44b013c@google.com,-1,,
+TK,Tutti,Mo. 09.02.26 20:00,,2,09.02. 22:00,Probelokal,TK - Tutti,,10,,n19balp7jmhalt0egc1mb0n3oo@google.com,-1,,
+TK,"Flöte, Oboe",Do. 12.02.26 19:00,,"1,5",12.02. 20:30,Probelokal,"TK - Flöte, Oboe",,10,,6kd8ubhppumdpt1kej5f7dpkcs@google.com,-1,,
+TK,Klarinette,Do. 12.02.26 20:30,,"1,5",12.02. 22:00,Probelokal,TK - Klarinette,,10,,thdrlmkb3e5pj9534va65uhlo4@google.com,-1,,
+TK,Hohes Blech,Mo. 16.02.26 20:00,,"1,5",16.02. 21:30,Probelokal,TK - Hohes Blech,,10,,ruqs3hkvvjatuo8ummr444cutg@google.com,-1,,
+TK,"Posaune, Tuba",Fr. 20.02.26 19:00,,"1,5",20.02. 20:30,Probelokal,"TK - Posaune, Tuba",,10,,7f7e641nv2jo3p6p3la5kmkvb0@google.com,-1,,
+TK,"Tenorhorn, Horn",Fr. 20.02.26 20:30,,"1,5",20.02. 22:00,Probelokal,"TK - Tenorhorn, Horn",,10,,9dsaki2l68it18pltncm2me1v8@google.com,-1,,
+TK,Saxophon,Mo. 23.02.26 19:00,,"1,5",23.02. 20:30,Probelokal,TK - Saxophon,,10,,3lb3sovv2bl8fv3t493vo2sic8@google.com,-1,,
+TK,Tutti,Mo. 23.02.26 20:30,,"1,5",23.02. 22:00,Probelokal,TK - Tutti,,10,,jdeu5nojic2m3rgjtn7psbbepg@google.com,-1,,
+TK,Hohes Blech,Do. 26.02.26 19:00,,"1,5",26.02. 20:30,Probelokal,TK - Hohes Blech,,10,,bfndqavkoubvhidhtj95dkrasc@google.com,-1,,
+TK,Schlagwerk,Do. 26.02.26 20:30,,"1,5",26.02. 22:00,Probelokal,TK - Schlagwerk,,10,,174emllh54edhdibmicqhetjro@google.com,-1,,
+TK,Tutti,Mo. 02.03.26 20:00,,2,02.03. 22:00,Probelokal,TK - Tutti,,10,,78kq30h8h5r7dn5qq734ojaces@google.com,-1,,
+TK,"Flöte, Oboe",Fr. 06.03.26 14:00,,"1,5",06.03. 15:30,Zwerwald Str. 19,"TK - Flöte, Oboe",,10,,4ds2atq06g5mlb3nsec70g3c10@google.com,-1,,
+TK,Klarinette,Mo. 09.03.26 19:00,,"1,5",09.03. 20:30,Probelokal,TK - Klarinette,,10,,clss4lrq84eru5e60tmqj3kitg@google.com,-1,,
+TK,Saxophon,Mo. 09.03.26 20:30,,"1,5",09.03. 22:00,Probelokal,TK - Saxophon,,10,,e3t5rqs37ls48iq8fv9a5igj74@google.com,-1,,
+TK,Tiefes Blech,Fr. 13.03.26 20:00,,"1,5",13.03. 21:30,Probelokal,TK - Tiefes Blech,,10,,1d8hv1cakfghootabe5bk96m4c@google.com,-1,,
+TK,Schlagwerk,Mo. 16.03.26 19:00,,1,16.03. 20:00,Probelokal,TK - Schlagwerk,,10,,cv1odi0j3l69thinm925e38l2c@google.com,-1,,
+TK,Tutti,Mo. 16.03.26 20:00,,2,16.03. 22:00,Probelokal,TK - Tutti,,10,,9deb5207g4tk1snf3np18hq7rs@google.com,-1,,
+TK,Holz,Mo. 23.03.26 19:00,,"1,5",23.03. 20:30,Probelokal,TK - Holz,,10,,g5iequirrt9jgdps6do40jsp80@google.com,-1,,
+TK,Blech,Mo. 23.03.26 20:30,,"1,5",23.03. 22:00,Probelokal,TK - Blech,,10,,p14hqir4s0d9uenkj6itoj2p4o@google.com,-1,,
+TK,Tutti,Fr. 27.03.26 20:00,,2,27.03. 22:00,Probelokal,TK - Tutti,,10,,f06emk6sd1oqt4pnkq3e8v8cfk@google.com,-1,,
+TK,Probentag,Sa. 28.03.26 09:00,,7,28.03. 16:00,Probelokal,TK - Probentag,,10,,bq4siqik5060fbmrjbcsdicr5g@google.com,-1,,
+TK,Tutti,Mo. 30.03.26 20:00,,2,30.03. 22:00,Probelokal,TK - Tutti,,10,,u6qh4hd7uohfuv9ing5t137q3k@google.com,-1,,
+TK,Tutti,Mo. 06.04.26 16:00,,2,06.04. 18:00,Probelokal,TK - Tutti,,10,,6boevm4jf3l3am0uv6dnr51h7g@google.com,-1,,
+TK,Tutti,Fr. 10.04.26 20:00,,2,10.04. 22:00,Probelokal,TK - Tutti,,10,,928i6o3go8sjcrnm4884mjhlog@google.com,-1,,
+TK,Tutti,Mo. 13.04.26 20:00,,2,13.04. 22:00,Probelokal,TK - Tutti,,10,,9bkqebogc295vmi5oa9776dsls@google.com,-1,,
+TK,Tutti,Do. 16.04.26 20:00,,2,16.04. 22:00,Probelokal,TK - Tutti,,10,,i68ctf3ci2ao8cuh7ag8bsqrv4@google.com,-1,,
+TK,Erstkommunion,So. 19.04.26 10:00,,2,19.04. 12:00,Kirche Riezlern,TK - Erstkommunion,,5,,0k0ia7333okpi753lo5uf4qts8@google.com,-1,,
+TK,Tutti,Mo. 20.04.26 20:00,,2,20.04. 22:00,Probelokal,TK - Tutti,,10,,bvkjnudsj09smq814adidsq6gk@google.com,-1,,
+TK,Generalprobe,Fr. 24.04.26 20:00,,2,24.04. 22:00,Walserhaus,TK - Generalprobe,,5,,f1ndlq7jg95od0h5a4p9sci9k4@google.com,-1,,
+TK,Jahreskonzert,Sa. 25.04.26 20:00,,2,25.04. 22:00,Walserhaus,TK - Jahreskonzert,,5,,1pdrmpt3k4b14nh4q4b6r9qngc@google.com,-1,,
+TK,Tutti,Mo. 04.05.26 20:00,,2,04.05. 22:00,Walserhaus,TK - Tutti,,10,,fqnqlj3u8s524hgultujv341cg@google.com,-1,,
+TK,Tutti,Mo. 11.05.26 20:00,,2,11.05. 22:00,Walserhaus,TK - Tutti,,10,,qrjg71mrh7n4e2mrbmnkik9r6k@google.com,-1,,
+TK,Tutti,Mo. 01.06.26 20:00,,2,01.06. 22:00,Walserhaus,TK - Tutti,,10,,rqioq2cb712l5cfph0d1o7sbcs@google.com,-1,,
+TK,Fronleichnam,Do. 04.06.26 08:20,,"1,5",04.06. 09:50,Gemeindeplatz,TK - Fronleichnam,,5,,m1f7qdoitl5b2auqknao65msto@google.com,-1,,
+TK,Tutti,Mo. 08.06.26 20:00,,2,08.06. 22:00,Walserhaus,TK - Tutti,,10,,219v55avk59g2p08i4hkdo8ufg@google.com,-1,,
+TK,Firmung,So. 14.06.26 10:00,,2,14.06. 12:00,Kirche Riezlern,TK - Firmung,,5,,tp08rcuhrkveoglbqu7f47385c@google.com,-1,,
+TK,Tutti,Mo. 15.06.26 20:00,,2,15.06. 22:00,Walserhaus,TK - Tutti,,10,,qfr8t1ktrrphbq445erl5gpb8c@google.com,-1,,
+TK,Sommerkonzert,Do. 18.06.26 20:00,,1,18.06. 21:00,Walserhaus,TK - Sommerkonzert,,10,,9fsr6p0h5agmikcgth98k5qtn8@google.com,-1,,
+TK,Aufbau 210 Jahre,Sa. 27.06.26 13:00,,4,27.06. 17:00,Walser Park,TK - Aufbau 210 Jahre,,10,,fja2lm5g523r2pee5ftqmme8rk@google.com,-1,,
+TK,210 Jahre TK Riezlern,So. 28.06.26 10:00,,6,28.06. 16:00,Kurpark,TK - 210 Jahre TK Riezlern,,5,,99e4sqi92sb3jh620iaui5gkr0@google.com,-1,,
+TK,Abbau 210 Jahre,Mo. 29.06.26 09:00,,3,29.06. 12:00,Walser Park,TK - Abbau 210 Jahre,,10,,kc7tif0gunkpo055p54l4kscek@google.com,-1,,
+TK,Tutti,Mo. 06.07.26 20:00,,2,06.07. 22:00,Walserhaus,TK - Tutti,,10,,alpgf6erqp9gt5bu6k5gl88008@google.com,-1,,
+TK,Sommerkonzert,Do. 09.07.26 20:00,,1,09.07. 21:00,Gemeindeplatz,TK - Sommerkonzert,,10,,aajjt4aq6ndhpp49jltv8sf5t0@google.com,-1,,
+TK,Tutti,Mo. 13.07.26 20:00,,2,13.07. 22:00,Walserhaus,TK - Tutti,,10,,5l8mpb58sd08td7t1g5ebak7i0@google.com,0,,
+TK,Tutti,Mo. 20.07.26 20:00,,2,20.07. 22:00,Walserhaus,TK - Tutti,,10,,eettd9i1de469gt4sr1ksovl0o@google.com,1,,
+TK,Sommerkonzert,Do. 23.07.26 20:00,,1,23.07. 21:00,Gemeindeplatz,TK - Sommerkonzert,,10,,gd5ojfsvmhm7s395s2bnh9gt2g@google.com,1,Konzert,Ja
+TK,Tutti,Mo. 27.07.26 20:00,,2,27.07. 22:00,Walserhaus,TK - Tutti,,10,,dv78j8d35onpdfs9f07i55ih3c@google.com,1,,
+TK,Sommerkonzert,So. 02.08.26 20:00,,1,02.08. 21:00,Gemeindeplatz,TK - Sommerkonzert,,10,,k86v86rn0af0fdtbagjcjnokms@google.com,1,Konzert,Ja
+TK,Tutti,Mo. 03.08.26 20:00,,2,03.08. 22:00,Walserhaus,TK - Tutti,,10,,15j6khki6tu403pr0l9ma9gtp4@google.com,1,,
+TK,Sommerkonzert,Do. 06.08.26 20:00,,1,06.08. 21:00,Gemeindeplatz,TK - Sommerkonzert,,10,,ngmg34hnjvs8202njtvruo69rs@google.com,1,Konzert,Ja
+TK,Tutti,Mo. 10.08.26 20:00,,2,10.08. 22:00,Walserhaus,TK - Tutti,,10,,tu9muokf4ihp6arqm7u1j6k314@google.com,1,,
+TK,Tag der Blasmusik,Sa. 15.08.26 07:00,,11,15.08. 18:00,,TK - Tag der Blasmusik,,5,,0s38tlv04aiaqp26k5dr7adv1c@google.com,1,Fest,Ja
+TK,Tutti,Mo. 17.08.26 20:00,,2,17.08. 22:00,Walserhaus,TK - Tutti,,10,,9hab4t99vd9ah1bnhndit50qto@google.com,1,,
+TK,Sommerkonzert,Do. 20.08.26 20:00,,1,20.08. 21:00,Gemeindeplatz,TK - Sommerkonzert,,10,,2jgck5q15d7gegbca84oa0fn2o@google.com,1,Konzert,Ja
+TK,Musikfest Oberstdorf,So. 23.08.26 10:00,,6,23.08. 16:00,Oberstdorf,TK - Musikfest Oberstdorf,,5,,vrfm6bccp7lki6478f6jtft72c@google.com,1,Fest,Ja
+TK,Tutti,Mo. 24.08.26 20:00,,2,24.08. 22:00,Walserhaus,TK - Tutti,,10,,pbq6hvgohn8usf2lsdk0kv5s00@google.com,1,,
+TK,Tutti,Mo. 31.08.26 20:00,,2,31.08. 22:00,Walserhaus,TK - Tutti,,10,,6p1iu2rsok9a7agtlahf4e3dag@google.com,1,,
+TK,Sommerkonzert,Do. 03.09.26 20:00,,1,03.09. 21:00,Gemeindeplatz,TK - Sommerkonzert,,10,,3ani72njjbgh8kmebf4s93aa3s@google.com,1,Konzert,Ja
+TK,Tutti,Mo. 07.09.26 20:00,,2,07.09. 22:00,Walserhaus,TK - Tutti,,10,,8448q6oupa4qgmiutiqqq1aqfc@google.com,1,,
+TK,Tutti,Mo. 14.09.26 20:00,,2,14.09. 22:00,Walserhaus,TK - Tutti,,10,,23fhuotvarjvs7b1ldlsfogrec@google.com,1,,
+TK,Sommerkonzert,Do. 17.09.26 20:00,,1,17.09. 21:00,Gemeindeplatz,TK - Sommerkonzert,,10,,tfbf2mgf60ude83qlmfis2shtg@google.com,1,Konzert,Ja
+TK,Tutti,Mo. 21.09.26 20:00,,2,21.09. 22:00,Walserhaus,TK - Tutti,,10,,sa8e0kcn52dmeb39loqs288na4@google.com,1,,
+TK,Alphorntage,So. 27.09.26 11:15,,2,27.09. 13:15,Baad,TK - Alphorntage,,5,,dkqvi6ct02k0srn942kk229ag4@google.com,1,Fest,Ja
+TK,Tutti,Mo. 28.09.26 20:00,,2,28.09. 22:00,Walserhaus,TK - Tutti,,10,,pssreu3oe4c9njbkkp8sc55la4@google.com,1,,
+TK,Letztes Sommerkonzert,Do. 01.10.26 20:00,,1,01.10. 21:00,Gemeindeplatz,TK - Letztes Sommerkonzert,,10,,qkva3bd3eki2p5o1tm1qsfb5pc@google.com,1,Konzert,Ja
+TK,Tutti,Mo. 12.10.26 20:00,,2,12.10. 22:00,Walserhaus,TK - Tutti,,10,,22k28l25uqd6cjpo7hk5tp9ta0@google.com,1,,
+TK,Kriegergedenken,So. 18.10.26 10:00,,2,18.10. 12:00,Kirche Riezlern,TK - Kriegergedenken,,5,,rc7l5e5t64klnd4fjohvhk7uc4@google.com,1,Kirchlich,Ja
+TK,Tutti,Mo. 19.10.26 20:00,,2,19.10. 22:00,Walserhaus,TK - Tutti,,10,,h88tq7vg1h0pdk17au5hof2ekg@google.com,1,,
+TK,Tutti,Mo. 26.10.26 20:00,,2,26.10. 22:00,Walserhaus,TK - Tutti,,10,,udc32sfllsg1c1khnve7vtlgh0@google.com,1,,
+TK,Tutti,Mo. 02.11.26 20:00,,2,02.11. 22:00,Walserhaus,TK - Tutti,,10,,grn2aoign9jt201q3tak5uvoe4@google.com,1,,
+TK,Tutti,Mo. 09.11.26 20:00,,2,09.11. 22:00,Walserhaus,TK - Tutti,,10,,d49grf9k2akg33ef6ge73n9330@google.com,1,,
+TK,Tutti,Mo. 16.11.26 20:00,,2,16.11. 22:00,Walserhaus,TK - Tutti,,10,,8r4fc0tqqr1a92o6t2o4ktlovs@google.com,1,,
+TK,Tutti,Mo. 23.11.26 20:00,,2,23.11. 22:00,Walserhaus,TK - Tutti,,10,,4s9uucdc9ql405d9np2i2g11sk@google.com,1,,
+TK,Adventskonzert,So. 29.11.26 17:00,,1,29.11. 18:00,Kirche Riezlern,TK - Adventskonzert,,5,,36ab1pockospbma0tk8nrhncnc@google.com,1,Konzert,Ja

@@ -12,6 +12,7 @@ on:
     paths:
       - 'data/termine.csv'
       - 'Termine/**'
+      - 'python_scripts/download_termine_csv.py'
       - 'python_scripts/sync_termine_from_csv.py'
       - 'python_scripts/build_termine.py'
 
@@ -30,8 +31,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      # Lädt die aktuelle Tabelle aus Google Sheets als data/termine.csv
+      - name: Termine-CSV aus Google Sheets laden
+        run: python3 python_scripts/download_termine_csv.py
+
       # Liest data/termine.csv und schreibt Termine/*/meta.json
-      - name: Termine aus Excel synchronisieren
+      - name: Termine aus CSV synchronisieren
         run: python3 python_scripts/sync_termine_from_csv.py --file data/termine.csv
 
       # Scannt Termine/-Ordner und schreibt Termine/index.json
@@ -43,7 +48,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Termine/
+          git add data/termine.csv Termine/
           if git diff --staged --quiet; then
             echo "Keine Änderungen – nichts zu committen."
           else

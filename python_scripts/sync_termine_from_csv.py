@@ -48,14 +48,29 @@ def slugify(text):
     text = re.sub(r'[^\w\s-]', '', text).strip()
     return re.sub(r'[\s_-]+', '_', text)[:40].rstrip('_')
 
-def parse_datum(raw):
+def parse_datetime(raw):
     raw = raw.strip()
-    for fmt in ('%d.%m.%Y', '%Y-%m-%d', '%d.%m.%y'):
+    raw = re.sub(r'^[A-Za-zÄÖÜäöü]{2,3}\.\s+', '', raw)
+    for fmt in (
+        '%d.%m.%Y %H:%M',
+        '%d.%m.%y %H:%M',
+        '%Y-%m-%d %H:%M',
+        '%Y-%m-%dT%H:%M:%S',
+        '%Y-%m-%dT%H:%M',
+        '%d.%m.%Y',
+        '%Y-%m-%d',
+        '%d.%m.%y',
+    ):
         try:
-            return datetime.strptime(raw, fmt).strftime('%Y-%m-%d')
+            dt = datetime.strptime(raw, fmt)
+            return dt.strftime('%Y-%m-%d'), dt.strftime('%H:%M') if '%H' in fmt else None
         except ValueError:
             pass
-    return None
+    return None, None
+
+def parse_datum(raw):
+    datum, _ = parse_datetime(raw)
+    return datum
 
 def is_oeffentlich(val):
     return val.strip().lower() in ('ja', 'yes', 'true', '1', 'x')
@@ -76,8 +91,15 @@ def sync(csv_path, dry_run=False):
 
     TERMINE_DIR.mkdir(parents=True, exist_ok=True)
 
-    with open(csv_path, encoding='utf-8-sig') as f:
-        reader = csv.DictReader(f, delimiter=';')
+    with open(csv_path, encoding='utf-8-sig', newline='') as f:
+        sample = f.read(4096)
+        f.seek(0)
+        try:
+            dialect = csv.Sniffer().sniff(sample, delimiters=';,')
+        except csv.Error:
+            dialect = csv.excel
+            dialect.delimiter = ';'
+        reader = csv.DictReader(f, dialect=dialect)
         # Normalize headers to lowercase
         rows = []
         for row in reader:
@@ -94,22 +116,26 @@ def sync(csv_path, dry_run=False):
             skipped += 1
             continue
 
-        datum_raw = row.get('datum', '')
-        datum = parse_datum(datum_raw)
+        datum_raw = row.get('datum', '') or row.get('start time', '') or row.get('start', '')
+        datum, parsed_uhrzeit = parse_datetime(datum_raw)
         if not datum:
             print(f"  Zeile {i}: Ungültiges Datum '{datum_raw}' – übersprungen")
             errors += 1
             continue
 
-        titel = row.get('titel', '').strip()
+        titel = (
+            row.get('titel', '')
+            or row.get('veranstaltung', '')
+            or row.get('title', '')
+        ).strip()
         if not titel:
             print(f"  Zeile {i}: Kein Titel – übersprungen")
             errors += 1
             continue
 
-        uhrzeit     = row.get('uhrzeit', '').strip() or None
-        ort         = row.get('ort', '').strip() or None
-        beschreibung= row.get('beschreibung', '').strip() or None
+        uhrzeit     = row.get('uhrzeit', '').strip() or parsed_uhrzeit
+        ort         = (row.get('ort', '') or row.get('location', '')).strip() or None
+        beschreibung= (row.get('beschreibung', '') or row.get('description', '')).strip() or None
         kat_raw     = row.get('kategorie', '').strip()
         kategorie   = normalize_kategorie(kat_raw) if kat_raw else 'sonstiges'
 
