@@ -605,10 +605,11 @@ const FOOTER_HTML = `<!-- ══════════════════
       <ul>
         <li><a href="index.html">Startseite</a></li>
         <li><a href="verein.html">Unser Verein</a></li>
-        <li><a href="verein.html#mitglieder">Mitglieder</a></li>
+        <li><a href="musikanten.html">Mitglieder</a></li>
         <li><a href="verein.html#vorstand">Vorstand</a></li>
         <li><a href="verein.html#jugend">Jugendarbeit</a></li>
         <li><a href="verein.html#alphorn">Alphorn</a></li>
+        <li><a href="geschichte.html">Geschichte</a></li>
       </ul>
     </div>
     <div class="footer-col">
