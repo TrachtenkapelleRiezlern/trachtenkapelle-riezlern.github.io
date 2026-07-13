@@ -4,6 +4,7 @@
 
 const TERMINE_INDEX  = 'Termine/index.json';
 const MAX_HERO_TERMINE = 5;
+const MAX_HOME_RUECKBLICKE = 6;
 
 const MONTH_SHORT = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -278,6 +279,70 @@ function rueckblickCard(item, isFirstInYear) {
       </div>
     </article>
   `;
+}
+
+function rueckblickTypeSummary(item) {
+  const parts = [];
+  if (item.inhalt || item.text || item.article) parts.push('Artikel');
+  if (item.concert) parts.push('Konzert');
+  const albumCount = item.albums?.length || 0;
+  if (albumCount === 1) parts.push('Bilder');
+  if (albumCount > 1) parts.push(`${albumCount} Alben`);
+  return parts.length ? parts.join(' · ') : 'Rückblick';
+}
+
+function rueckblickHomeCard(item) {
+  const memoryId = item._ordner || item.id || '';
+  const href = `rueckblick.html?id=${encodeURIComponent(memoryId)}`;
+  const tags = Array.isArray(item.tags) ? item.tags.slice(0, 2) : [];
+  const tagHtml = tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
+
+  const title = item.titel.replace(/\s\d\d\d\d\s?/g, ' ');
+  const date = new Date(item.datum);
+  const datePill = `${MONTH_SHORT[date.getMonth()]} ${date.getFullYear()}`;
+
+  return `
+    <a href="${escapeHtml(href)}" class="g-item g-item-rueckblick">
+      <img src="${escapeHtml(rueckblickCoverPath(memoryId))}" alt="${escapeHtml(item.titel)}" loading="lazy"
+           onerror="this.style.display='none'" />
+      <div class="g-overlay">
+        <div class="g-rueckblick-card">
+          <h3>${escapeHtml(title)}</h3>
+          <div class="g-rueckblick-meta">
+            <span>${datePill}</span>
+            ${tagHtml}
+          </div>
+        </div>
+      </div>
+    </a>
+  `;
+}
+
+async function initHomeRueckblicke() {
+  const grid = document.getElementById('homeRueckblickeGrid');
+  if (!grid) return;
+
+  try {
+    const index = await loadIndex('Rueckblicke/index.json');
+    const results = await Promise.allSettled(
+      index.map(e => loadMeta(e.ordner, 'Rueckblicke'))
+    );
+    const items = results
+      .filter(r => r.status === 'fulfilled')
+      .map(r => r.value)
+      .sort((a,b) => String(b.datum || '').localeCompare(String(a.datum || '')))
+      .slice(0, MAX_HOME_RUECKBLICKE);
+
+    if (!items.length) {
+      grid.innerHTML = '<div class="gallery-loading">Noch keine Rückblicke vorhanden.</div>';
+      return;
+    }
+
+    grid.innerHTML = items.map(rueckblickHomeCard).join('');
+  } catch (err) {
+    console.warn('Homepage Rückblicke Ladefehler:', err.message);
+    grid.innerHTML = '<div class="gallery-loading">Rückblicke konnten nicht geladen werden.</div>';
+  }
 }
 
 async function initRueckblicke() {
@@ -596,6 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSlideshow();
   initActiveNav();
   initTermine();
+  initHomeRueckblicke();
   initRueckblicke();
   initRueckblickDetailPage();
   initBirthdayPill();
