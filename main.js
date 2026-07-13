@@ -612,9 +612,8 @@ const FOOTER_HTML = `<!-- ══════════════════
       <p>Die erste Kapelle des Kleinwalsertals – seit über 200 Jahren Musik, Gemeinschaft und Tradition in Riezlern, Vorarlberg.</p>
     </div>
     <div class="footer-col">
-      <h4>Navigation</h4>
+      <h4>Verein</h4>
       <ul>
-        <li><a href="index.html">Startseite</a></li>
         <li><a href="verein.html">Unser Verein</a></li>
         <li><a href="musikanten.html">Mitglieder</a></li>
         <li><a href="verein.html#vorstand">Vorstand</a></li>
@@ -624,18 +623,18 @@ const FOOTER_HTML = `<!-- ══════════════════
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Mehr</h4>
+      <h4>Erleben</h4>
       <ul>
+        <li><a href="index.html">Startseite</a></li>
         <li><a href="termine.html">Termine</a></li>
         <li><a href="rueckblicke.html">Rückblicke</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="index.html#instagram">Instagram</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Trachtenkapelle Riezlern e.V. · Riezlern, Kleinwalsertal</span>
-    <span>Musik ist Leben.</span>
+    <span><a href="kontakt.html">Kontakt</a> · <a href="impressum.html">Impressum</a></span>
   </div>
 </footer>`;
 
