@@ -513,6 +513,7 @@ section > .kapellmeisterin-section { max-width: 100%; }
   gap: 28px;
   align-items: stretch;
   position: relative;
+  cursor: pointer;
 }
 .rueckblick-item::before {
   content: '';
@@ -591,7 +592,7 @@ section > .kapellmeisterin-section { max-width: 100%; }
   gap: 8px;
   margin-bottom: 10px;
 }
-.rueckblick-meta span {
+.rueckblick-meta > span {
   display: inline-flex;
   align-items: center;
   min-height: 24px;
@@ -604,7 +605,7 @@ section > .kapellmeisterin-section { max-width: 100%; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.rueckblick-meta span:first-child {
+.rueckblick-meta > span:first-child {
   background: rgba(193,154,58,0.16);
   color: var(--gold);
 }
@@ -728,6 +729,8 @@ section > .kapellmeisterin-section { max-width: 100%; }
 .rueckblick-detail-text {
   margin-bottom: 42px;
 }
+.datelong { display: inline-block; }
+.dateshort { display: none; }
 .rueckblick-detail-block {
   margin-top: 44px;
   padding-top: 34px;
@@ -912,7 +915,16 @@ section > .kapellmeisterin-section { max-width: 100%; }
     padding: 20px;
     border-radius: 0 var(--radius) var(--radius) 0;
   }
-  .rueckblick-content p {
+  .rueckblick-content > p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0;
+    font-size: 0.75em;
+    color: #888;
+  }
+  .rueckblick-links {
     display: none;
   }
   .rueckblick-meta span:nth-child(n + 3) {
@@ -922,6 +934,9 @@ section > .kapellmeisterin-section { max-width: 100%; }
   .rueckblicke-archive-links .btn { width: 100%; text-align: center; }
   .rueckblick-photo-grid { grid-template-columns: repeat(2, 1fr); }
   .rueckblick-lb-btn { padding: 10px 14px; }
+
+  .datelong { display: none; }
+  .dateshort { display: inline-block; }
 }
 
 /* ══════════════════════════════

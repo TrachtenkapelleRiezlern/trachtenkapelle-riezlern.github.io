@@ -85,6 +85,11 @@ function formatDateDisplay(datum) {
   return `${d.getDate()}. ${MONTH_LONG[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+function formatResponsiveDateDisplay(datum) {
+  const d = new Date(datum + 'T00:00:00');
+  return `${d.getDate()}.<span class="datelong">&nbsp;${MONTH_LONG[d.getMonth()]}&nbsp;</span><span class="dateshort">${d.getMonth() + 1}.</span>${d.getFullYear()}`;
+}
+
 // ── GENERIC JSON LOADER ──────────────────────────────────────────────────────
 async function loadIndex(indexPath) {
   const res = await fetch(indexPath);
@@ -235,8 +240,8 @@ function rueckblickYear(item) {
 
 function formatRueckblickDate(item) {
   const datum = item.datum || '';
-  if (/^\d{4}-\d{2}-\d{2}$/.test(datum)) return formatDateDisplay(datum);
-  return datum || 'Archiv';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(datum)) return formatResponsiveDateDisplay(datum);
+  return escapeHtml(datum) || 'Archiv';
 }
 
 function rueckblickAssetPath(memoryId, filePath) {
@@ -259,7 +264,7 @@ function rueckblickCard(item, isFirstInYear) {
   const tagHtml = tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
 
   return `
-    <article class="rueckblick-item${isFirstInYear ? ' year-start' : ''}">
+    <article class="rueckblick-item${isFirstInYear ? ' year-start' : ''}" onclick="location.href='${escapeHtml(href)}'">
       <div class="rueckblick-year-marker" aria-hidden="${isFirstInYear ? 'false' : 'true'}">${isFirstInYear ? escapeHtml(rueckblickYear(item)) : ''}</div>
       <a class="rueckblick-image-link" href="${escapeHtml(href)}" aria-label="${escapeHtml(item.titel)} ansehen">
         <img src="${escapeHtml(image)}" alt="${escapeHtml(item.titel)}" loading="lazy"
@@ -268,13 +273,13 @@ function rueckblickCard(item, isFirstInYear) {
       </a>
       <div class="rueckblick-content">
         <div class="rueckblick-meta">
-          <span>${escapeHtml(formatRueckblickDate(item))}</span>
+          <span>${formatRueckblickDate(item)}</span>
           ${tagHtml}
         </div>
         <h3>${escapeHtml(item.titel)}</h3>
         ${item.beschreibung ? `<p>${escapeHtml(item.beschreibung)}</p>` : ''}
         <div class="rueckblick-links">
-          <a class="rueckblick-link" href="${escapeHtml(href)}">Rückblick ansehen</a>
+          <a class="rueckblick-link" href="${escapeHtml(href)}" onclick="event.stopPropagation()">Rückblick ansehen</a>
         </div>
       </div>
     </article>
@@ -505,7 +510,7 @@ async function initRueckblickDetailPage() {
 
     document.title = `${title} – Trachtenkapelle Riezlern`;
     document.getElementById('rueckblickDetailTitle').textContent = title;
-    document.getElementById('rueckblickDetailDate').textContent = formatRueckblickDate(meta);
+    document.getElementById('rueckblickDetailDate').innerHTML = formatRueckblickDate(meta);
     document.getElementById('rueckblickDetailTags').innerHTML = renderRueckblickTags(meta.tags || []);
     document.getElementById('rueckblickDetailLead').textContent = meta.beschreibung || '';
 
