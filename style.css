@@ -1311,7 +1311,7 @@ footer { background: var(--green-dark); color: rgba(255,255,255,0.5); padding: 5
   .hero-termine-list { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .hero-termin { min-width: 150px; padding: 12px 16px; }
   .ht-day { font-size: 1.3rem; }
-  .hero-dots { right: 12px; bottom: 90px; }
+  .hero-dots { right: 12px; bottom: 120px; }
 
   section { padding: 60px 4%; }
 
