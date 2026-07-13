@@ -1,0 +1,22 @@
+{
+  "titel": "Ehrung für 25 Jahre aktive Mitgliedschaft",
+  "datum": "2026-03-21",
+  "tags": [
+    "Ehrung",
+    "Verein",
+    "VBV"
+  ],
+  "beschreibung": "Katrin Berchtold, Thomas Berchtold und Roman Edlinger wurden vom Vorarlberger Blasmusikverband für 25 Jahre aktive Mitgliedschaft ausgezeichnet.",
+  "inhalt": "<p>Beim Ehrungsabend des Blasmusikbezirks Bregenz wurden am 21. März 2026 zahlreiche verdiente Musikantinnen und Musikanten für ihr langjähriges Wirken in den Musikvereinen ausgezeichnet. In festlichem Rahmen würdigte der Vorarlberger Blasmusikverband gemeinsam mit dem Bezirk Bregenz jene Menschen, die seit vielen Jahren mit Verlässlichkeit, Freude und großem Einsatz das Vereinsleben mittragen.</p><p>Auch die Trachtenkapelle Riezlern durfte sich über besondere Auszeichnungen freuen: Katrin Berchtold, Thomas Berchtold und Roman Edlinger erhielten für 25 Jahre aktive Mitgliedschaft die silberne Ehrennadel des Vorarlberger Blasmusikverbandes. Roman Edlinger konnte an diesem Abend leider nicht persönlich anwesend sein.</p><p>25 Jahre aktives Musizieren bedeuten unzählige Proben, Konzerte, Ausrückungen, Feste und gemeinsame Erinnerungen. Vor allem aber stehen sie für Treue zum Verein, für musikalische Begeisterung und für die Bereitschaft, Verantwortung in einer lebendigen Gemeinschaft zu übernehmen.</p><p>Wir gratulieren Katrin, Thomas und Roman herzlich zu dieser verdienten Ehrung und bedanken uns für ihren langjährigen Einsatz für die Trachtenkapelle Riezlern.</p>",
+  "albums": [
+    {
+      "id": "ehrung",
+      "titel": "Bilder vom Ehrungsabend",
+      "bilder": [
+        "images/01.jpg",
+        "images/02.jpg",
+        "images/03.jpg"
+      ]
+    }
+  ]
+}
