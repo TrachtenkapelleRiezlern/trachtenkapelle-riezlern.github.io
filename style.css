@@ -206,10 +206,13 @@ nav {
 .hero-termin {
   display: flex; align-items: center; gap: 14px;
   padding: 16px 22px; border-right: 1px solid rgba(255,255,255,0.07);
-  flex: 1; min-width: 0; cursor: default;
+  flex: 1; min-width: 0; cursor: pointer;
+  color: inherit;
+  text-decoration: none;
   transition: background 0.2s;
 }
-.hero-termin:hover { background: rgba(255,255,255,0.04); }
+.hero-termin:hover,
+.hero-termin:focus-visible { background: rgba(255,255,255,0.04); outline: none; }
 .hero-termin:last-child { border-right: none; }
 
 .ht-date { display: flex; flex-direction: column; align-items: center; min-width: 34px; flex-shrink: 0; }
@@ -962,8 +965,14 @@ section > .kapellmeisterin-section { max-width: 100%; }
   gap: 24px; padding: 24px 0;
   border-bottom: 1px solid rgba(26,58,34,0.1);
   align-items: center; transition: background 0.2s;
+  scroll-margin-top: calc(var(--nav-height) + 24px);
 }
 .termin-card:hover { background: rgba(45,96,64,0.04); }
+.termin-card:focus { outline: none; }
+.termin-card.termin-highlight {
+  background: rgba(201,168,76,0.16);
+  box-shadow: 0 0 0 12px rgba(201,168,76,0.16);
+}
 .termin-card:first-child { border-top: 1px solid rgba(26,58,34,0.1); }
 
 .tc-date { text-align: center; }

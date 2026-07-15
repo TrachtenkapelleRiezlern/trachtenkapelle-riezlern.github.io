@@ -134,17 +134,22 @@ function renderHeroTermine(termine) {
 
   termine.slice(0, MAX_HERO_TERMINE).forEach(t => {
     const { day, month, time } = parseDatum(t);
-    const el = document.createElement('div');
+    const el = document.createElement('a');
     el.className = 'hero-termin';
+    el.href = `termine.html#${encodeURIComponent(terminElementId(t))}`;
     el.innerHTML = `
       <div class="ht-date"><div class="ht-day">${day}</div><div class="ht-month">${month}</div></div>
       <!-- <div class="ht-divider"></div> -->
       <div class="ht-info">
-        <div class="ht-title">${t.titel}</div>
-        <div class="ht-details">${time}${t.ort ? ' · ' + t.ort : ''}</div>
+        <div class="ht-title">${escapeHtml(t.titel)}</div>
+        <div class="ht-details">${escapeHtml(time)}${t.ort ? ' · ' + escapeHtml(t.ort) : ''}</div>
       </div>`;
     list.appendChild(el);
   });
+}
+
+function terminElementId(t) {
+  return `termin-${t._ordner || String(t.datum || '').replaceAll('-', '_')}`;
 }
 
 // ── TERMINE PAGE ──────────────────────────────────────────────────────────────
@@ -179,6 +184,8 @@ function renderTerminePage(termine, filter = 'all') {
 
     const card = document.createElement('div');
     card.className = 'termin-card' + (idx >= TERMINE_INITIAL ? ' termin-hidden' : '');
+    card.id = terminElementId(t);
+    card.tabIndex = -1;
     card.innerHTML = `
       <div class="tc-date"><div class="tc-day">${day}</div><div class="tc-month">${month}</div></div>
       <div class="tc-info">
@@ -211,6 +218,27 @@ function renderTerminePage(termine, filter = 'all') {
       moreBtn.style.display = 'none';
     }
   }
+
+  scrollToTargetTermin();
+}
+
+function scrollToTargetTermin() {
+  if (!location.hash.startsWith('#termin-')) return;
+  const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (!target) return;
+
+  if (target.classList.contains('termin-hidden')) {
+    document.querySelectorAll('.termin-hidden').forEach(el => el.classList.remove('termin-hidden'));
+    const moreBtn = document.getElementById('termineMoreBtn');
+    if (moreBtn) moreBtn.style.display = 'none';
+  }
+
+  requestAnimationFrame(() => {
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    target.focus({ preventScroll: true });
+    target.classList.add('termin-highlight');
+    window.setTimeout(() => target.classList.remove('termin-highlight'), 2600);
+  });
 }
 
 function initTermineFilter() {
