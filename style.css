@@ -982,6 +982,12 @@ section > .kapellmeisterin-section { max-width: 100%; }
 .tc-info {}
 .tc-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--green-dark); margin-bottom: 4px; }
 .tc-meta { font-size: 0.82rem; color: var(--text-mid); }
+.tc-map-link {
+  color: var(--green-mid);
+  font-weight: 700;
+  text-decoration: none;
+}
+.tc-map-link:hover { color: var(--gold); }
 .tc-desc { font-size: 0.8rem; color: var(--text-mid); margin-top: 4px; opacity: 0.8; }
 
 .tc-badge {

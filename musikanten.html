@@ -46,7 +46,7 @@
 
     <div class="register-section" id="floeten">
     <div class="register-title">Flöten <span class="register-count">(3)</span></div>
-    <p class="register-text">Die höchsten Töne in der Musik kommen neben der Triangel bei uns aus der ersten Reihe: unsere Flöten!</p>
+    <p class="register-text">Die höchsten Töne in der Musik aus der ersten Reihe: unsere Flöten!</p>
     <div class="register-foto-wrap">
       <img src="images/register/floeten.jpg" alt="Register Flöten" class="register-foto" loading="lazy"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
@@ -59,7 +59,8 @@
       <span class="mitglied-name">Leonie Beranek</span>, <span class="mitglied-name  mitglied-absent">Claudia Bereuter*</span>, <span class="mitglied-name">Katrin Huber</span>
       <span class="register-namen-hinweis">* nicht auf dem Foto</span>
     </div>
-  </div>  <div class="register-section" id="holz">
+  </div> 
+  <div class="register-section" id="holz">
     <div class="register-title">Holz <span class="register-count">(10)</span></div>
     <p class="register-text">Bei den Holzspielern kommt so mancher Musikant ins Staunen und fragt sich: wie kann man soviel Noten in so kurzer Zeit spielen?! Das macht ihr super! Weiter so!!</p>
     <div class="register-foto-wrap">
@@ -196,6 +197,13 @@
     </div>
   </div>
 </section>
+<script>
+  document.querySelectorAll('.register-namen').forEach(el => {
+    if(!el.querySelectorAll('.mitglied-absent').length) {
+      el.querySelector('.register-namen-hinweis').remove();
+    }
+  });
+</script>
 
 <!-- ════════════════════════════════
    _footer.html  — include in every page

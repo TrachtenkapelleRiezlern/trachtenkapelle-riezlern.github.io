@@ -90,6 +90,29 @@ function formatResponsiveDateDisplay(datum) {
   return `${d.getDate()}.<span class="datelong">&nbsp;${MONTH_LONG[d.getMonth()]}&nbsp;</span><span class="dateshort">${d.getMonth() + 1}.</span>${d.getFullYear()}`;
 }
 
+function resolveTerminMapQuery(ort = '') {
+  const normalized = String(ort).toLowerCase();
+  if (!normalized.trim()) return '';
+  if (normalized.includes('gemeindeamt') || normalized.includes('gemeindeplatz')) {
+    return 'Walserstraße 52, 6991 Riezlern';
+  }
+  if (normalized.includes('walserhaus') || normalized.includes('hirschegg')) {
+    return 'Walserstraße 264, 6992 Hirschegg';
+  }
+  return ort;
+}
+
+function googleMapsUrl(ort = '') {
+  const query = resolveTerminMapQuery(ort);
+  return query ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}` : '';
+}
+
+function renderTerminLocationLink(ort) {
+  const url = googleMapsUrl(ort);
+  if (!url) return '';
+  return ` · <a class="tc-map-link" href="${escapeHtml(url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Google Maps</a>`;
+}
+
 // ── GENERIC JSON LOADER ──────────────────────────────────────────────────────
 async function loadIndex(indexPath) {
   const res = await fetch(indexPath);
@@ -194,6 +217,7 @@ function renderTerminePage(termine, filter = 'all') {
           ${weekday}, ${day}. ${monthLong} ${year}
           ${t.uhrzeit ? ' · ' + time : ''}
           ${t.ort     ? ' · ' + t.ort  : ''}
+          ${t.ort     ? renderTerminLocationLink(t.ort) : ''}
         </div>
         ${t.beschreibung ? `<div class="tc-desc">${t.beschreibung.substring(0,160)}${t.beschreibung.length>160?'…':''}</div>` : ''}
         ${t.eintritt    ? `<div class="tc-eintritt">🎟 Eintritt: ${t.eintritt}</div>` : ''}
