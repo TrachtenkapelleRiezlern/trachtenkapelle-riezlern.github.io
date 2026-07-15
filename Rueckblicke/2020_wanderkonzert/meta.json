@@ -4,7 +4,8 @@
   "tags": [
     "Konzert"
   ],
-  "beschreibung": "Ein musikalischer Rückblick aus dem besonderen Jahr 2020.",
+  "beschreibung": "Ein musikalischer Rückblick aus dem Jahr 2020.",
+  "detailbild": "concert/wanderkonzert.jpg",
   "concert": {
     "titel": "Wanderkonzert",
     "datum": "2020",
