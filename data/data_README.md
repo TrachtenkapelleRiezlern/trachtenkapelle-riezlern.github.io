@@ -10,7 +10,7 @@ Die Termine werden in Google Sheets gepflegt:
 https://docs.google.com/spreadsheets/d/14qnUPCQeRqDsPerpj-848IgoBDI53lwBVmT45awWFUw/edit
 ```
 
-`python_scripts/download_termine_csv.py` lädt daraus eine CSV-Datei und speichert sie als:
+`python_scripts/sync_termine.py` lädt daraus eine CSV-Datei und speichert sie als:
 
 ```text
 data/termine.csv
@@ -21,9 +21,13 @@ Die Tabelle muss für „Jeder mit dem Link“ lesbar sein, damit GitHub Actions
 ## Lokale Synchronisierung
 
 ```bash
-python3 python_scripts/download_termine_csv.py
-python3 python_scripts/sync_termine_from_csv.py --file data/termine.csv
-python3 python_scripts/build_termine.py
+python3 python_scripts/sync_termine.py
+```
+
+Ohne Argumente startet das Skript interaktiv. Für einen direkten Lauf ohne Rückfragen:
+
+```bash
+python3 python_scripts/sync_termine.py --all --verbose
 ```
 
 ## Wichtige Spalten

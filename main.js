@@ -9,7 +9,7 @@ const MAX_HOME_RUECKBLICKE = 6;
 const MONTH_SHORT = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 const WEEKDAYS    = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
-const KATEGORIE_LABEL = { konzerte:'Konzerte', kirchliches:'Kirchliches', feste:'Feste', auswaerts:'Auswärtsspiel', sonstiges:'Sonstiges' };
+const KATEGORIE_LABEL = { konzert:'Konzert', kirchliches:'Kirchliches', fest:'Fest', auswaerts:'Auswärtsspiel', sonstiges:'Sonstiges' };
 
 // ── HAMBURGER ────────────────────────────────────────────────────────────────
 function initHamburger() {
@@ -99,6 +99,9 @@ function resolveTerminMapQuery(ort = '') {
   if (normalized.includes('walserhaus') || normalized.includes('hirschegg')) {
     return 'Walserstraße 264, 6992 Hirschegg';
   }
+  if (normalized.includes('kirche riezlern')) {
+    return 'Walserstraße 132, 6991 Riezlern';
+  }
   return ort;
 }
 
@@ -132,13 +135,11 @@ async function loadTermine() {
   const index = await loadIndex(TERMINE_INDEX);
   const now = new Date(); now.setHours(0,0,0,0);
 
-  const results = await Promise.allSettled(
-    index.map(e => loadMeta(e.ordner, 'Termine'))
-  );
-
-  return results
-    .filter(r => r.status === 'fulfilled')
-    .map(r => r.value)
+  return index
+    .map((t, idx) => ({
+      ...t,
+      _ordner: t.id || t._ordner || String(idx)
+    }))
     .filter(t => new Date(t.datum + 'T00:00:00') >= now)
     .sort((a,b) => new Date(a.datum) - new Date(b.datum));
 }
@@ -607,7 +608,7 @@ async function initTermine() {
     const termineList = document.getElementById('termineList');
     if (termineList) {
       document.getElementById('termineLoading')?.remove();
-      termineList.innerHTML = '<div class="termine-empty">Termine konnten nicht geladen werden.<br/><small>Bitte <code>build_termine.py</code> ausführen und <code>Termine/index.json</code> prüfen.</small></div>';
+      termineList.innerHTML = '<div class="termine-empty">Termine konnten nicht geladen werden.<br/><small>Bitte <code>sync_termine.py</code> ausführen und <code>Termine/index.json</code> prüfen.</small></div>';
     }
   }
 }

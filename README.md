@@ -33,8 +33,7 @@ Die Inhalte liegen direkt im Repository – ohne CMS, Framework oder Server.
 │   └── termine.csv             ← Terminpflege
 ├── images/                     ← Allgemeine Bilder für Layout, Verein, Register …
 ├── python_scripts/
-│   ├── sync_termine_from_csv.py
-│   ├── build_termine.py
+│   ├── sync_termine.py
 │   └── compress_bilder.py
 └── .github/workflows/
     └── github_workflow_sync.yml
@@ -192,9 +191,13 @@ Erlaubte Kategorien:
 Lokal kann die Synchronisierung so getestet werden:
 
 ```bash
-python3 python_scripts/download_termine_csv.py
-python3 python_scripts/sync_termine_from_csv.py --file data/termine.csv
-python3 python_scripts/build_termine.py
+python3 python_scripts/sync_termine.py
+```
+
+Ohne Argumente führt das Skript interaktiv durch Download und Synchronisierung. Für einen direkten nicht-interaktiven Lauf:
+
+```bash
+python3 python_scripts/sync_termine.py --all --verbose
 ```
 
 ## Lokal testen

@@ -1,62 +1,97 @@
 [
   {
-    "ordner": "2026_07_23_Sommerkonzert",
+    "id": "2026_07_23_Sommerkonzert",
+    "titel": "Sommerkonzert",
     "datum": "2026-07-23",
-    "titel": "Sommerkonzert"
+    "kategorie": "konzerte",
+    "uhrzeit": "20:00",
+    "ort": "Gemeindeplatz"
   },
   {
-    "ordner": "2026_08_02_Sommerkonzert",
+    "id": "2026_08_02_Sommerkonzert",
+    "titel": "Sommerkonzert",
     "datum": "2026-08-02",
-    "titel": "Sommerkonzert"
+    "kategorie": "konzerte",
+    "uhrzeit": "20:00",
+    "ort": "Gemeindeplatz"
   },
   {
-    "ordner": "2026_08_06_Sommerkonzert",
+    "id": "2026_08_06_Sommerkonzert",
+    "titel": "Sommerkonzert",
     "datum": "2026-08-06",
-    "titel": "Sommerkonzert"
+    "kategorie": "konzerte",
+    "uhrzeit": "20:00",
+    "ort": "Gemeindeplatz"
   },
   {
-    "ordner": "2026_08_15_Tag_der_Blasmusik",
+    "id": "2026_08_15_Tag_der_Blasmusik",
+    "titel": "Tag der Blasmusik",
     "datum": "2026-08-15",
-    "titel": "Tag der Blasmusik"
+    "kategorie": "feste",
+    "uhrzeit": "07:00"
   },
   {
-    "ordner": "2026_08_20_Sommerkonzert",
+    "id": "2026_08_20_Sommerkonzert",
+    "titel": "Sommerkonzert",
     "datum": "2026-08-20",
-    "titel": "Sommerkonzert"
+    "kategorie": "konzerte",
+    "uhrzeit": "20:00",
+    "ort": "Gemeindeplatz"
   },
   {
-    "ordner": "2026_08_23_Musikfest_Oberstdorf",
+    "id": "2026_08_23_Musikfest_Oberstdorf",
+    "titel": "Musikfest Oberstdorf",
     "datum": "2026-08-23",
-    "titel": "Musikfest Oberstdorf"
+    "kategorie": "feste",
+    "uhrzeit": "10:00",
+    "ort": "Oberstdorf"
   },
   {
-    "ordner": "2026_09_03_Sommerkonzert",
+    "id": "2026_09_03_Sommerkonzert",
+    "titel": "Sommerkonzert",
     "datum": "2026-09-03",
-    "titel": "Sommerkonzert"
+    "kategorie": "konzerte",
+    "uhrzeit": "20:00",
+    "ort": "Gemeindeplatz"
   },
   {
-    "ordner": "2026_09_17_Sommerkonzert",
+    "id": "2026_09_17_Sommerkonzert",
+    "titel": "Sommerkonzert",
     "datum": "2026-09-17",
-    "titel": "Sommerkonzert"
+    "kategorie": "konzerte",
+    "uhrzeit": "20:00",
+    "ort": "Gemeindeplatz"
   },
   {
-    "ordner": "2026_09_27_Alphorntage",
+    "id": "2026_09_27_Alphorntage",
+    "titel": "Alphorntage",
     "datum": "2026-09-27",
-    "titel": "Alphorntage"
+    "kategorie": "feste",
+    "uhrzeit": "11:15",
+    "ort": "Baad"
   },
   {
-    "ordner": "2026_10_01_Letztes_Sommerkonzert",
+    "id": "2026_10_01_Letztes_Sommerkonzert",
+    "titel": "Letztes Sommerkonzert",
     "datum": "2026-10-01",
-    "titel": "Letztes Sommerkonzert"
+    "kategorie": "konzerte",
+    "uhrzeit": "20:00",
+    "ort": "Gemeindeplatz"
   },
   {
-    "ordner": "2026_10_18_Kriegergedenken",
+    "id": "2026_10_18_Kriegergedenken",
+    "titel": "Kriegergedenken",
     "datum": "2026-10-18",
-    "titel": "Kriegergedenken"
+    "kategorie": "kirchliches",
+    "uhrzeit": "10:00",
+    "ort": "Kirche Riezlern"
   },
   {
-    "ordner": "2026_11_29_Adventskonzert",
+    "id": "2026_11_29_Adventskonzert",
+    "titel": "Adventskonzert",
     "datum": "2026-11-29",
-    "titel": "Adventskonzert"
+    "kategorie": "konzerte",
+    "uhrzeit": "17:00",
+    "ort": "Kirche Riezlern"
   }
 ]
