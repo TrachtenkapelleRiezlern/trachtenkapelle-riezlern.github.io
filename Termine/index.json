@@ -3,7 +3,7 @@
     "id": "2026_07_23_Sommerkonzert",
     "titel": "Sommerkonzert",
     "datum": "2026-07-23",
-    "kategorie": "konzerte",
+    "kategorie": "konzert",
     "uhrzeit": "20:00",
     "ort": "Gemeindeplatz"
   },
@@ -11,7 +11,7 @@
     "id": "2026_08_02_Sommerkonzert",
     "titel": "Sommerkonzert",
     "datum": "2026-08-02",
-    "kategorie": "konzerte",
+    "kategorie": "konzert",
     "uhrzeit": "20:00",
     "ort": "Gemeindeplatz"
   },
@@ -19,7 +19,7 @@
     "id": "2026_08_06_Sommerkonzert",
     "titel": "Sommerkonzert",
     "datum": "2026-08-06",
-    "kategorie": "konzerte",
+    "kategorie": "konzert",
     "uhrzeit": "20:00",
     "ort": "Gemeindeplatz"
   },
@@ -27,14 +27,14 @@
     "id": "2026_08_15_Tag_der_Blasmusik",
     "titel": "Tag der Blasmusik",
     "datum": "2026-08-15",
-    "kategorie": "feste",
+    "kategorie": "fest",
     "uhrzeit": "07:00"
   },
   {
     "id": "2026_08_20_Sommerkonzert",
     "titel": "Sommerkonzert",
     "datum": "2026-08-20",
-    "kategorie": "konzerte",
+    "kategorie": "konzert",
     "uhrzeit": "20:00",
     "ort": "Gemeindeplatz"
   },
@@ -42,7 +42,7 @@
     "id": "2026_08_23_Musikfest_Oberstdorf",
     "titel": "Musikfest Oberstdorf",
     "datum": "2026-08-23",
-    "kategorie": "feste",
+    "kategorie": "fest",
     "uhrzeit": "10:00",
     "ort": "Oberstdorf"
   },
@@ -50,7 +50,7 @@
     "id": "2026_09_03_Sommerkonzert",
     "titel": "Sommerkonzert",
     "datum": "2026-09-03",
-    "kategorie": "konzerte",
+    "kategorie": "konzert",
     "uhrzeit": "20:00",
     "ort": "Gemeindeplatz"
   },
@@ -58,7 +58,7 @@
     "id": "2026_09_17_Sommerkonzert",
     "titel": "Sommerkonzert",
     "datum": "2026-09-17",
-    "kategorie": "konzerte",
+    "kategorie": "konzert",
     "uhrzeit": "20:00",
     "ort": "Gemeindeplatz"
   },
@@ -66,7 +66,7 @@
     "id": "2026_09_27_Alphorntage",
     "titel": "Alphorntage",
     "datum": "2026-09-27",
-    "kategorie": "feste",
+    "kategorie": "fest",
     "uhrzeit": "11:15",
     "ort": "Baad"
   },
@@ -74,7 +74,7 @@
     "id": "2026_10_01_Letztes_Sommerkonzert",
     "titel": "Letztes Sommerkonzert",
     "datum": "2026-10-01",
-    "kategorie": "konzerte",
+    "kategorie": "konzert",
     "uhrzeit": "20:00",
     "ort": "Gemeindeplatz"
   },
@@ -90,7 +90,7 @@
     "id": "2026_11_29_Adventskonzert",
     "titel": "Adventskonzert",
     "datum": "2026-11-29",
-    "kategorie": "konzerte",
+    "kategorie": "konzert",
     "uhrzeit": "17:00",
     "ort": "Kirche Riezlern"
   }
