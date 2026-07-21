@@ -326,12 +326,13 @@ section > .kapellmeisterin-section { max-width: 100%; }
 
 .insta-embed-wrap {
   position: relative; z-index: 1;
-  max-width: 1080px; margin: 0 auto 36px;
+  max-width: 664px; margin: 0 auto 36px;
   border-radius: 12px; overflow: hidden;
   background: rgba(255,255,255,0.03);
 }
 .insta-embed-wrap iframe {
-  border: none; width: 100%; min-height: 600px; display: block;
+  border: none; width: 100%; display: block; 
+  aspect-ratio: 664 / 600;
 }
 
 .insta-cta { position: relative; z-index: 1; text-align: center; }
