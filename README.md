@@ -96,6 +96,7 @@ Rueckblicke/2026_jahreskonzert_fantasie/
 | `datum` | ✓ | `JJJJ-MM-TT` oder nur `JJJJ`; bestimmt die Sortierung |
 | `tags` | | sichtbare Schlagworte |
 | `beschreibung` | | kurzer Teaser für Übersicht und Detailseite |
+| `status` | | optional, z.B. `abgesagt`; zeigt in der Übersicht einen Stempel auf dem Bild |
 | `detailbild` | | optionales großes Bild auf der Detailseite; sonst wird `cover.jpg` verwendet |
 | `inhalt` / `text` | | eigener Rückblicktext; HTML ist erlaubt |
 | `article` | | optionaler Artikelblock, z.B. aus alten Inhalten migriert |

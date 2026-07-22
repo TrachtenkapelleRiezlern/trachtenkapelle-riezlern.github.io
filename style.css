@@ -558,6 +558,7 @@ section > .kapellmeisterin-section { max-width: 100%; }
 }
 .rueckblick-image-link {
   display: block;
+  position: relative;
   min-height: 180px;
   overflow: hidden;
   border-radius: var(--radius);
@@ -572,7 +573,30 @@ section > .kapellmeisterin-section { max-width: 100%; }
   display: block;
   transition: transform 0.35s;
 }
+
 .rueckblick-image-link:hover img { transform: scale(1.04); }
+.rueckblick-cancelled-stamp {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  padding: 8px 18px;
+  border: 4px solid rgba(160, 30, 24, 0.88);
+  border-radius: 6px;
+  color: rgba(160, 30, 24, 0.92);
+  background: rgba(255, 248, 236, 0.14);
+  box-shadow:
+    0 0 0 2px rgba(255, 248, 236, 0.16),
+    0 4px 18px rgba(0,0,0,0.18);
+  font-size: clamp(1.15rem, 2.2vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%) rotate(-13deg);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
 .rueckblick-image-placeholder {
   display: flex;
   align-items: center;
@@ -583,6 +607,16 @@ section > .kapellmeisterin-section { max-width: 100%; }
   background: var(--green-dark);
   color: var(--gold-light);
   font-size: 3rem;
+}
+.rueckblick-image-cancelled-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.8);
+  position: absolute;
+  top: 0;
 }
 .rueckblick-content {
   padding: 28px 30px;

@@ -4,12 +4,10 @@
   "tags": [
     "Konzert"
   ],
-  "beschreibung": "Ein musikalischer Rückblick aus dem Jahr 2020.",
+  "status": "abgesagt",
+  "beschreibung": "Aufgrund der Corona Pandemie musste das Konzert abgesagt werden.",
   "detailbild": "concert/wanderkonzert.jpg",
   "concert": {
-    "titel": "Wanderkonzert",
-    "datum": "2020",
-    "beschreibung": "Wanderkonzert",
     "titelbild": "concert/wanderkonzert.jpg"
   }
 }

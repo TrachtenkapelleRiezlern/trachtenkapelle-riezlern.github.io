@@ -5,11 +5,11 @@
     "Konzert",
     "Gedenken"
   ],
-  "beschreibung": "Musikalisches Erinnern an 75 Jahre Frieden.",
+  "status": "abgesagt",
+  "beschreibung": "Aufgrund der Corona Pandemie musste das Konzert abgesagt werden.",
   "concert": {
     "titel": "75 Jahre Fireden",
     "datum": "2020",
-    "beschreibung": "75 Jahre Frieden",
     "titelbild": "concert/75jahrefrieden.jpg"
   }
 }

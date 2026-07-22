@@ -315,6 +315,7 @@ function rueckblickCard(item, isFirstInYear) {
     ? item.tags
     : (item.rubrik ? [item.rubrik] : []);
   const tagHtml = tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
+  const isCancelled = ['abgesagt', 'cancelled', 'canceled'].includes(String(item.status || '').toLowerCase());
 
   return `
     <article class="rueckblick-item${isFirstInYear ? ' year-start' : ''}" onclick="location.href='${escapeHtml(href)}'">
@@ -323,6 +324,7 @@ function rueckblickCard(item, isFirstInYear) {
         <img src="${escapeHtml(image)}" alt="${escapeHtml(item.titel)}" loading="lazy"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
         <div class="rueckblick-image-placeholder" style="display:none;">&#127926;</div>
+        ${isCancelled ? '<div class="rueckblick-image-cancelled-overlay"></div><div class="rueckblick-cancelled-stamp" aria-label="Abgesagt">ABGESAGT</div>' : ''}
       </a>
       <div class="rueckblick-content">
         <div class="rueckblick-meta">
