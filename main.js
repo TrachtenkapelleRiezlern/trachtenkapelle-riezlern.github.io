@@ -689,7 +689,7 @@ const FOOTER_HTML = `<!-- ══════════════════
   </div>
   <div class="footer-bottom">
     <span>© 2026 Trachtenkapelle Riezlern e.V. · Riezlern, Kleinwalsertal</span>
-    <span><a href="kontakt.html">Kontakt</a> · <a href="impressum.html">Impressum</a></span>
+    <span><a href="musik.html">Musikarchiv</a> · <a href="kontakt.html">Kontakt</a> · <a href="impressum.html">Impressum</a></span>
   </div>
 </footer>`;
 
@@ -721,6 +721,61 @@ function initBirthdayPill() {
   window.addEventListener('scroll', update, { passive: true });
   update();
 }
+
+// ── MUSIKARCHIV TABLE SORTING ────────────────────────────────────────────────
+function initMusikTables() {
+  document.querySelectorAll('.musik-table').forEach(table => {
+    const headers = Array.from(table.querySelectorAll('th[data-sort-type]'));
+    const tbody = table.querySelector('tbody');
+    if (!headers.length || !tbody) return;
+
+    function sortRows(columnIndex, direction, type) {
+      const factor = direction === 'ascending' ? 1 : -1;
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+
+      rows.sort((a, b) => {
+        const aValue = (a.children[columnIndex]?.textContent || '').trim();
+        const bValue = (b.children[columnIndex]?.textContent || '').trim();
+        const aEmpty = aValue === '';
+        const bEmpty = bValue === '';
+        if (aEmpty || bEmpty) {
+          if (aEmpty && bEmpty) return 0;
+          return aEmpty ? 1 : -1;
+        }
+
+        if (type === 'number') {
+          const aNumber = Number.parseInt(aValue, 10);
+          const bNumber = Number.parseInt(bValue, 10);
+          return (aNumber - bNumber) * factor;
+        }
+
+        return aValue.localeCompare(bValue, 'de', { sensitivity: 'base', numeric: true }) * factor;
+      });
+
+      tbody.append(...rows);
+    }
+
+    headers.forEach((header, columnIndex) => {
+      const button = header.querySelector('.musik-sort-button');
+      if (!button) return;
+
+      button.addEventListener('click', () => {
+        const isCurrentColumn = table.dataset.sortColumn === String(columnIndex);
+        const currentDirection = table.dataset.sortDirection || 'none';
+        const nextDirection = isCurrentColumn && currentDirection === 'ascending'
+          ? 'descending'
+          : 'ascending';
+
+        headers.forEach(h => h.setAttribute('aria-sort', 'none'));
+        header.setAttribute('aria-sort', nextDirection);
+        table.dataset.sortColumn = String(columnIndex);
+        table.dataset.sortDirection = nextDirection;
+        sortRows(columnIndex, nextDirection, header.dataset.sortType || 'text');
+      });
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   injectHeaderFooter();
   initHamburger();
@@ -731,4 +786,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initRueckblicke();
   initRueckblickDetailPage();
   initBirthdayPill();
+  initMusikTables();
 });

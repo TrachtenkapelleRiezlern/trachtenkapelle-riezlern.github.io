@@ -11,6 +11,7 @@ Die Inhalte liegen direkt im Repository – ohne CMS, Framework oder Server.
 ├── rueckblicke.html            ← Chronologische Übersicht aller Rückblicke
 ├── rueckblick.html             ← Detailseite für einen Rückblick
 ├── termine.html                ← Kommende Termine
+├── musik.html                  ← Internes Musikarchiv, aus SQLite generiert
 ├── verein.html                 ← Verein, Geschichte, Vorstand, Jugend, Alphorn
 ├── geschichte.html             ← Archivierte Vereinsgeschichte
 ├── musikanten.html             ← Musikantinnen & Musikanten
@@ -30,12 +31,15 @@ Die Inhalte liegen direkt im Repository – ohne CMS, Framework oder Server.
 │
 ├── Termine/                    ← Termine, aus CSV/JSON generiert
 ├── data/
-│   └── termine.csv             ← Terminpflege
+│   ├── termine.csv             ← Terminpflege
+│   └── musik.db                ← Musikarchiv-Datenbank
 ├── images/                     ← Allgemeine Bilder für Layout, Verein, Register …
 ├── python_scripts/
+│   ├── build_musik.py
 │   ├── sync_termine.py
 │   └── compress_bilder.py
 └── .github/workflows/
+    ├── build_musik.yml
     └── github_workflow_sync.yml
 ```
 
@@ -200,6 +204,22 @@ Ohne Argumente führt das Skript interaktiv durch Download und Synchronisierung.
 ```bash
 python3 python_scripts/sync_termine.py --all --verbose
 ```
+
+## Musikarchiv generieren
+
+Das interne Musikarchiv unter `musik.html` wird statisch aus `data/musik.db` gebaut. Aktuell werden diese Mappen ausgegeben:
+
+- `NrMappe=2` – Marschbuch
+- `NrMappe=5` – Konzertmappe
+- `NrMappe=13` – Jahreskonzert
+
+Lokal neu generieren:
+
+```bash
+python3 python_scripts/build_musik.py
+```
+
+Auf GitHub wird `musik.html` automatisch neu erzeugt, wenn `data/musik.db` oder das Build-Skript auf `main` geändert wird.
 
 ## Lokal testen
 

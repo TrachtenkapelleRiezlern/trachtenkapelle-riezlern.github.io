@@ -1,0 +1,40 @@
+name: Musikarchiv generieren
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/musik.db'
+      - 'python_scripts/build_musik.py'
+      - '.github/workflows/build_musik.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Musikarchiv bauen
+        run: python3 python_scripts/build_musik.py
+
+      - name: Änderungen committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add musik.html
+          if git diff --staged --quiet; then
+            echo "Keine Änderungen – nichts zu committen."
+          else
+            git commit -m "chore: Musikarchiv aktualisiert [skip ci]"
+            git push origin main
+          fi
