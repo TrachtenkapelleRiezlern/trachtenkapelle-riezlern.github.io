@@ -1,6 +1,24 @@
 #let km = csv("Konzertmappe.csv").slice(1)
 #let mb = csv("Marschbuch.csv").slice(1)
 
+#let months = (
+  "Januar",
+  "Februar",
+  "März",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Dezember",
+)
+
+#let today = datetime.today()
+#let stand = sys.inputs.at("stand", default: (months.at(today.month() - 1), str(today.year())).join(" "))
+
 #let mbTOC = mb.map(x => (x.at(0), x.at(1)))
 
 #set page(
@@ -32,25 +50,9 @@
 
 #let bigTOC = {
   set page(footer: context [
-    #let months = (
-      "Januar",
-      "Februar",
-      "März",
-      "April",
-      "Mai",
-      "Juni",
-      "Juli",
-      "August",
-      "September",
-      "Oktober",
-      "November",
-      "Dezember",
-    )
-
-    #let today = datetime.today()
     #align(right)[
       #text(size: 8pt, fill: luma(50%))[
-        Stand · #months.at(today.month() - 1) #today.year()
+        Stand · #stand
       ]
     ]
   ])
@@ -260,28 +262,12 @@
       #drawTOC(top + left)
       #drawTOC(bottom + left)
       #place(bottom + right, dy: -padding, dx: -padding, [
-        #let months = (
-          "Januar",
-          "Februar",
-          "März",
-          "April",
-          "Mai",
-          "Juni",
-          "Juli",
-          "August",
-          "September",
-          "Oktober",
-          "November",
-          "Dezember",
-        )
-
-        #let today = datetime.today()
         #align(right)[
           #text(size: 8pt, fill: luma(50%))[
             Beidseitig drucken\
             Skalierung auf 100% setzen
 
-            Stand · #months.at(today.month() - 1) #today.year()
+            Stand · #stand
           ]
         ]
       ])

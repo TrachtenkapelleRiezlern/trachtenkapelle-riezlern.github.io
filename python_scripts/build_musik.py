@@ -29,7 +29,22 @@ ASSETS_DIR = ROOT / "assets"
 
 PDF_OUTPUTS = [
     ("inhaltsangaben.pdf", "Inhaltsangaben", "Komplette Inhaltslisten für Konzertmappe und Marschbuch.", "first"),
-    ("mb-ruecken.pdf", "MB-Rücken", "Druckvorlage für den Rücken / die Einlage des Marschbuchs.", "second"),
+    ("mb-ruecken.pdf", "Marschbuch-Rücken", "Druckvorlage zum Laminieren für den Rücken des Marschbuchs.", "second"),
+]
+
+MONTHS_DE = [
+    "Januar",
+    "Februar",
+    "März",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember",
 ]
 
 MAPPEN = [
@@ -180,20 +195,10 @@ def render_page(mappen_data, generated_at):
 </head>
 <body>
 <div id="site-header"></div>
-
-<div class="page-hero musik-hero">
-  <img src="images/hero/noten_posaune.jpg" alt="Noten und Posaune" />
-  <div class="page-hero-content">
-    <div class="hero-eyebrow">Interner Überblick</div>
-    <h1>Musikarchiv</h1>
-  </div>
-</div>
-
+<div style="height:var(--nav-height);"></div>
 <section class="musik-page">
   <div class="musik-intro">
-    <div class="section-label">Aktuelle Mappen</div>
-    <h2 class="section-title">Musiksets der Trachtenkapelle</h2>
-    <p>Diese statische Übersicht wird aus <code>data/musik.db</code> generiert und zeigt die aktuell relevanten Mappen für Marschbuch, Konzertmappe und Jahreskonzert.</p>
+    <h2 class="section-title">Aktuelle Mappen</h2>
     <p class="musik-generated">Datenbankstand: {esc(generated_at)}</p>
     {render_pdf_links().replace(chr(10), chr(10) + "    ")}
   </div>
@@ -227,7 +232,7 @@ def create_pdf_csvs(mappen_data):
         create_csv(rows, PDFCREATOR_DIR / f"{title}.csv")
 
 
-def build_pdfs(mode="auto"):
+def build_pdfs(mode="auto", changed_at=None):
     if mode == "never":
         return
 
@@ -242,6 +247,11 @@ def build_pdfs(mode="auto"):
     if not TYPST_DOCUMENT.exists():
         raise FileNotFoundError(f"Typst-Dokument nicht gefunden: {TYPST_DOCUMENT}")
 
+    if changed_at is None:
+        changed_at = datetime.now()
+    creation_timestamp = str(int(changed_at.timestamp()))
+    stand = f"{MONTHS_DE[changed_at.month - 1]} {changed_at.year}"
+
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
     for filename, _, _, output_name in PDF_OUTPUTS:
         out_path = ASSETS_DIR / filename
@@ -251,10 +261,15 @@ def build_pdfs(mode="auto"):
                 "compile",
                 "--font-path",
                 str(PDFCREATOR_DIR / "fonts"),
+                "--ignore-system-fonts",
+                "--creation-timestamp",
+                creation_timestamp,
                 TYPST_DOCUMENT.name,
                 str(out_path),
                 "--input",
                 f"output={output_name}",
+                "--input",
+                f"stand={stand}",
             ],
             cwd=PDFCREATOR_DIR,
             check=True,
@@ -310,12 +325,13 @@ def build(db_path=DEFAULT_DB, out_path=DEFAULT_OUT, pdfs="auto"):
             for nr, title, description in MAPPEN
         ]
 
-    generated_at = db_changed_at(db_path).strftime("%d.%m.%Y")
+    changed_at = db_changed_at(db_path)
+    generated_at = changed_at.strftime("%d.%m.%Y")
     html_text = render_page(mappen_data, generated_at)
     out_path.write_text(html_text, encoding="utf-8")
 
     create_pdf_csvs(mappen_data)
-    build_pdfs(pdfs)
+    build_pdfs(pdfs, changed_at)
 
     total = sum(len(rows) for _, _, _, rows in mappen_data)
     print(f"✅ {total} Stücke aus {len(MAPPEN)} Mappen → {out_path}")
