@@ -201,7 +201,11 @@
   let width = 165mm
   let height = 119mm
   let padding = 6mm
-  set text(font: "Trebuchet MS")
+
+  set text(
+    font: "Carlito",
+  )
+  //set text(font: "Trebuchet MS")
   set place(center + horizon)
   set box(width: width, height: height, inset: padding)
 
@@ -228,8 +232,8 @@
             stroke: none,
             ..items
               .map(item => (
-                text(item.at(0), size: 10pt),
-                text(item.at(1), size: 10pt),
+                text(item.at(0), size: 11pt),
+                text(item.at(1), size: 11pt),
               ))
               .flatten()
           )
