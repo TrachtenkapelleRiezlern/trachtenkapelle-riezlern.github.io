@@ -776,6 +776,34 @@ function initMusikTables() {
   });
 }
 
+function initMusikTabs() {
+  const tabs = Array.from(document.querySelectorAll('[data-musik-tab]'));
+  if (!tabs.length) return;
+
+  function activateTab(tab, updateHash = true) {
+    const panelId = tab.dataset.musikTab;
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+
+    tabs.forEach(otherTab => {
+      const isActive = otherTab === tab;
+      otherTab.setAttribute('aria-selected', String(isActive));
+      otherTab.classList.toggle('is-active', isActive);
+      const otherPanel = document.getElementById(otherTab.dataset.musikTab);
+      if (otherPanel) otherPanel.hidden = !isActive;
+    });
+
+    if (updateHash) history.replaceState(null, '', `#${panelId}`);
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => activateTab(tab));
+  });
+
+  const initialTab = tabs.find(tab => `#${tab.dataset.musikTab}` === window.location.hash) || tabs[0];
+  activateTab(initialTab, false);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   injectHeaderFooter();
   initHamburger();
@@ -786,5 +814,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initRueckblicke();
   initRueckblickDetailPage();
   initBirthdayPill();
+  initMusikTabs();
   initMusikTables();
 });

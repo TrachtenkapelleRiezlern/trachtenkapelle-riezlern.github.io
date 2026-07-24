@@ -39,42 +39,65 @@
             </a>
             <a class="musik-pdf-link" href="assets/mb-ruecken.pdf" target="_blank" rel="noopener">
               <span class="musik-pdf-badge">PDF</span>
-              <strong>Marschbuch-Rücken</strong>
-              <small>Druckvorlage zum Laminieren für den Rücken des Marschbuchs.</small>
+              <strong>MB-Rücken</strong>
+              <small>Druckvorlage für den Rücken / die Einlage des Marschbuchs.</small>
             </a>
           </div>
         </div>
   </div>
 
-  <div class="musik-set-nav">
+  <div class="musik-set-nav" role="tablist" aria-label="Musikmappen">
     
-        <a class="musik-set-card" href="#mappe-2">
+        <button
+          class="musik-set-card"
+          id="mappe-tab-2"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="mappe-2"
+          data-musik-tab="mappe-2">
           <span class="musik-set-count">42</span>
           <span>
             <strong>Marschbuch</strong>
-            <small>Märsche und Ausrückungen</small>
           </span>
-        </a>
+        </button>
 
-        <a class="musik-set-card" href="#mappe-5">
+        <button
+          class="musik-set-card"
+          id="mappe-tab-5"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="mappe-5"
+          data-musik-tab="mappe-5">
           <span class="musik-set-count">40</span>
           <span>
             <strong>Konzertmappe</strong>
-            <small>Sommerkonzerte und laufendes Repertoire</small>
           </span>
-        </a>
+        </button>
 
-        <a class="musik-set-card" href="#mappe-13">
+        <button
+          class="musik-set-card"
+          id="mappe-tab-13"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="mappe-13"
+          data-musik-tab="mappe-13">
           <span class="musik-set-count">10</span>
           <span>
             <strong>Jahreskonzert</strong>
-            <small>Aktuelle Konzertliteratur</small>
           </span>
-        </a>
+        </button>
   </div>
 
   
-        <section class="musik-set-section" id="mappe-2">
+        <section
+          class="musik-set-section"
+          id="mappe-2"
+          role="tabpanel"
+          aria-labelledby="mappe-tab-2"
+          >
           <div class="musik-set-heading">
             <div>
               <div class="section-label">Mappe 2</div>
@@ -479,7 +502,12 @@
       </div>
         </section>
 
-        <section class="musik-set-section" id="mappe-5">
+        <section
+          class="musik-set-section"
+          id="mappe-5"
+          role="tabpanel"
+          aria-labelledby="mappe-tab-5"
+          hidden>
           <div class="musik-set-heading">
             <div>
               <div class="section-label">Mappe 5</div>
@@ -866,7 +894,12 @@
       </div>
         </section>
 
-        <section class="musik-set-section" id="mappe-13">
+        <section
+          class="musik-set-section"
+          id="mappe-13"
+          role="tabpanel"
+          aria-labelledby="mappe-tab-13"
+          hidden>
           <div class="musik-set-heading">
             <div>
               <div class="section-label">Mappe 13</div>

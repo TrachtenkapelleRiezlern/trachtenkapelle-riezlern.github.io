@@ -127,19 +127,30 @@ def render_pdf_links():
 def render_page(mappen_data, generated_at):
     nav_cards = "\n".join(
         f"""
-        <a class="musik-set-card" href="#mappe-{nr}">
+        <button
+          class="musik-set-card"
+          id="mappe-tab-{nr}"
+          type="button"
+          role="tab"
+          aria-selected="{'true' if index == 0 else 'false'}"
+          aria-controls="mappe-{nr}"
+          data-musik-tab="mappe-{nr}">
           <span class="musik-set-count">{len(rows)}</span>
           <span>
             <strong>{esc(title)}</strong>
-            <small>{esc(description)}</small>
           </span>
-        </a>"""
-        for nr, title, description, rows in mappen_data
+        </button>"""
+        for index, (nr, title, description, rows) in enumerate(mappen_data)
     )
 
     sections = "\n".join(
         f"""
-        <section class="musik-set-section" id="mappe-{nr}">
+        <section
+          class="musik-set-section"
+          id="mappe-{nr}"
+          role="tabpanel"
+          aria-labelledby="mappe-tab-{nr}"
+          {'hidden' if index != 0 else ''}>
           <div class="musik-set-heading">
             <div>
               <div class="section-label">Mappe {nr}</div>
@@ -150,7 +161,7 @@ def render_page(mappen_data, generated_at):
           </div>
           {render_table(rows)}
         </section>"""
-        for nr, title, description, rows in mappen_data
+        for index, (nr, title, description, rows) in enumerate(mappen_data)
     )
 
     return f"""<!DOCTYPE html>
@@ -187,7 +198,7 @@ def render_page(mappen_data, generated_at):
     {render_pdf_links().replace(chr(10), chr(10) + "    ")}
   </div>
 
-  <div class="musik-set-nav">
+  <div class="musik-set-nav" role="tablist" aria-label="Musikmappen">
     {nav_cards}
   </div>
 
