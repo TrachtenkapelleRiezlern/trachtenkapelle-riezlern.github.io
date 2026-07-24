@@ -50,7 +50,7 @@ MONTHS_DE = [
 MAPPEN = [
     (2, "Marschbuch", "Märsche und Ausrückungen"),
     (5, "Konzertmappe", "Sommerkonzerte und laufendes Repertoire"),
-    (13, "Jahreskonzert", "Aktuelle Konzertliteratur"),
+    (13, "Jahreskonzert", "Konzertprogramm für das Jahreskonzert 2026"),
 ]
 
 
