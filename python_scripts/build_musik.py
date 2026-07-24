@@ -13,13 +13,24 @@ Verwendung:
 
 import argparse
 import html
+import csv
+import shutil
 import sqlite3
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 DEFAULT_DB = ROOT / "data" / "musik.db"
 DEFAULT_OUT = ROOT / "musik.html"
+PDFCREATOR_DIR = ROOT / "python_scripts" / "pdfcreator"
+TYPST_DOCUMENT = PDFCREATOR_DIR / "tabler.typ"
+ASSETS_DIR = ROOT / "assets"
+
+PDF_OUTPUTS = [
+    ("inhaltsangaben.pdf", "Inhaltsangaben", "Komplette Inhaltslisten für Konzertmappe und Marschbuch.", "first"),
+    ("mb-ruecken.pdf", "MB-Rücken", "Druckvorlage für den Rücken / die Einlage des Marschbuchs.", "second"),
+]
 
 MAPPEN = [
     (2, "Marschbuch", "Märsche und Ausrückungen"),
@@ -61,6 +72,8 @@ def render_table(rows):
     if not rows:
         return '<p class="musik-empty">Keine Stücke in dieser Mappe gefunden.</p>'
 
+    formatAblage = lambda a : f"{a[:2]}-{a[2:]}" if len(a) == 4 else a
+
     body = "\n".join(
         f"""
         <tr>
@@ -69,7 +82,7 @@ def render_table(rows):
           <td data-label="Art">{esc(row["art"])}</td>
           <td data-label="Komponist">{esc(row["komponist"])}</td>
           <td data-label="Arrangeur">{esc(row["arrangeur"])}</td>
-          <td data-label="Ablage">{esc(row["ablage"])}</td>
+          <td data-label="Ablage">{esc(formatAblage(row["ablage"]))}</td>
         </tr>"""
         for row in rows
     )
@@ -91,6 +104,20 @@ def render_table(rows):
           </tbody>
         </table>
       </div>"""
+
+
+def render_pdf_links():
+    links = "\n".join(
+        f"""        <a class="musik-pdf-card" href="assets/{esc(filename)}" target="_blank" rel="noopener">
+          <strong>{esc(title)}</strong>
+          <small>{esc(description)}</small>
+        </a>"""
+        for filename, title, description, _ in PDF_OUTPUTS
+    )
+
+    return f"""    <div class="musik-pdf-links" aria-label="PDF-Dokumente">
+{links}
+    </div>"""
 
 
 def render_page(mappen_data, generated_at):
@@ -153,6 +180,7 @@ def render_page(mappen_data, generated_at):
     <h2 class="section-title">Musiksets der Trachtenkapelle</h2>
     <p>Diese statische Übersicht wird aus <code>data/musik.db</code> generiert und zeigt die aktuell relevanten Mappen für Marschbuch, Konzertmappe und Jahreskonzert.</p>
     <p class="musik-generated">Datenbankstand: {esc(generated_at)}</p>
+    {render_pdf_links()}
   </div>
 
   <div class="musik-set-nav">
@@ -168,8 +196,56 @@ def render_page(mappen_data, generated_at):
 </html>
 """
 
+def create_csv(data, out_path):
+    if not data:
+        return
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, 'w', newline='', encoding="utf-8") as file:
+        w = csv.writer(file)
+        w.writerow(data[0].keys())
+        for d in data:
+            w.writerow(d.values())
 
-def build(db_path=DEFAULT_DB, out_path=DEFAULT_OUT):
+
+def create_pdf_csvs(mappen_data):
+    for _, title, _, rows in mappen_data:
+        create_csv(rows, PDFCREATOR_DIR / f"{title}.csv")
+
+
+def build_pdfs(mode="auto"):
+    if mode == "never":
+        return
+
+    typst = shutil.which("typst")
+    if not typst:
+        message = "Typst nicht gefunden – PDF-Erzeugung übersprungen."
+        if mode == "always":
+            raise RuntimeError(message)
+        print(f"⚠️  {message}")
+        return
+
+    if not TYPST_DOCUMENT.exists():
+        raise FileNotFoundError(f"Typst-Dokument nicht gefunden: {TYPST_DOCUMENT}")
+
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    for filename, _, _, output_name in PDF_OUTPUTS:
+        out_path = ASSETS_DIR / filename
+        subprocess.run(
+            [
+                typst,
+                "compile",
+                TYPST_DOCUMENT.name,
+                str(out_path),
+                "--input",
+                f"output={output_name}",
+            ],
+            cwd=PDFCREATOR_DIR,
+            check=True,
+        )
+        print(f"✅ PDF erzeugt → {out_path}")
+
+
+def build(db_path=DEFAULT_DB, out_path=DEFAULT_OUT, pdfs="auto"):
     db_path = Path(db_path)
     out_path = Path(out_path)
     if not db_path.exists():
@@ -187,6 +263,9 @@ def build(db_path=DEFAULT_DB, out_path=DEFAULT_OUT):
     html_text = render_page(mappen_data, generated_at)
     out_path.write_text(html_text, encoding="utf-8")
 
+    create_pdf_csvs(mappen_data)
+    build_pdfs(pdfs)
+
     total = sum(len(rows) for _, _, _, rows in mappen_data)
     print(f"✅ {total} Stücke aus {len(MAPPEN)} Mappen → {out_path}")
 
@@ -195,8 +274,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--db", default=str(DEFAULT_DB))
     parser.add_argument("--out", default=str(DEFAULT_OUT))
+    parser.add_argument(
+        "--pdfs",
+        choices=["auto", "always", "never"],
+        default="auto",
+        help="PDFs mit Typst erzeugen: auto überspringt ohne Typst, always bricht ohne Typst ab, never überspringt immer.",
+    )
     args = parser.parse_args()
-    build(args.db, args.out)
+    build(args.db, args.out, args.pdfs)
 
 
 if __name__ == "__main__":

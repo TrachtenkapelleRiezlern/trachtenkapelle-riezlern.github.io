@@ -219,7 +219,12 @@ Lokal neu generieren:
 python3 python_scripts/build_musik.py
 ```
 
-Auf GitHub wird `musik.html` automatisch neu erzeugt, wenn `data/musik.db` oder das Build-Skript auf `main` geändert wird.
+Wenn Typst installiert ist, erzeugt das Skript zusätzlich diese PDF-Dateien unter `assets/`:
+
+- `assets/inhaltsangaben.pdf`
+- `assets/mb-ruecken.pdf`
+
+Auf GitHub werden `musik.html` und die PDF-Dateien automatisch neu erzeugt, wenn `data/musik.db` oder das Build-Skript auf `main` geändert wird.
 
 ## Lokal testen
 
