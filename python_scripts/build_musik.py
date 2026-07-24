@@ -247,6 +247,40 @@ def build_pdfs(mode="auto"):
         print(f"✅ PDF erzeugt → {out_path}")
 
 
+def db_changed_at(db_path):
+    db_path = Path(db_path)
+    try:
+        relative_db_path = db_path.relative_to(ROOT)
+    except ValueError:
+        relative_db_path = db_path
+
+    try:
+        status = subprocess.run(
+            ["git", "status", "--porcelain", "--", str(relative_db_path)],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        if status.stdout.strip():
+            return datetime.fromtimestamp(db_path.stat().st_mtime)
+
+        last_commit = subprocess.run(
+            ["git", "log", "-1", "--format=%ct", "--", str(relative_db_path)],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        timestamp = last_commit.stdout.strip()
+        if timestamp:
+            return datetime.fromtimestamp(int(timestamp))
+    except (subprocess.CalledProcessError, ValueError):
+        pass
+
+    return datetime.fromtimestamp(db_path.stat().st_mtime)
+
+
 def build(db_path=DEFAULT_DB, out_path=DEFAULT_OUT, pdfs="auto"):
     db_path = Path(db_path)
     out_path = Path(out_path)
@@ -261,7 +295,7 @@ def build(db_path=DEFAULT_DB, out_path=DEFAULT_OUT, pdfs="auto"):
             for nr, title, description in MAPPEN
         ]
 
-    generated_at = datetime.fromtimestamp(db_path.stat().st_mtime).strftime("%d.%m.%Y %H:%M")
+    generated_at = db_changed_at(db_path).strftime("%d.%m.%Y")
     html_text = render_page(mappen_data, generated_at)
     out_path.write_text(html_text, encoding="utf-8")
 
