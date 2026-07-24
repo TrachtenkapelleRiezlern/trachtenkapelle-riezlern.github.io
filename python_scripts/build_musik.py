@@ -234,6 +234,8 @@ def build_pdfs(mode="auto"):
             [
                 typst,
                 "compile",
+                "--font-path",
+                str(PDFCREATOR_DIR / "fonts"),
                 TYPST_DOCUMENT.name,
                 str(out_path),
                 "--input",

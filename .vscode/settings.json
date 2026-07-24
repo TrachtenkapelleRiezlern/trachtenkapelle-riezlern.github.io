@@ -1,0 +1,6 @@
+{
+  "tinymist.fontPaths": [
+    "${workspaceFolder}/python_scripts/pdfcreator/fonts"
+  ],
+  "tinymist.systemFonts": false
+}
