@@ -108,15 +108,19 @@ def render_table(rows):
 
 def render_pdf_links():
     links = "\n".join(
-        f"""        <a class="musik-pdf-card" href="assets/{esc(filename)}" target="_blank" rel="noopener">
+        f"""        <a class="musik-pdf-link" href="assets/{esc(filename)}" target="_blank" rel="noopener">
+          <span class="musik-pdf-badge">PDF</span>
           <strong>{esc(title)}</strong>
           <small>{esc(description)}</small>
         </a>"""
         for filename, title, description, _ in PDF_OUTPUTS
     )
 
-    return f"""    <div class="musik-pdf-links" aria-label="PDF-Dokumente">
+    return f"""<div class="musik-pdf-downloads" aria-label="PDF-Dokumente">
+      <div class="musik-pdf-heading">PDF-Dokumente zum Drucken</div>
+      <div class="musik-pdf-links">
 {links}
+      </div>
     </div>"""
 
 
@@ -180,7 +184,7 @@ def render_page(mappen_data, generated_at):
     <h2 class="section-title">Musiksets der Trachtenkapelle</h2>
     <p>Diese statische Übersicht wird aus <code>data/musik.db</code> generiert und zeigt die aktuell relevanten Mappen für Marschbuch, Konzertmappe und Jahreskonzert.</p>
     <p class="musik-generated">Datenbankstand: {esc(generated_at)}</p>
-    {render_pdf_links()}
+    {render_pdf_links().replace(chr(10), chr(10) + "    ")}
   </div>
 
   <div class="musik-set-nav">
