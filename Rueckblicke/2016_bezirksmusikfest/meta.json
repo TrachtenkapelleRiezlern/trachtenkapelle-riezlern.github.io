@@ -6,12 +6,14 @@
     "Fest"
   ],
   "beschreibung": "Vier Tage Bezirksmusikfest in Bildern.",
+  "inhalt": "<p>Lang hat es gedauert, doch jetzt ist es soweit. Wir haben es endlich geschafft und die Bilder der Festtage hier online gestellt. Herzlichen Dank an Dominik Berchtold, der uns nicht nur im Vorfeld in das rechte Licht gerückt hat, sondern auch beim Fest im Einsatz war. Für alle, die nicht bei unserem Bezirksmusikfest dabei sein konnten und für alle, die noch einmal die Eindrücke Revue passieren lassen wollen, haben wir hier das ultimative Festvideo. Danke an Clemens Paul mit Johannes Rief und Bernd Levay, denen wir diese Bewegtbilder verdanken.</p><p>Es war wirklich der Wahnsinn – vier Tage Ausnahmezustand im ganzen Kleinwalsertal! Wir sind sehr stolz und dankbar, dass alles so gut geklappt hat. Selbst Petrus war uns wohl gesonnen. Wir hoffen es hat Euch genauso gut gefallen wie uns und dass Euch unser Bezirksmusikfest noch lange in (positiver) Erinnerung bleibt!</p><p>Uns bleibt nur noch, DANKE! zu sagen. Herzlichen Dank an alle, die uns oder mit uns, für uns, vor, während und nach dem Fest gefeiert, musiziert, gefestet, geholfen, getanzt, gegessen, getrunken, aufgebaut, abgebaut, gekocht, getragen, kassiert, gezapft, auf Bierbänken gehüpft, marschiert, unterstützt, gegrölt, abgeräumt, Werbung gemacht, gefahren, gesungen, gelaufen, bewertet, gelacht, fotografiert, gefilmt, den Regen gestoppt, geputzt, geschwitzt, gearbeitet, genossen, wenig geschlafen, geschleppt, gehämmert, gesägt, gemalt, geschrieben, geliked & geteilt, gestaunt, gefragt, eingeschenkt, verkauft, gebacken, …. haben. Alle ZÄÄMA! haben das Motto zum Leben erweckt und das Bezirksmusikfest zu dem gemacht, was es war – ein unglaubliches und unvergessliches Fest!</p>",
   "albums": [
     {
       "id": "2016_BMF_Donnerstag",
-      "titel": "Bmf Donnerstag",
+      "titel": "Donnerstag",
       "datum": "",
       "bilder": [
+        "albums/2016_BMF_Donnerstag/01.jpg",
         "albums/2016_BMF_Donnerstag/BMF_Stammgastabend_001.jpg",
         "albums/2016_BMF_Donnerstag/BMF_Stammgastabend_002.jpg",
         "albums/2016_BMF_Donnerstag/BMF_Stammgastabend_003.jpg",
@@ -97,7 +99,7 @@
     },
     {
       "id": "2016_BMF_Freitag",
-      "titel": "Bmf Freitag",
+      "titel": "Freitag",
       "datum": "",
       "bilder": [
         "albums/2016_BMF_Freitag/BMF_Freitag_001.jpg",
@@ -226,7 +228,7 @@
     },
     {
       "id": "2016_BMF_Samstag",
-      "titel": "Bmf Samstag",
+      "titel": "Samstag",
       "datum": "",
       "bilder": [
         "albums/2016_BMF_Samstag/BMF_Samstag_Marschmusikwettbewerb_001.jpg",
@@ -431,7 +433,7 @@
     },
     {
       "id": "2016_BMF_Sonntag",
-      "titel": "Bmf Sonntag",
+      "titel": "Sonntag",
       "datum": "",
       "bilder": [
         "albums/2016_BMF_Sonntag/BMF_Sonntag_001.jpg",

@@ -981,6 +981,31 @@ section > .kapellmeisterin-section { max-width: 100%; }
    TERMINE PAGE
 ══════════════════════════════ */
 .termine-page { background: var(--cream); }
+.calendar-subscribe-link { margin-bottom: 28px; }
+.calendar-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+.calendar-option {
+  min-width: 0;
+  padding: 28px;
+  background: var(--white);
+  border-radius: var(--radius);
+}
+.calendar-option h3 { color: var(--green-dark); margin-bottom: 16px; }
+.calendar-option .btn { margin: 12px 0 20px; }
+.calendar-option label { display: block; margin: 16px 0 8px; font-weight: 700; }
+.calendar-feed-url {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--green-mid);
+  border-radius: 4px;
+  background: var(--cream);
+  color: var(--text-mid);
+  font: inherit;
+}
 
 .termine-filters {
   display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px;

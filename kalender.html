@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalender abonnieren – Trachtenkapelle Riezlern</title>
+  <meta name="description" content="Abonniere die Termine der Trachtenkapelle Riezlern in Google Kalender oder deinem Kalenderprogramm per iCal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+
+  <section class="termine-page" aria-labelledby="calendar-title">
+    <h2 class="section-title" id="calendar-title">Kalender für Proben und Auftritte abonnieren</h2>
+
+    <div class="calendar-options">
+      <article class="calendar-option">
+        <h3>Google Kalender</h3>
+        <p class="about-text">Öffne den Link und füge den Proben-Kalender zu deinem Google Kalender hinzu. Melde dich bei Bedarf mit deinem Google-Konto an.</p>
+        <a class="btn btn-green" href="https://calendar.google.com/calendar/u/0?cid=MTgwZmFhZDhkYjc4YTVjNDZjNWE1OWRhODViMjliNzZkODMzMWRmNWQ4YmNjMGEwZjcxYzM5YTE2OGJmYmY3NkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t">Google Kalender öffnen</a>
+      </article>
+
+      <article class="calendar-option">
+        <h3>Andere Kalender</h3>
+        <p class="about-text">Für Kalenderprogramme mit iCal-Unterstützung steht der Proben-Kalender als ICS-Link zur Verfügung.</p>
+        <a class="btn btn-green" href="https://calendar.google.com/calendar/ical/180faad8db78a5c46c5a59da85b29b76d8331df5d8bcc0a0f71c39a168bfbf76%40group.calendar.google.com/public/basic.ics">Kalender-Link öffnen (ICS)</a>
+        <p class="about-text">Für ein dauerhaftes Abonnement kopiere die Adresse und wähle in deinem Kalenderprogramm „Kalender abonnieren“ oder „Kalender per URL hinzufügen“. Ein einmaliger Import der Datei übernimmt keine späteren Änderungen.</p>
+        <label for="calendar-feed-url">Adresse zum Kopieren</label>
+        <input class="calendar-feed-url" id="calendar-feed-url" type="text" readonly value="https://calendar.google.com/calendar/ical/180faad8db78a5c46c5a59da85b29b76d8331df5d8bcc0a0f71c39a168bfbf76%40group.calendar.google.com/public/basic.ics" />
+      </article>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="main.js"></script>
+</body>
+</html>

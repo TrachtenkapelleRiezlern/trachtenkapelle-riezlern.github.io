@@ -1,4 +1,12 @@
 {
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/Rueckblicke/*/meta.json"
+      ],
+      "url": "./schemas/rueckblick-meta.schema.json"
+    }
+  ],
   "tinymist.fontPaths": [
     "${workspaceFolder}/python_scripts/pdfcreator/fonts"
   ],

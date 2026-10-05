@@ -343,7 +343,7 @@ function rueckblickCard(item, isFirstInYear) {
 
 function rueckblickTypeSummary(item) {
   const parts = [];
-  if (item.inhalt || item.text || item.article) parts.push('Artikel');
+  if (item.inhalt || item.text) parts.push('Text');
   if (item.concert) parts.push('Konzert');
   const albumCount = item.albums?.length || 0;
   if (albumCount === 1) parts.push('Bilder');
@@ -446,11 +446,10 @@ function renderRueckblickTags(tags = []) {
   return tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
 }
 
-function renderRueckblickText(meta, article, concert, includeConcertFallback = true) {
+function renderRueckblickText(meta, concert, includeConcertFallback = true) {
   const explicitText = meta.inhalt || meta.text;
-  const articleText = article?.inhalt || article?.beschreibung;
   const concertText = includeConcertFallback ? (concert?.inhalt || concert?.beschreibung) : '';
-  const text = explicitText || articleText || concertText || '';
+  const text = explicitText || concertText || '';
   return text ? `<div class="artikel-text rueckblick-detail-text">${text}</div>` : '';
 }
 
@@ -469,7 +468,8 @@ function renderRueckblickAlbum(album, memoryId, previewLimit = 8, bare = false) 
   const bilder = album.bilder || [];
   const shown = bilder.slice(0, previewLimit);
   const remaining = Math.max(0, bilder.length - shown.length);
-  const albumKey = album.id || album.titel || 'album';
+  const albumKey = album._albumKey;
+  const albumTitle = album.titel || 'Bilder';
   const imagesHtml = shown.length
     ? shown.map((filename, idx) => `
         <button class="rueckblick-photo" type="button" onclick="openRueckblickLightbox('${escapeHtml(albumKey)}', ${idx})">
@@ -489,7 +489,7 @@ function renderRueckblickAlbum(album, memoryId, previewLimit = 8, bare = false) 
   return `
     <section class="rueckblick-detail-block rueckblick-album-block" data-album="${escapeHtml(albumKey)}">
       <div class="section-label">Bilder</div>
-      <h2>${escapeHtml(album.titel || albumKey)}</h2>
+      <h2>${escapeHtml(albumTitle)}</h2>
       <p class="rueckblick-detail-muted">${bilder.length} Bilder${remaining ? ` · ${shown.length} als Vorschau` : ''}</p>
       <div class="rueckblick-photo-grid">${imagesHtml}</div>
       ${remaining ? `<button class="btn btn-green rueckblick-load-photos" type="button" data-album="${escapeHtml(albumKey)}">Weitere ${remaining} Bilder laden</button>` : ''}
@@ -557,9 +557,12 @@ async function initRueckblickDetailPage() {
 
   try {
     const meta = await loadMeta(id, 'Rueckblicke');
-    const articleResult = meta.article || null;
     const concertResult = meta.concert || null;
-    const albums = (meta.albums || []).map(album => ({ ...album, _memoryId: id }));
+    const albums = (meta.albums || []).map((album, index) => ({
+      ...album,
+      _memoryId: id,
+      _albumKey: `album-${index}`
+    }));
     const title = meta.titel || id;
     const detailImage = meta.detailbild
       ? rueckblickAssetPath(id, meta.detailbild)
@@ -571,11 +574,11 @@ async function initRueckblickDetailPage() {
     document.getElementById('rueckblickDetailTags').innerHTML = renderRueckblickTags(meta.tags || []);
     document.getElementById('rueckblickDetailLead').textContent = meta.beschreibung || '';
 
-    const hasOwnText = !!(meta.inhalt || meta.text || articleResult?.inhalt || articleResult?.beschreibung);
+    const hasOwnText = !!(meta.inhalt || meta.text);
     const hasConcert = !!concertResult;
     const hasAlbums = albums.length > 0;
     const concertOnly = !hasOwnText && hasConcert && !hasAlbums;
-    const textHtml = renderRueckblickText(meta, articleResult, concertResult, concertOnly);
+    const textHtml = renderRueckblickText(meta, concertResult, concertOnly);
     const concertHtml = concertOnly ? '' : renderRueckblickConcert(concertResult);
     const albumOnly = !textHtml && !concertHtml && albums.length === 1;
 
@@ -586,7 +589,7 @@ async function initRueckblickDetailPage() {
       ${albums.map(album => renderRueckblickAlbum(album, id, 8, albumOnly)).join('')}
     `;
 
-    initRueckblickPhotoButtons(Object.fromEntries(albums.map(album => [album.id || album.titel || 'album', album])));
+    initRueckblickPhotoButtons(Object.fromEntries(albums.map(album => [album._albumKey, album])));
   } catch (err) {
     console.warn('Rückblick Detail Ladefehler:', err.message);
     content.innerHTML = '<div class="termine-empty">Dieser Rückblick konnte nicht geladen werden.</div>';

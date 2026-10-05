@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trachtenkapelle-riezlern.github.io/schemas/rueckblick-meta.schema.json",
+  "title": "Rueckblick-Metadaten",
+  "description": "Metadaten fuer einen Rueckblick unter Rueckblicke/*/meta.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "titel",
+    "datum"
+  ],
+  "properties": {
+    "titel": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Titel des Rueckblicks."
+    },
+    "datum": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}-[0-9]{2})?$",
+      "description": "Datum fuer Sortierung und Anzeige, entweder JJJJ-MM-TT oder nur JJJJ.",
+      "examples": [
+        "2026-04-25",
+        "2026"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "description": "Sichtbare Schlagworte fuer Karten und Detailseite.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "beschreibung": {
+      "type": "string",
+      "description": "Kurzer Teaser fuer Uebersicht und Detailseite."
+    },
+    "status": {
+      "type": "string",
+      "description": "Optionaler Status. 'abgesagt' zeigt einen Stempel in der Uebersicht.",
+      "enum": [
+        "abgesagt",
+        "cancelled",
+        "canceled"
+      ]
+    },
+    "detailbild": {
+      "type": "string",
+      "description": "Optionales grosses Bild auf der Detailseite. Ohne dieses Feld wird cover.jpg verwendet."
+    },
+    "inhalt": {
+      "type": "string",
+      "description": "Eigentlicher Rueckblicktext als HTML."
+    },
+    "text": {
+      "type": "string",
+      "description": "Alternative zu inhalt. Fuer neue Rueckblicke bevorzugt inhalt verwenden."
+    },
+    "concert": {
+      "$ref": "#/$defs/concert"
+    },
+    "albums": {
+      "type": "array",
+      "description": "Optionale Fotoalben dieses Rueckblicks.",
+      "items": {
+        "$ref": "#/$defs/album"
+      }
+    }
+  },
+  "$defs": {
+    "concert": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optionaler Konzertblock, wenn Konzertinfos getrennt vom Rueckblicktext erscheinen sollen.",
+      "properties": {
+        "titel": {
+          "type": "string",
+          "description": "Titel des Konzertblocks. Ohne Titel wird 'Konzert' angezeigt."
+        },
+        "datum": {
+          "type": "string",
+          "description": "Angezeigtes Datum oder Jahr des Konzertblocks."
+        },
+        "beschreibung": {
+          "type": "string",
+          "description": "Kurze Beschreibung des Konzertblocks."
+        },
+        "inhalt": {
+          "type": "string",
+          "description": "Optionaler HTML-Text fuer reine Konzert-Rueckblicke ohne eigenen Rueckblicktext."
+        },
+        "titelbild": {
+          "type": "string",
+          "deprecated": true,
+          "deprecationMessage": "Dieses Feld wird nicht mehr verwendet. Nutze detailbild auf Rueckblick-Ebene.",
+          "description": "Veraltet: wird von der Website ignoriert."
+        }
+      }
+    },
+    "album": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bilder"
+      ],
+      "properties": {
+        "titel": {
+          "type": "string",
+          "description": "Optionaler Albumtitel. Ohne Titel wird 'Bilder' angezeigt."
+        },
+        "bilder": {
+          "type": "array",
+          "description": "Bildpfade relativ zum Rueckblick-Ordner.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "id": {
+          "type": "string",
+          "deprecated": true,
+          "deprecationMessage": "Album-IDs werden automatisch erzeugt und muessen nicht mehr gepflegt werden.",
+          "description": "Veraltet: wird von der Website ignoriert."
+        },
+        "datum": {
+          "type": "string",
+          "deprecated": true,
+          "deprecationMessage": "Album-Daten werden nicht angezeigt und muessen nicht mehr gepflegt werden.",
+          "description": "Veraltet: wird von der Website ignoriert."
+        }
+      }
+    }
+  }
+}

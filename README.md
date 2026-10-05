@@ -25,7 +25,6 @@ Die Inhalte liegen direkt im Repository – ohne CMS, Framework oder Server.
 │   └── 2025_adventskonzert/
 │       ├── meta.json           ← Text, Tags, Konzertinfos, Albumliste
 │       ├── cover.jpg           ← Vorschaubild / Titelbild
-│       ├── article/            ← optionale Artikelbilder
 │       ├── concert/            ← optionale Konzertbilder
 │       └── albums/             ← optionale Fotoalben dieses Rückblicks
 │
@@ -76,12 +75,10 @@ Rueckblicke/2026_jahreskonzert_fantasie/
   "concert": {
     "titel": "Jahreskonzert 2026 – Fantasie",
     "datum": "2026",
-    "beschreibung": "Kurze Konzertinformation.",
-    "titelbild": "concert/titelbild.jpg"
+    "beschreibung": "Kurze Konzertinformation."
   },
   "albums": [
     {
-      "id": "jahreskonzert",
       "titel": "Bilder vom Jahreskonzert",
       "bilder": [
         "albums/jahreskonzert/001.jpg",
@@ -103,7 +100,6 @@ Rueckblicke/2026_jahreskonzert_fantasie/
 | `status` | | optional, z.B. `abgesagt`; zeigt in der Übersicht einen Stempel auf dem Bild |
 | `detailbild` | | optionales großes Bild auf der Detailseite; sonst wird `cover.jpg` verwendet |
 | `inhalt` / `text` | | eigener Rückblicktext; HTML ist erlaubt |
-| `article` | | optionaler Artikelblock, z.B. aus alten Inhalten migriert |
 | `concert` | | optionaler Konzertblock |
 | `albums` | | optionale Fotoalben, vollständig im Rückblick-Ordner |
 
@@ -127,7 +123,6 @@ Für neue Rückblicke reicht meistens das Feld `inhalt`. Dort steht der eigentli
   },
   "albums": [
     {
-      "id": "adventskonzert",
       "titel": "Bilder vom Adventskonzert",
       "bilder": [
         "albums/adventskonzert/001.jpg",
@@ -137,8 +132,6 @@ Für neue Rückblicke reicht meistens das Feld `inhalt`. Dort steht der eigentli
   ]
 }
 ```
-
-Der alte `article`-Block kann weiterhin verwendet werden, wenn Inhalte aus dem früheren „Aktuelles“-Bereich übernommen werden. Für neue Einträge ist `inhalt` aber übersichtlicher, weil Titel, Datum, Tags und Teaser ohnehin schon direkt im Rückblick stehen.
 
 ### Fotoalben
 
@@ -153,7 +146,7 @@ Rueckblicke/2016_bezirksmusikfest/
       BMF_Samstag_002.jpg
 ```
 
-Die Bilder eines Albums werden in der `bilder`-Liste des jeweiligen Album-Eintrags gepflegt. Separate `index.json`-Dateien innerhalb der Album-Ordner werden nicht benötigt.
+Die Bilder eines Albums werden in der `bilder`-Liste des jeweiligen Album-Eintrags gepflegt. Separate `id`-Felder oder `index.json`-Dateien innerhalb der Album-Ordner werden nicht benötigt.
 
 Auf der Detailseite werden zunächst einige Fotos angezeigt. Bei größeren Alben erscheint ein Button, um die restlichen Bilder nachzuladen.
 
