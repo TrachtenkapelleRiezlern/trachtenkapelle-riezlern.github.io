@@ -93,5 +93,13 @@
     "kategorie": "konzert",
     "uhrzeit": "17:00",
     "ort": "Kirche Riezlern"
+  },
+  {
+    "id": "2027_05_09_Erstkommunion",
+    "titel": "Erstkommunion",
+    "datum": "2027-05-09",
+    "kategorie": "konzert",
+    "uhrzeit": "10:00",
+    "ort": "Kirche Riezlern"
   }
 ]
